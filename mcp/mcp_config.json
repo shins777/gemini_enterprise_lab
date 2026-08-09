@@ -1,0 +1,56 @@
+{
+  "mcpServers": {
+    "google-maps": {
+      "name": "Google Maps MCP Server",
+      "description": "Provides location search, geocoding, and distance calculation capabilities via Google Maps APIs.",
+      "transport": "sse",
+      "url": "https://google-maps-mcp-ufs66v7tbq-uc.a.run.app/sse",
+      "env": {
+        "GOOGLE_MAPS_API_KEY": "AIzaSyBQFudqoZejRXBcq5OB9Pjv6XCYDD6wVj0"
+      },
+      "tools": [
+        {
+          "name": "search_location",
+          "description": "Search for locations, places, or addresses using Google Maps API.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Name, address, or keyword of the location."
+              },
+              "location_bias": {
+                "type": "string",
+                "description": "Optional latitude,longitude string for location bias."
+              }
+            },
+            "required": ["query"]
+          }
+        },
+        {
+          "name": "calculate_distance",
+          "description": "Calculate travel distance and estimated duration between origin and destination.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "origin": {
+                "type": "string",
+                "description": "Starting address, place name, or lat,lng coordinates."
+              },
+              "destination": {
+                "type": "string",
+                "description": "Destination address, place name, or lat,lng coordinates."
+              },
+              "mode": {
+                "type": "string",
+                "enum": ["driving", "walking", "bicycling", "transit"],
+                "description": "Travel mode (default: driving)."
+              }
+            },
+            "required": ["origin", "destination"]
+          }
+        }
+      ]
+    }
+  }
+}

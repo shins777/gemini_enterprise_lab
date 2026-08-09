@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+set -e
+
+# Google Maps MCP Server Cloud Run Deployment Script
+
+SERVICE_NAME="${SERVICE_NAME:-google-maps-mcp}"
+REGION="${REGION:-asia-northeast1}"
+if [ -z "$CLOUDSDK_AUTH_ACCESS_TOKEN" ]; then
+  export CLOUDSDK_AUTH_ACCESS_TOKEN="$(gcloud auth application-default print-access-token 2>/dev/null || echo "")"
+fi
+
+if [ -z "$PROJECT_ID" ]; then
+  echo "Error: GCP Project ID is not set. Run 'gcloud config set project YOUR_PROJECT_ID' or set PROJECT_ID environment variable."
+  exit 1
+fi
+
+
+if [ -z "$GOOGLE_MAPS_API_KEY" ]; then
+  echo "Warning: GOOGLE_MAPS_API_KEY environment variable is not set."
+  read -p "Enter your Google Maps API Key: " GOOGLE_MAPS_API_KEY
+fi
+
+echo "============================================================"
+echo " Deploying $SERVICE_NAME to GCP Cloud Run"
+echo " Project ID : $PROJECT_ID"
+echo " Region     : $REGION"
+echo "============================================================"
+
+# Deploy to Cloud Run using source build
+gcloud run deploy "$SERVICE_NAME" \
+  --source . \
+  --project "$PROJECT_ID" \
+  --region "$REGION" \
+  --platform managed \
+  --no-allow-unauthenticated \
+  --set-env-vars "GOOGLE_MAPS_API_KEY=$GOOGLE_MAPS_API_KEY" \
+  --port 8080
+
+# Retrieve deployed Service URL
+SERVICE_URL="$(gcloud run services describe "$SERVICE_NAME" --project "$PROJECT_ID" --region "$REGION" --format 'value(status.url)')"
+SSE_URL="${SERVICE_URL}/sse"
+
+echo "============================================================"
+echo " Deployment Complete!"
+echo " Service URL : $SERVICE_URL"
+echo " SSE Endpoint: $SSE_URL"
+echo "============================================================"
+echo "Use $SSE_URL in your Agent Platform / MCP Client config."
