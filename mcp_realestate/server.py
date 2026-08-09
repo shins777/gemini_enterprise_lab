@@ -15,7 +15,7 @@ os.environ["FASTMCP_PORT"] = os.getenv("PORT", "8080")
 mcp = FastMCP("Korea Real Estate MCP Server")
 
 # CSV File path
-CSV_PATH = os.path.join(os.path.dirname(__file__), "korea_real_estate_20year_factors.csv")
+CSV_PATH = os.path.join(os.path.dirname(__file__), "korea_real_estate_20yr_factors.csv")
 
 def load_data():
     data = []
