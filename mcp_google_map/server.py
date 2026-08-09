@@ -197,6 +197,6 @@ async def calculate_distance(origin: str, destination: str, mode: str = "driving
 
 if __name__ == "__main__":
     host = os.getenv("FASTMCP_HOST", "0.0.0.0")
-    port = os.getenv("FASTMCP_PORT", "8080")
-    logger.info(f"Starting Google Maps FastMCP Server on {host}:{port} with SSE transport...")
-    mcp.run(transport="sse")
+    port = int(os.getenv("FASTMCP_PORT", "8080"))
+    logger.info(f"Starting Google Maps FastMCP Server on {host}:{port} with streamable-http transport...")
+    mcp.run(transport="streamable-http", host=host, port=port)

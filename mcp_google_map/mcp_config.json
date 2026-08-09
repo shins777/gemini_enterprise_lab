@@ -3,8 +3,8 @@
     "google-maps": {
       "name": "Google Maps MCP Server",
       "description": "Provides location search, geocoding, and distance calculation capabilities via Google Maps APIs.",
-      "transport": "sse",
-      "url": "https://google-maps-mcp-ufs66v7tbq-uc.a.run.app/sse",
+      "transport": "streamable-http",
+      "url": "https://google-maps-mcp-yn77fvmwva-uc.a.run.app/mcp",
       "env": {
         "GOOGLE_MAPS_API_KEY": "AIzaSyD8O2bUpq1kr1jCnLpMz6r9Id-nHvqJLAI"
       },

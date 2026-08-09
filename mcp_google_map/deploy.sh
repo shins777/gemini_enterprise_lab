@@ -38,11 +38,11 @@ gcloud run deploy "$SERVICE_NAME" \
 
 # Retrieve deployed Service URL
 SERVICE_URL="$(gcloud run services describe "$SERVICE_NAME" --project "$PROJECT_ID" --region "$REGION" --format 'value(status.url)')"
-SSE_URL="${SERVICE_URL}/sse"
+HTTP_URL="${SERVICE_URL}/mcp"
 
 echo "============================================================"
 echo " Deployment Complete!"
 echo " Service URL : $SERVICE_URL"
-echo " SSE Endpoint: $SSE_URL"
+echo " HTTP Endpoint: $HTTP_URL"
 echo "============================================================"
-echo "Use $SSE_URL in your Agent Platform / MCP Client config."
+echo "Use $HTTP_URL in your Agent Platform / MCP Client config."
