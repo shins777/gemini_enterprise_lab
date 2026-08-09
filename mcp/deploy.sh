@@ -32,7 +32,7 @@ gcloud run deploy "$SERVICE_NAME" \
   --project "$PROJECT_ID" \
   --region "$REGION" \
   --platform managed \
-  --no-allow-unauthenticated \
+  --allow-unauthenticated \
   --set-env-vars "GOOGLE_MAPS_API_KEY=$GOOGLE_MAPS_API_KEY" \
   --port 8080
 

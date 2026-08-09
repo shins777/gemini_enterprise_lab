@@ -55,7 +55,7 @@ Or deploy manually via `gcloud`:
 gcloud run deploy google-maps-mcp \
   --source . \
   --region us-central1 \
-  --no-allow-unauthenticated \
+  --allow-unauthenticated \
   --set-env-vars GOOGLE_MAPS_API_KEY="your_api_key_here" \
   --port 8080
 ```
