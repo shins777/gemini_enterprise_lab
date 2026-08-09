@@ -81,6 +81,77 @@ async def search_location(query: str, location_bias: str = None) -> dict:
 
 
 @mcp.tool()
+async def search_restaurants(location: str) -> dict:
+    """
+    Search for top 5 highly-rated and popular restaurants or eateries in a specific location or area.
+
+    Args:
+        location: Name of the station, area, neighborhood, or city to find restaurants in (e.g. '강남역', 'Seoul Station').
+
+    Returns:
+        Dictionary containing top 5 restaurant details: name, rating, reviews count, formatted address, types, and price level.
+    """
+    api_key = os.getenv("GOOGLE_MAPS_API_KEY", GOOGLE_MAPS_API_KEY)
+    if not api_key:
+        return {"error": "GOOGLE_MAPS_API_KEY environment variable is missing."}
+
+    query = f"{location} 맛집"
+    async with httpx.AsyncClient() as client:
+        url = "https://places.googleapis.com/v1/places:searchText"
+        headers = {
+            "Content-Type": "application/json",
+            "X-Goog-Api-Key": api_key,
+            "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.location,places.id,places.rating,places.userRatingCount,places.priceLevel,places.types"
+        }
+        payload = {
+            "textQuery": query,
+            "languageCode": "ko"
+        }
+
+        try:
+            resp = await client.post(url, json=payload, headers=headers, timeout=10.0)
+            data = resp.json()
+
+            if "places" in data and data["places"]:
+                places = data["places"]
+                
+                # Sort by rating descending, then by userRatingCount descending
+                places.sort(key=lambda x: (x.get("rating", 0.0), x.get("userRatingCount", 0)), reverse=True)
+                
+                results = []
+                for place in places[:5]:
+                    price_level_map = {
+                        "PRICE_LEVEL_FREE": "Free",
+                        "PRICE_LEVEL_INEXPENSIVE": "$",
+                        "PRICE_LEVEL_MODERATE": "$$",
+                        "PRICE_LEVEL_EXPENSIVE": "$$$",
+                        "PRICE_LEVEL_VERY_EXPENSIVE": "$$$$"
+                    }
+                    price_level = price_level_map.get(place.get("priceLevel"), "Unknown")
+                    
+                    results.append({
+                        "name": place.get("displayName", {}).get("text"),
+                        "formatted_address": place.get("formattedAddress"),
+                        "rating": place.get("rating"),
+                        "reviews_count": place.get("userRatingCount"),
+                        "price_level": price_level,
+                        "location": {
+                            "lat": place.get("location", {}).get("latitude"),
+                            "lng": place.get("location", {}).get("longitude")
+                        },
+                        "place_id": place.get("id"),
+                        "types": place.get("types")
+                    })
+                return {"status": "SUCCESS", "location": location, "count": len(results), "results": results}
+            
+            return {"status": "NO_RESULTS", "message": f"No restaurants found for '{location}'."}
+
+        except Exception as e:
+            logger.error(f"Error in search_restaurants: {e}")
+            return {"status": "ERROR", "message": str(e)}
+
+
+@mcp.tool()
 async def calculate_distance(origin: str, destination: str, mode: str = "driving") -> dict:
     """
     Calculate travel distance and estimated duration between origin and destination.

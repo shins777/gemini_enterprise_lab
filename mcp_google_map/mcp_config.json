@@ -28,6 +28,20 @@
           }
         },
         {
+          "name": "search_restaurants",
+          "description": "Search for top 5 highly-rated and popular restaurants or eateries in a specific location or area.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "Name of the station, area, neighborhood, or city (e.g. '강남역', 'Seoul Station')."
+              }
+            },
+            "required": ["location"]
+          }
+        },
+        {
           "name": "calculate_distance",
           "description": "Calculate travel distance and estimated duration between origin and destination.",
           "parameters": {
