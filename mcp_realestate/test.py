@@ -1,8 +1,9 @@
 import asyncio
 import subprocess
 import sys
+import httpx
 from mcp import ClientSession
-from mcp.client.sse import sse_client
+from mcp.client.streamable_http import streamable_http_client
 
 SERVICE_URL = "https://korea-realestate-mcp-yn77fvmwva-uc.a.run.app"
 
@@ -32,22 +33,23 @@ async def run_mcp_test(year: int):
     token = get_gcloud_access_token()
     headers = {"Authorization": f"Bearer {token}"}
     
-    print(f"Connecting to Cloud Run SSE endpoint: {SERVICE_URL}/sse...")
+    print(f"Connecting to Cloud Run streamable-http endpoint: {SERVICE_URL}/mcp...")
     try:
-        async with sse_client(f"{SERVICE_URL}/sse", headers=headers) as (read_stream, write_stream):
-            async with ClientSession(read_stream, write_stream) as session:
-                print("Initializing session...")
-                await session.initialize()
-                
-                print(f"Calling tool 'get_factors_by_year' for year {year}...")
-                result = await session.call_tool("get_factors_by_year", {"year": year})
-                
-                print("\n--- Deployed Cloud Run Response ---")
-                if result.isError:
-                    print(f"Error executing tool: {result.content}")
-                else:
-                    print(result.content[0].text)
-                print("-----------------------------------")
+        async with httpx.AsyncClient(headers=headers, timeout=30.0) as http_client:
+            async with streamable_http_client(f"{SERVICE_URL}/mcp", http_client=http_client) as (read_stream, write_stream, _):
+                async with ClientSession(read_stream, write_stream) as session:
+                    print("Initializing session...")
+                    await session.initialize()
+                    
+                    print(f"Calling tool 'get_factors_by_year' for year {year}...")
+                    result = await session.call_tool("get_factors_by_year", {"year": year})
+                    
+                    print("\n--- Deployed Cloud Run Response ---")
+                    if result.isError:
+                        print(f"Error executing tool: {result.content}")
+                    else:
+                        print(result.content[0].text)
+                    print("-----------------------------------")
                 
     except Exception as e:
         print(f"Connection or execution error: {e}")
@@ -59,6 +61,6 @@ if __name__ == "__main__":
             target_year = int(sys.argv[1])
         except ValueError:
             print("Usage: python test.py [year_integer]")
-            sys.exit(1)
+            sys.argv = []
             
     asyncio.run(run_mcp_test(target_year))

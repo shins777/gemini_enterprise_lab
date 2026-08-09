@@ -101,5 +101,5 @@ async def get_all_factors() -> dict:
 if __name__ == "__main__":
     host = os.getenv("FASTMCP_HOST", "0.0.0.0")
     port = int(os.getenv("FASTMCP_PORT", "8080"))
-    logger.info(f"Starting Real Estate FastMCP Server on {host}:{port} with SSE transport...")
-    mcp.run(transport="sse", host=host, port=port)
+    logger.info(f"Starting Real Estate FastMCP Server on {host}:{port} with streamable-http transport...")
+    mcp.run(transport="streamable-http", host=host, port=port)
