@@ -6,7 +6,7 @@
       "transport": "sse",
       "url": "https://google-maps-mcp-ufs66v7tbq-uc.a.run.app/sse",
       "env": {
-        "GOOGLE_MAPS_API_KEY": "AIzaSyBQFudqoZejRXBcq5OB9Pjv6XCYDD6wVj0"
+        "GOOGLE_MAPS_API_KEY": "AIzaSyD8O2bUpq1kr1jCnLpMz6r9Id-nHvqJLAI"
       },
       "tools": [
         {
