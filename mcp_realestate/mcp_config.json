@@ -1,0 +1,52 @@
+{
+  "mcpServers": {
+    "korea-realestate": {
+      "name": "Korea Real Estate MCP Server",
+      "description": "Provides query and search tools for Korea's 20-year real estate and interest rate factors.",
+      "transport": "sse",
+      "url": "https://korea-realestate-mcp-yn77fvmwva-uc.a.run.app/sse",
+      "tools": [
+        {
+          "name": "get_factors_by_year",
+          "description": "Retrieve economic indicators and real estate factors for a specific year (between 2006 and 2025).",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "integer",
+                "description": "The year to search for (e.g. 2021, 2023)."
+              }
+            },
+            "required": ["year"]
+          }
+        },
+        {
+          "name": "get_factors_range",
+          "description": "Retrieve economic indicators and real estate factors for a range of years.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_year": {
+                "type": "integer",
+                "description": "The beginning year (e.g. 2015)."
+              },
+              "end_year": {
+                "type": "integer",
+                "description": "The ending year (e.g. 2023)."
+              }
+            },
+            "required": ["start_year", "end_year"]
+          }
+        },
+        {
+          "name": "get_all_factors",
+          "description": "Retrieve the entire 20-year history of Korean economic indicators and real estate factors.",
+          "parameters": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ]
+    }
+  }
+}
