@@ -756,7 +756,7 @@ Flow를 클릭해서 생성된 에이전트를 확인. 수정을 하거나 “Cr
 
 <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image5.png" width="624" alt="">
 
-### MCP 사용
+<!-- ### MCP 사용
 - 관련 Youtube 영상 : [https://www.youtube.com/watch?v=wIbSGZsU5WI](https://www.youtube.com/watch?v=wIbSGZsU5WI)
 
 Gemini Enterprise에서는 Custom MCP를 Datasource로 연결하여 사용할 수 있습니다. 이 실습에서는 mcp 툴을 생성하거나 연결하는 과정은 다루지 않고 기존에 연결된 mcp를 사용하는 실습을 진행할 것입니다,
@@ -910,7 +910,7 @@ Agent 메뉴에 가면 이 Agent가 Schedule이 걸려 있음을 확인할 수 �
 
 <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image2.png" width="279" alt="">
 
-스케줄이 돌아서 Agent가 수행된 내용은 Chat History에서 확인할 수 있습니다.
+스케줄이 돌아서 Agent가 수행된 내용은 Chat History에서 확인할 수 있습니다. -->
 
 ## 멀티 에이전트 만들기
 
