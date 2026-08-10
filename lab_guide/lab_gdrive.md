@@ -603,7 +603,9 @@ Gemini Enterprie Admin 콘솔의 Agent 메뉴에서 등록된 Agent를 확인할
 최근 한국 부동산 뉴스 5가지를 찾아서 정리해주세요.
 ```
 
-챗에서 제공하는 구글 검색을 disable 로 해주세요. 
+챗에서 제공하는 구글 검색을 disable 로 해주세요.   
+
+
 <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image138.png" width="624" alt="">
 
 <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image139.png" width="624" alt="">
@@ -659,17 +661,22 @@ Gemini Enterprise의 Agent 메뉴에서 “CAA Real Estate Agent” 를 선택�
 다음과 같이 자연어로 질문합니다.
 
 ```text
-지난 5년간의 한국 부동산 상황에 대해서 분석해주세요. 
+지난 10년간 서울 및 지방 아파트 평균 가격 추이 분석해주세요.  
 ```
 <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image145.png" width="624" alt="">
 
 Authorize를 수행하라는 메시지가 뜨면 한번 수행해 줍니다. 본인의 실습 계정으로 인증을 수행하세요. 이 과정은 OAuth 토큰 만료 시간까지 다시 요청하지 않습니다.
 
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image107.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image146.png" width="624" alt=""> 
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image147.png" width="624" alt=""> 
+
+
+
+<!-- <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image107.png" width="624" alt="">
 
 <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image29.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image131.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image131.png" width="624" alt=""> -->
 
 <!-- ```text
 가장 매출이 낮은 제품과 왜 그런지 원인을 분석해줘
