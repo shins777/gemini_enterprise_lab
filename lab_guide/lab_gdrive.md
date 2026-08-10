@@ -588,69 +588,47 @@ A 문서의 이론적 배경과 B 문서의 실무 사례를 결합하여, 이 �
 ```
 
 ## Custom Agent
-### Newspaper Agent (ADK Agent)
-Agents 메뉴에서 “Newspaper  Agent”를 선택합니다. 이 에이전트는 ADK(Agent Development Kit)으로 생성하여 Agent Runtime(Agent Engine)에 배포해 놓은 Custom Agent 입니다.
+### Search Agent (ADK Agent)
+Agents 메뉴에서 Search  Agent”를 선택합니다. 이 에이전트는 ADK(Agent Development Kit)으로 생성하여 Agent Runtime(Agent Engine)에 배포해 놓은 Custom Agent 입니다.  
+이 Agent는 최근 뉴스 검색을 한 후 정리해주는 Agent 입니다.   
 
 Gemini Enterprie Admin 콘솔의 Agent 메뉴에서 등록된 Agent를 확인할 수 있습니다.
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/newspaper_agent.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image136.png" width="624" alt="">
 
+좌측메뉴에서 Agent를 클릭하면 다음과 같이 Agent에 대한 정보를 확인할 수 있습니다. 
 
-```text
-한국 증시관련 뉴스들을 조사해줘
-```
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image38.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image137.png" width="624" alt="">
 
 ```text
-LG전자 주가 관련 뉴스로 포함해줘
+최근 한국 부동산 뉴스 5가지를 찾아서 정리해주세요.
 ```
 
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image32.png" width="624" alt="">
+챗에서 제공하는 구글 검색을 disable 로 해주세요. 
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image138.png" width="624" alt="">
+
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image139.png" width="624" alt="">
+
+
+### Restaurant Finder MCP Server
+이 MCP 서버는 특정 지역의 이름을 이야기하면 Google Map API 를 사용해서 해당 지역의 맛집 정보를 제공하는 MCP 서버입니다.   
+Gemini Enterprise Chat 창에서 MCP 서버를 선택해서 질의합니다.  
+
+아래와 같이 Gemini Enterprise Admin화면에 관리자가 업무에 필요한 MCP 서버를 등록합니다. 
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image141.png" width="624" alt="">
+
+검색할 때는 Tool 선택에서 MCP Google Map 을 선택해서 질의합니다.
 
 ```text
-이 내용으로 신문을 만들어줘
+강남역 근처 맛집 알려줘
 ```
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image140.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image115.png" width="624" alt="">
+MCP 서버는 일반적으로 인자를 받아서 관련된 내용을 처리하는 경우가 많아서 아래와 같이 다시한번 사용자에게 해당 정보를 확인하는 과정이 있을수 있습니다.
 
-링크를 클릭하세요
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image142.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image98.png" width="629" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image143.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image103.png" width="624" alt="">
-
-### Restaurant Finder Agent (A2UI Agent)
-이 Agent는 단순하게 설계된 텍스트 기반의 Agent가 아닌 Visual한 컴포넌트로 Agent와 상호작용할 수 있는 [A2UI(](https://a2ui.org/)Agent to UI)를 이용해서 개발한 Agent입니다.  이 Agent를 A2A 프로토콜을 이용해서 Gemini Enterprise에 다음과 같이 조직의 Agent로 등록해 두었고, 이 Gemini Enterprise를 사용하는 모든 사용자들이 사용할 수 있도록 권한이 부여되어 있습니다.
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image17.png" width="624" alt="">
-
-Agent 메뉴에서 “Restaurant Finder Agent”를 클릭하여 다음 질문을 수행해 봅니다.
-
-```text
-역삼역 근처 스파게티 맛집 찾아줘
-```
-
-이제 Agent는 단순한 Text 형태의 답변이 아닌 Visual한 Component를 이용하여 응답합니다.
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image41.png" width="624" alt="">
-
-마음에 드는 음식점의 상세 정보 보기(Detailed Information)를 클릭합니다. 여기서는 “마노디쉐프 강남점”을 클릭해 보겠습니다.
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image124.png" width="624" alt="">
-
-이 음식점을 위치를 찾아보기 위해, 위 리스트에서 “Show on Map”을 클릭합니다.
-
-Interactive Content가 열리면서 우측에 음식점 지도를 보여줍니다.
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image12.png" width="624" alt="">
-
-이 음식점을 찾아가기 위해 다음과 같이 입력해 봅니다.
-
-```text
-서울역에서 찾아가는 방법 알려줘
-```
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image54.png" width="624" alt="">
 
 ## BigQuery Conversational Analytics(CA) Agent
 관련 Youtube 영상 :
