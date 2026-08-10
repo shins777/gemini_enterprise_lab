@@ -10,30 +10,31 @@
 
 ```tree
 gemini_enterprise_lab/
-├── mcp/                             # MCP (Model Context Protocol) 서버 모듈
-│   ├── mcp_google_map/              # Google Maps MCP 서버 (FastMCP)
-│   │   ├── server.py                # 구글 맵 탐색 & 거리 계산 기능 구현
-│   │   ├── mcp_config.json          # Agent Platform 등록용 MCP 메타데이터 설정
-│   │   ├── Dockerfile               # Cloud Run 컨테이너 빌드 정의
-│   │   ├── deploy.sh                # 자동화 배포 스크립트
-│   │   └── README.md                # 구글 맵 MCP 한글 가이드
+├── sources/                         # 전체 소스 코드 저장 디렉토리
+│   ├── mcp/                         # MCP (Model Context Protocol) 서버 모듈
+│   │   ├── mcp_google_map/          # Google Maps MCP 서버 (FastMCP)
+│   │   │   ├── server.py            # 구글 맵 탐색 & 거리 계산 기능 구현
+│   │   │   ├── mcp_config.json      # Agent Platform 등록용 MCP 메타데이터 설정
+│   │   │   ├── Dockerfile           # Cloud Run 컨테이너 빌드 정의
+│   │   │   ├── deploy.sh            # 자동화 배포 스크립트
+│   │   │   └── README.md            # 구글 맵 MCP 한글 가이드
+│   │   │
+│   │   └── mcp_realestate/          # 한국 부동산 20개년 요인 분석 MCP 서버
+│   │       ├── server.py            # 부동산 지표 및 금리 데이터 질의 구현
+│   │       ├── korea_real_estate_20yr_factors.csv # 영문 헤더로 정리된 부동산 데이터셋
+│   │       ├── mcp_config.json      # Agent Platform 등록용 MCP 메타데이터 설정
+│   │       ├── Dockerfile           # Cloud Run 컨테이너 빌드 정의
+│   │       ├── deploy.sh            # 자동화 배포 스크립트
+│   │       └── README.md            # 부동산 MCP 한글 가이드
 │   │
-│   └── mcp_realestate/              # 한국 부동산 20개년 요인 분석 MCP 서버
-│       ├── server.py                # 부동산 지표 및 금리 데이터 질의 구현
-│       ├── korea_real_estate_20yr_factors.csv # 영문 헤더로 정리된 부동산 데이터셋
-│       ├── mcp_config.json          # Agent Platform 등록용 MCP 메타데이터 설정
-│       ├── Dockerfile               # Cloud Run 컨테이너 빌드 정의
-│       ├── deploy.sh                # 자동화 배포 스크립트
-│       └── README.md                # 부동산 MCP 한글 가이드
-│
-├── agent/                           # Reasoning Engine 검색 에이전트 모듈
-│   └── agent_search/                # A2A 호환 검색 에이전트 (Google ADK 기반)
-│       ├── agent.py                 # 구글 검색 도구가 결합된 ADK 에이전트 선언
-│       ├── deploy.py                # Vertex AI Agent Engine 배포용 스크립트
-│       ├── query_agent.py           # 배포된 Reasoning Engine 실시간 질의 클라이언트
-│       ├── a2a_server.py            # 로컬 프록시용 A2A API 서버 규격 구현
-│       ├── requirements.txt         # 에이전트 실행에 필요한 의존성 패키지 목록
-│       └── README.md                # 에이전트 엔진 배포 및 연동 한글 가이드
+│   └── agent/                       # Reasoning Engine 검색 에이전트 모듈
+│       └── agent_search/            # A2A 호환 검색 에이전트 (Google ADK 기반)
+│           ├── agent.py             # 구글 검색 도구가 결합된 ADK 에이전트 선언
+│           ├── deploy.py            # Vertex AI Agent Engine 배포용 스크립트
+│           ├── query_agent.py       # 배포된 Reasoning Engine 실시간 질의 클라이언트
+│           ├── a2a_server.py        # 로컬 프록시용 A2A API 서버 규격 구현
+│           ├── requirements.txt     # 에이전트 실행에 필요한 의존성 패키지 목록
+│           └── README.md            # 에이전트 엔진 배포 및 연동 한글 가이드
 │
 └── README.md                        # 본 마스터 한글 가이드 문서
 ```
@@ -56,7 +57,7 @@ gemini_enterprise_lab/
 
 ```bash
 # 1. 대상 MCP 서버 디렉토리로 이동
-cd mcp/mcp_google_map  # 또는 mcp/mcp_realestate
+cd sources/mcp/mcp_google_map  # 또는 sources/mcp/mcp_realestate
 
 # 2. 클라우드 런에 소스 코드 기반 빌드 및 배포 수행
 CLOUDSDK_AUTH_ACCESS_TOKEN="$(gcloud auth application-default print-access-token)" \
@@ -106,7 +107,7 @@ Google ADK와 Gemini 2.5 Flash를 결합하여 제작된 구글 검색 기반의
 로컬에 구성된 에이전트 파이썬 정의를 가공하여 Vertex AI Agent Engine에 빌드 및 배포하려면 아래 환경 변수를 주입하고 배포 스크립트를 수행하십시오.
 
 ```bash
-cd agent/agent_search
+cd sources/agent/agent_search
 
 # 의존성 패키지 설치
 pip install -r requirements.txt
@@ -123,7 +124,7 @@ python3 deploy.py
 배포가 정상적으로 완료되면 스트리밍 질의 클라이언트를 실행하여 생성된 Reasoning Engine이 실시간 구글 검색 도구를 활용하여 답변을 산출하는지 확인할 수 있습니다.
 
 ```bash
-cd agent/agent_search
+cd sources/agent/agent_search
 python3 query_agent.py
 ```
 
