@@ -5,27 +5,27 @@ Trainer가 제공해준 Gemini Enterprise App URL로 접속합니다.
 ## Setup
 Google Drive 사용을 위해서 화면 좌측 하단의 설정으로 갑니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image53.png" width="276" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image53.png" width="276" alt="">
 
 맞춤설정에서 Drive  승인을 클릭합니다. 주어진 user id로 OAuth 승인을 합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image31.png" width="490" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image31.png" width="490" alt="">
 
 승인이 완료되면 다음과 같이 보여야 합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image122.png" width="489" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image122.png" width="489" alt="">
 
 디자인 메뉴에서 다음 옵션도 선택합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image58.png" width="494" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image58.png" width="494" alt="">
 
 채팅창의 Connect 옵션에서도 사용 설정을 해줍니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image8.png" width="503" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image8.png" width="503" alt="">
 
 OAuth 인증을 승인하고 사용설정을 하면 다음과 같이 보여야 합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image113.png" width="506" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image113.png" width="506" alt="">
 
 ## 기본 기능 익히기
 
@@ -36,7 +36,7 @@ OAuth 인증을 승인하고 사용설정을 하면 다음과 같이 보여야 �
 최근 북미 및 유럽 시작의 ‘스마트홈(ThinQ 연동) 프리미엄 가전’ 트랜드를 검색해서 요약해줘. 특히 주요 경쟁사들의 최근 마케팅 소구점(Selling Point)를 도출하고, LG 전자 제품에 적용할 만한 인사이트를 제시해줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image104.png" width="650" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image104.png" width="650" alt="">
 
 결과를 확인하고, Source와 Follow up Questions들을 수행해 봅니다.
 
@@ -60,36 +60,36 @@ OAuth 인증을 승인하고 사용설정을 하면 다음과 같이 보여야 �
 
 결과가 맘에 들면 Docs로 저장합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image70.png" width="506" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image70.png" width="506" alt="">
 
 Export된 Doc 문서를 확인합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image40.png" width="393" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image40.png" width="393" alt="">
 
 진행중인 채팅 세션을 옆 사람과 서로 공유합니다.  상단의 공유 버튼을 클릭 합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image45.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image45.png" width="624" alt="">
 
 생성된 공유 URL을 복사해서 옆사람에게 전달합니다
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image35.png" width="392" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image35.png" width="392" alt="">
 
 전달 받은 URL로 접속해서  이전 대화 내용이 잘 보이는지 확인하고 이를 바탕으로 추가 질문을 해 봅니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image9.png" width="447" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image9.png" width="447" alt="">
 
 ## Excel 분석
 ### Survey 분석
 
 Drive에서 Sample Excel (Excel_example_survey.xlsx)를 추가 합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image95.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image95.png" width="624" alt="">
 
 ```text
 이 문서로 어떤 분석을 할수 있어?
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image119.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image119.png" width="624" alt="">
 
 원하는 분석을 수행하거나 다음 예시의 분석을 수행합니다.
 
@@ -97,52 +97,52 @@ Drive에서 Sample Excel (Excel_example_survey.xlsx)를 추가 합니다.
 가장 만족도가 높았던 세션은 무엇이고, 가능 만족도가 낮았던 세션은 무엇이며, 이유가 뭐였어?
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image85.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image85.png" width="624" alt="">
 
 ```text
 항후 이벤트에 도움이 될 개선사항을 포함한 이벤트 결과 보고서를 작성해줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image50.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image50.png" width="624" alt="">
 
-다음과 같은 메시지가 뜨면 “Connect”를 클릭해주세요. 한번만 하면 됩니다.<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image16.png" width="502" alt="">
+다음과 같은 메시지가 뜨면 “Connect”를 클릭해주세요. 한번만 하면 됩니다.<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image16.png" width="502" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image93.png" width="447" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image93.png" width="447" alt="">
 
 ### 매출 분석
 Drive에서 Sample Excel (coffee orders.xlsx)를 추가 합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image92.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image92.png" width="624" alt="">
 
 ```text
 이 문서로 어떤 분석을 할수 있는지 알려줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image83.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image83.png" width="624" alt="">
 
 ```text
 (주문 완료일)을 기준으로 일별, 주별, 월별 매출(Orders Total Sales)의 변화를 분석하여 매출이 높은 시기와 낮은 시기를 파악해줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image33.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image33.png" width="624" alt="">
 
 ```text
 (주문 유형: Dine-in, Takeaway)에 따라 매출이 어떻게 다른지 분석하여 매장 내 식사와 포장 판매의 비중을 파악해줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image11.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image11.png" width="624" alt="">
 
 ```text
 매장 내 식사와 포장 판매의 주문당 평균 매출 차이가 의미 있는지 통계적으로 분석해줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image130.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image130.png" width="624" alt="">
 
 ```text
 상품별 파이차트를 보여줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image114.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image114.png" width="624" alt="">
 
 ## Powerpoint 분석
 Drive에서 Sample pptx (202603-BigQuery New Feature 업데이트.pptx)를 추가 합니다.
@@ -151,9 +151,9 @@ Drive에서 Sample pptx (202603-BigQuery New Feature 업데이트.pptx)를 추�
 BigQuery New Feature 들에 대해서 각 기능별로 기능 요약을 해주고, 기능별로 GA, Preview 여부를 표로 작성해서 보여줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image132.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image132.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image30.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image30.png" width="624" alt="">
 
 생성 결과를 Sheet로 내보내기 해보세요
 
@@ -167,13 +167,13 @@ Follow up Questions을 수행해 보세요
 회사 복지 제도가 뭐가 있어?
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image116.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image116.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image23.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image23.png" width="624" alt="">
 
 “Sources”를 클릭해서 검색 소스를 확인하세요
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image27.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image27.png" width="624" alt="">
 
 새로운 채팅을 열어서 “Google Search”를 끄고 다음과 같이 질문해 보세요
 
@@ -181,21 +181,21 @@ Follow up Questions을 수행해 보세요
 LG 앰버서더가 뭐야? 하면 누가 참여할 수 있고 혜택이 뭐야?
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image1.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image1.png" width="624" alt="">
 
 ```text
 어느 분야에 각 몇명씩 모집해?
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image99.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image99.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image68.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image68.png" width="624" alt="">
 
 ```text
 LG 앰버서더 4기 지원하면 선물이 뭐야?
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image24.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image24.png" width="624" alt="">
 
 ## Media Generation
 ### 이미지 생성 / 편집
@@ -236,9 +236,9 @@ Gemini Enterprise는 단순한 대화형 AI를 넘어 기업의 데이터를 안
 ## 데이터 소스 관리: 관리자는 조직 전체에서 사용할 데이터 소스와 에이전트 권한을 중앙에서 통제
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image14.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image14.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image56.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image56.png" width="624" alt="">
 
 Drive에서 **lg wash tower.jpg** 파일을 추가하고 이미지 생성툴을 선택한 후 다음과 같이 요청합니다.
 
@@ -246,7 +246,7 @@ Drive에서 **lg wash tower.jpg** 파일을 추가하고 이미지 생성툴을
 좌측 상단의 로고를 제외한 모든 Text를 한국어로 번역해줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image61.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image61.png" width="624" alt="">
 
 Drive에서 **Handwrite_arch.png** 파일을 추가하고 이미지 생성툴을 선택한 후 다음과 같이 요청합니다.
 
@@ -254,7 +254,7 @@ Drive에서 **Handwrite_arch.png** 파일을 추가하고 이미지 생성툴�
 첨부한 아키텍처를 Google Cloud Architecture 스타일로 다시 그려줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image111.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image111.png" width="624" alt="">
 
 **개인 사진**이 있다면 사진을 업로드 하고 다음과 같이 입력해 보세요
 
@@ -262,14 +262,14 @@ Drive에서 **Handwrite_arch.png** 파일을 추가하고 이미지 생성툴�
 사진 속 인물을 아이소메트릭(isometric) 시점의 LEGO 미니피규어 포장 상자 스타일로 변환하세요. 상자에는 "Gemini Enterprise Hands on Workshop"라는 제목의 라벨을 붙이세요. 상자 안에는 사진 속 인물을 기반으로 한 LEGO 미니피규어와 함께 화장품, 가방 등 필수 소품을 LEGO 액세서리로 전시하세요. 상자 옆에는 포장을 뜯은 실제 LEGO 미니피규어 자체도 사실적이고 생생한 스타일로 전시하세요.
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image125.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image125.png" width="624" alt="">
 
 ### 비디오 생성
 ```text
 향수병을 소개하는 고급스러운 홍보 영상을 만드세요. 호박색 액체로 채워진 투명한 유리 향수병의 각진 마개에 초점을 맞춰 밀착한 클로즈업 돌리 레프트 샷으로 동영상을 시작합니다. 유리병에 물방울이 은은하게 맺혀 있습니다. 병은 욕실의 깔끔한 흰색 대리석 위에 놓여 있습니다. 배경의 창문에서 부드러운 자연광이 흘러들어와 장면을 비춥니다. 유칼립투스 잎과 천연 나무 향의 디퓨저 스틱이 병 주위로 튀지 않게 배치되어 있습니다. 전체적으로 우아하고 신선하며 세련된 분위기입니다.
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image74.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image74.png" width="624" alt="">
 
 ```text
 프롬프트: "꽉 눌려 짜지는 육즙 가득한 치즈버거의 익스트림 클로즈업 매크로 샷."
@@ -278,7 +278,7 @@ Drive에서 **Handwrite_arch.png** 파일을 추가하고 이미지 생성툴�
 오디오: "지글거리는 소리, 경쾌하고 활기찬 음악
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image42.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image42.png" width="624" alt="">
 
 ```text
 프롬프트: "1990년대 VHS 미학. 스케이트보더가 교외의 거리에서 카메라를 스쳐 지나가며 빠르게 올리(ollie) 기술을 선보임."
@@ -287,7 +287,7 @@ Drive에서 **Handwrite_arch.png** 파일을 추가하고 이미지 생성툴�
 분위기: "즐겁고 향수를 불러일으키는 에너지."
 ```
 
-### <img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image34.png" width="624" alt="">
+### <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image34.png" width="624" alt="">
 ```text
 프롬프트: "아이슬란드의 거대한 폭포 아래로 하강하는 빠른 FPV 드론 샷."
 상세 묘사: "렌즈에 부딪히는 물방울. 안개와 무지개를 통과하며 비행함."
@@ -300,11 +300,11 @@ Drive에서 **Handwrite_arch.png** 파일을 추가하고 이미지 생성툴�
 현재 LG전자의 로봇 사업 경쟁력과 미래 전망을 종합적으로 분석해 줘. 먼저 글로벌 및 국내 상업용 로봇 시장에서의 LG전자 포지셔닝과 핵심 경쟁 우위를 진단해 줘. 이어서 최근 공개된 '스마트홈 AI 에이전트'를 포함한 B2C 영역으로의 확장이 가지는 의미를 평가하고, 이를 바탕으로 향후 LG전자 로봇 사업이 직면할 주요 기회와 위협 요인을 논리적으로 설명해 줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image75.png" width="343" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image75.png" width="343" alt="">
 
 Docs로 내보내기
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image127.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image127.png" width="624" alt="">
 
 ## Canvas
 
@@ -312,7 +312,7 @@ Youtube 영상 참고: [https://www.youtube.com/watch?v=Bk5Ha2cceEY](https://www
 
 Canvas를 이용해서 구글 슬라이드를 만들어 보겠습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image6.png" width="464" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image6.png" width="464" alt="">
 
 ```text
 새로운 모바일 앱을 위한 백엔드 아키텍처를 GCP에서 처음부터 설계하려고 해. 초기에는 트래픽이 적겠지만, 이벤트 기간에는 트래픽이 평소 대비 10배 이상 급증할 수 있어서 자동 확장(Auto-scaling)이 매우 중요해. 또한, 사용자의 행동 로그 데이터를 초당 수천 건씩 실시간으로 수집하고 분석할 수 있는 파이프라인도 필요해. 운영 인력이 부족하므로 최대한 서버리스(Serverless) 및 완전 관리형(Managed) 서비스를 위주로 사용하여 인프라를 설계하고, 각 서비스를 선택한 이유를 설명해 줘
@@ -322,11 +322,11 @@ Canvas를 이용해서 구글 슬라이드를 만들어 보겠습니다.
 
 다음과 같이 생성되었습니다. Gemini Enterprise에서 생성된 Slide를 바로 편집하는 기능은 Private Preview로 신청 시 사용할 수 있습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image4.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image4.png" width="624" alt="">
 
 생성된 슬라이드를 pptx로 export 할 수 있습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image7.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image7.png" width="624" alt="">
 
 슬라이드 스타일과 관련된 프롬프트를 추가하여 다른 스타일의 슬라이드를 만들 수 있습니다.
 
@@ -338,17 +338,17 @@ Canvas를 이용해서 구글 슬라이드를 만들어 보겠습니다.
 슬라이드는 햐얀색 바탕의 깔끔하고 모던한 IT 기술 문서 스타일로 작성해줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image128.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image128.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image52.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image52.png" width="624" alt="">
 
 Export 메뉴에서 Google Slide로 내보내기를 선택해서 전체 슬라이드를 확인해 보세요
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image48.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image48.png" width="624" alt="">
 
 Powerpoint로도 다운로드 해보세요
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image118.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image118.png" width="624" alt="">
 
 LG 스타일의 슬라이드 탬플릿을 만들어 봅니다.
 
@@ -356,22 +356,22 @@ LG 스타일의 슬라이드 탬플릿을 만들어 봅니다.
 우리 회사 사이트(lg.co.kr)을 분석해서 전문 디자이너가 작업한 것 같은 깔끔한 15장 슬라이드 탬플릿을 만들어줘. 재활용하는 탬플릿을 만드는 것이 목적이라서, 도표, 차트, 그래프, 간지 등 다양한 탬플릿이 있어야 돼, 나노바나나 2를 활용해
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image20.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image20.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image106.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image106.png" width="624" alt="">
 
 ## NotebookLM
 NotebookLM 메뉴를 선택해서 NotebooLM을 엽니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image120.png" width="450" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image120.png" width="450" alt="">
 
 새로만들기를 클릭해서 노트북을 하나 생성합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image84.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image84.png" width="624" alt="">
 
 소스 추가에서 텍스트 붙여넣기를 선택하여 다음 텍스트를 붙여 넣습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image64.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image64.png" width="624" alt="">
 
 ```text
 # LG "안심" 홈 가디언 에코시스템 (LG "Ahn Shim" Home Guardian Ecosystem) 아이디어 개요:
@@ -437,14 +437,14 @@ LG 센티넬 컴패니언은 독립적으로 생활하는 80세 이상의 비기
 ◦ 비침해적인 수동 모니터링(예: 낙상 감지, 비정상적인 소리)을 통합하여 노인이 직접 활성화할 수 없는 상황에서도 선제적으로 비상 상황을 감지하고 도움 요청 프로토콜을 시작할 수 있습니다.
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image94.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image94.png" width="624" alt="">
 
 ### Slide
 “슬라이드 자료”를 클릭해서 슬라이드를 만듭니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image22.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image22.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image15.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image15.png" width="624" alt="">
 
 ### Infographic
 
@@ -452,26 +452,26 @@ LG 센티넬 컴패니언은 독립적으로 생활하는 80세 이상의 비기
 LG '루미케어' - 공감하는 세탁 도우미를  인포그래픽으로 생성해주세요
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image121.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image121.png" width="624" alt="">
 
 생성된 Infographic을 확인하세요.
 
 - Notes : NotebookLM에서 열어볼때 생성된 인포그래픽이 16:9로 보이지 않는 현상이 있습니다. 이는 화면에서만 그렇게 보이는 것이며, 이미지를 다운로드 하면 정상으로 보이니 다운로드해서 확인하시면 됩니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image126.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image126.png" width="624" alt="">
 
 ```text
 "LG "안심" 홈 가디언 에코시스템" 아이디어를 손으로 그린 듯한(Sketch Note) 스타일로 작성해주세요
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image97.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image97.png" width="624" alt="">
 
 ```text
 "LG 센티넬 컴패니언 – 공감하는 생명선" 아이디어를 다음 스타일을 이용해서 작성해 주세요
 스타일 : 신문 인포그래픽, 검은색-회색-강조색(빨강 또는 파랑) 3색 체계. 깔끔한 라인과 그리드 시스템
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image105.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image105.png" width="624" alt="">
 
 ### Slide - Cinematic 이미지 만들기
 
@@ -522,7 +522,7 @@ LG '루미케어' - 공감하는 세탁 도우미를  인포그래픽으로 생
 
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image109.png" width="416" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image109.png" width="416" alt="">
 
 다음 Prompt로 슬라이드를 생성합니다.
 
@@ -532,10 +532,10 @@ LG '루미케어' - 공감하는 세탁 도우미를  인포그래픽으로 생
 
 생성된 슬라이드를 확인합니다. 광고 Scene에 활용할 이미지들이 생성되었습니다. 이 이미지들을 이용해서 Veo3로 동영상을 만들면 광고 영상을 쉽게 만들수 있습니다.
 
-### <img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image86.png" width="624" alt="">
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image76.png" width="624" alt="">
+### <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image86.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image76.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image47.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image47.png" width="624" alt="">
 
 ### 설명서 만들기
 
@@ -544,7 +544,7 @@ LG '루미케어' - 공감하는 세탁 도우미를  인포그래픽으로 생
   - Drive 소스의 “공유 문서함” 에서 BQ Data Agent 에서  data_agent.zip을 다운받아 로컬 폴더에서 압축을 해제 합니다.
   - 파일 업로드를 통해 이미지 10개를 소스에 추가합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image88.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image88.png" width="624" alt="">
 
 슬라이드 자료를 선택합니다.
 
@@ -556,7 +556,7 @@ BigQuery Data Agent를 생성하는 과정을 초보자도 쉽게 따라할 수 
 
 |  |  |
 | --- | --- |
-| <img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image66.png" width="298" alt=""> <br> <img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image101.png" width="298" alt=""> <br> <img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image79.png" width="298" alt=""> | <img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image77.png" width="298" alt=""> <br> <img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image91.png" width="298" alt=""> <br> <img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image3.png" width="298" alt=""> <br> <img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image10.png" width="298" alt=""> |
+| <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image66.png" width="298" alt=""> <br> <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image101.png" width="298" alt=""> <br> <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image79.png" width="298" alt=""> | <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image77.png" width="298" alt=""> <br> <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image91.png" width="298" alt=""> <br> <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image3.png" width="298" alt=""> <br> <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image10.png" width="298" alt=""> |
 
 ### 동영상 만들기
 
@@ -567,7 +567,7 @@ Gemini Enterprise Canvas 기능을 설명하는 동영상을 만들어 보겠습
 - pdf : Drive의 공유 폴더에서 canvas.pdf를 추가합니다.
 - 이미지 : Drive의 공유 폴더에서 canvas.zip을 다운 받아 압축을 푼 후 이미지를 업로드 합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/canvas_video.png" width="442" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/canvas_video.png" width="442" alt="">
 
 다음 Prompt로 동영상(Video)를 생성합니다.
 
@@ -579,11 +579,11 @@ Gemini Enterprise에서 Canvas를 사용하는 방법을 초보자도 따라가�
 
 * 생성된 동영상 Youtube에서 확인 : https://www.youtube.com/watch?v=4-5qeh4IXVY
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image65.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image65.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image110.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image110.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image26.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image26.png" width="624" alt="">
 
 ### 추가 분석
 가지고 있는 문서(PDF,  워드, 엑셀, 파워포인트 등)들을 가지고 여러가지 분석을 해보세요
@@ -613,37 +613,37 @@ A 문서의 이론적 배경과 B 문서의 실무 사례를 결합하여, 이 �
 Agents 메뉴에서 “Newspaper  Agent”를 선택합니다. 이 에이전트는 ADK(Agent Development Kit)으로 생성하여 Agent Runtime(Agent Engine)에 배포해 놓은 Custom Agent 입니다.
 
 Gemini Enterprie Admin 콘솔의 Agent 메뉴에서 등록된 Agent를 확인할 수 있습니다.
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/newspaper_agent.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/newspaper_agent.png" width="624" alt="">
 
 
 ```text
 한국 증시관련 뉴스들을 조사해줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image38.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image38.png" width="624" alt="">
 
 ```text
 LG전자 주가 관련 뉴스로 포함해줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image32.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image32.png" width="624" alt="">
 
 ```text
 이 내용으로 신문을 만들어줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image115.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image115.png" width="624" alt="">
 
 링크를 클릭하세요
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image98.png" width="629" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image98.png" width="629" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image103.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image103.png" width="624" alt="">
 
 ### Restaurant Finder Agent (A2UI Agent)
 이 Agent는 단순하게 설계된 텍스트 기반의 Agent가 아닌 Visual한 컴포넌트로 Agent와 상호작용할 수 있는 [A2UI(](https://a2ui.org/)Agent to UI)를 이용해서 개발한 Agent입니다.  이 Agent를 A2A 프로토콜을 이용해서 Gemini Enterprise에 다음과 같이 조직의 Agent로 등록해 두었고, 이 Gemini Enterprise를 사용하는 모든 사용자들이 사용할 수 있도록 권한이 부여되어 있습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image17.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image17.png" width="624" alt="">
 
 Agent 메뉴에서 “Restaurant Finder Agent”를 클릭하여 다음 질문을 수행해 봅니다.
 
@@ -653,17 +653,17 @@ Agent 메뉴에서 “Restaurant Finder Agent”를 클릭하여 다음 질문�
 
 이제 Agent는 단순한 Text 형태의 답변이 아닌 Visual한 Component를 이용하여 응답합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image41.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image41.png" width="624" alt="">
 
 마음에 드는 음식점의 상세 정보 보기(Detailed Information)를 클릭합니다. 여기서는 “마노디쉐프 강남점”을 클릭해 보겠습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image124.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image124.png" width="624" alt="">
 
 이 음식점을 위치를 찾아보기 위해, 위 리스트에서 “Show on Map”을 클릭합니다.
 
 Interactive Content가 열리면서 우측에 음식점 지도를 보여줍니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image12.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image12.png" width="624" alt="">
 
 이 음식점을 찾아가기 위해 다음과 같이 입력해 봅니다.
 
@@ -671,7 +671,7 @@ Interactive Content가 열리면서 우측에 음식점 지도를 보여줍니�
 서울역에서 찾아가는 방법 알려줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image54.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image54.png" width="624" alt="">
 
 ## BigQuery Conversational Analytics(CA) Agent
 관련 Youtube 영상 :
@@ -685,19 +685,19 @@ BigQuery에서 Native로 지원하는 NL2SQL인 Agent를 실습해 보겠습니�
 
 이 실습을 위해 이미 만들어져 있는 CA Agent(The Look Ecommerce)를 사용할 것 입니다. BigQuery Studio에서 다음과 같은 설정으로 생성되어있습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image25.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image25.png" width="624" alt="">
 
 생성 후에는 내장되어있는 채팅창에서 바로 질의해 볼 수 있습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image123.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image123.png" width="624" alt="">
 
 이 Agent를 A2A를 이용해서 Gemini Enterprise에 연결해 놓았습니다. 이 실습에서는 이미 연결된 Agent를 사용해 보는 실습만 진행 합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image37.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image37.png" width="624" alt="">
 
 Gemini Enterprise의 Agent 메뉴에서 “The Look Ecommerce” 에이전트를 선택합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image89.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image89.png" width="624" alt="">
 
 다음과 같이 자연어로 질문합니다.
 
@@ -707,43 +707,43 @@ Gemini Enterprise의 Agent 메뉴에서 “The Look Ecommerce” 에이전트를
 
 Authorize를 수행하라는 메시지가 뜨면 한번 수행해 줍니다. 본인의 실습 계정으로 인증을 수행하세요. 이 과정은 OAuth 토큰 만료 시간까지 다시 요청하지 않습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image107.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image107.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image29.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image29.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image131.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image131.png" width="624" alt="">
 
 ```text
 가장 매출이 낮은 제품과 왜 그런지 원인을 분석해줘
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image117.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image117.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image81.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image81.png" width="624" alt="">
 
 ```text
 매장 별로 매출에 큰 차이가 있나요? 있다면 원인이 무엇인가요?
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image71.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image71.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image44.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image44.png" width="624" alt="">
 
 ```text
 매출 하위 제품들의 검색 유입 경로(Traffic Source)를 분석해 줄 수 있나요?
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image100.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image100.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image69.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image69.png" width="624" alt="">
 
 ```text
 향후 6개월간 'Jeans' 카테고리의 매출을 예측해줘.
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image72.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image72.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image73.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image73.png" width="624" alt="">
 
 ## Low Code Agent (Agent Designer)
 ### Prompt로 Agent 만들기
@@ -757,21 +757,21 @@ Agent 메뉴에서 “새 에이전트”를 클릭합니다.
 포스팅할 문구는 간략한 한줄 문장과 bullet point 5개를 생성하고 Hashtag도 추천
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image28.png" width="462" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image28.png" width="462" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image60.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image60.png" width="624" alt="">
 
 Flow를 클릭해서 생성된 에이전트를 확인. 수정을 하거나 “Create”를 클릭하고 테스트
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image39.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image39.png" width="624" alt="">
 
 ```text
 이 뉴스 링크로 소셜 미디어 게시물을 만들어줘: https://live.lge.co.kr/2604-lg-sales2026/?fbclid=IwY2xjawREb-FleHRuA2FlbQIxMQBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe0uEDhgxaREIeCSKRrzMa_RJ2mCCUOO0QgxIpy_XMuA1PI9-GOnDiB_9dWYU_aem_LqUtSMYbD6Q_T6FVv542jQ
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image129.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image129.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image49.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image49.png" width="624" alt="">
 
 ### 자유 주제 - Agent 만들기
 
@@ -779,17 +779,17 @@ Flow를 클릭해서 생성된 에이전트를 확인. 수정을 하거나 “Cr
 
 에이전트가 완성이 되었으면 Agent 메뉴로 이동해서 Agent를 공유 합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image43.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image43.png" width="624" alt="">
 
 [user_group@ge-workshop.explore-ai.com](mailto:user_group@ge-workshop.explore-ai.com) 을 추가하고 “완료”를 클릭합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image90.png" width="394" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image90.png" width="394" alt="">
 
 이제 다른 사람들이 만든 Agent들이 “조직의 에이전트”에 보일 것입니다.
 
 다른 사람들이 만든 에이전트를 테스트 해보세요. (Restaurant Finder Agent, Newspaper Agent, The Look Ecommerce는 Custom Agent Part에서 테스트 했던 것이니 이외 다른 Agent 들을 테스트 해보세요)
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image5.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image5.png" width="624" alt="">
 
 ### MCP 사용
 - 관련 Youtube 영상 : [https://www.youtube.com/watch?v=wIbSGZsU5WI](https://www.youtube.com/watch?v=wIbSGZsU5WI)
@@ -802,7 +802,7 @@ Cafeteria MCP를 사용하는 Low Code Agent를 만들어 보겠습니다.
 
 “새 에이전트”를 클릭하여 새로운 에이전트를 생성합니다.  이번에는 프롬프트로 자동생성하지 않고 수동으로 생성해 보겠습니다.  에이전트 디자이너에서 “빌더로 진행”을 선택합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image13.png" width="586" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image13.png" width="586" alt="">
 
 내 에이전트 노드를 클릭하여 이름, 설명, 요청사항, 커넥터 등에 다음과 같이 입력합니다.
 
@@ -817,7 +817,7 @@ Cafeteria MCP를 사용하는 Low Code Agent를 만들어 보겠습니다.
 
 요청사항 :  원시 텍스트 모드(raw text mode) 전환로 전환한 후, 다음 instruction을 붙여 넣습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image19.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image19.png" width="624" alt="">
 
 ```text
 
@@ -905,7 +905,7 @@ Cafeteria MCP를 사용하는 Low Code Agent를 만들어 보겠습니다.
 
 커넥터 : Cafeteria MCP를 추가합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image18.png" width="333" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image18.png" width="333" alt="">
 
 시작 프롬프트 :
 
@@ -913,37 +913,37 @@ Cafeteria MCP를 사용하는 Low Code Agent를 만들어 보겠습니다.
  - 오늘 점심 메뉴 뭐야?
  - 오늘 식당 메뉴 찾아줘
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image59.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image59.png" width="624" alt="">
 
 우측 상단의 “생성”을 클릭합니다. 완료되었으면 실행해 봅니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image67.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image67.png" width="624" alt="">
 
 ### Agent Scheduling
 
 이전 단계에서 만든 “구내 식당 메뉴 알리미” Agent를 클릭해서 Agent Designer로 들어갑니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image46.png" width="458" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image46.png" width="458" alt="">
 
 스케줄 탭을 누르고 “Add Schedule”을 선택합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image102.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image102.png" width="624" alt="">
 
 매일 아침 실행되게 스케줄을 걸어놓을 수 있으나. 실습에서 바로 확인할 수 있도록 현재 시간 보다 약 2분 후로 등록합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image96.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image96.png" width="624" alt="">
 
 Preview를 클릭해서 잘 동작하는지 확인한 후 Update를 클릭합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image63.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image63.png" width="624" alt="">
 
 Schedule이 Active가 되었는지 확인합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image51.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image51.png" width="624" alt="">
 
 Agent 메뉴에 가면 이 Agent가 Schedule이 걸려 있음을 확인할 수 있습니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image2.png" width="279" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image2.png" width="279" alt="">
 
 스케줄이 돌아서 Agent가 수행된 내용은 Chat History에서 확인할 수 있습니다.
 
@@ -997,13 +997,13 @@ Agent 메뉴에 가면 이 Agent가 Schedule이 걸려 있음을 확인할 수 �
 지원자의 이력서를 첨부하세요
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image57.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image57.png" width="624" alt="">
 
 ### 서류 심층 평가자 (Sub-Agent 1)
 
 “하위 에이전트 추가”를 클릭해서 Sub Agent를 생성합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image36.png" width="267" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image36.png" width="267" alt="">
 
 - **Name:** 서류 심층 평가자
 - **Description:** 사내 평가 기준 및 가이드라인을 엄격히 적용하여, 지원자의 문제 해결 방식, 협업 리더십 등 정성적인 영역을 심층 분석하고 정량적 점수를 도출합니다.
@@ -1026,7 +1026,7 @@ Agent 메뉴에 가면 이 Agent가 Schedule이 걸려 있음을 확인할 수 �
 4. **최종 평가 및 추천:** 총점 80점 기준 PASS / FAIL 명시 (단, 총점이 80점 미만이더라도 Plus Point가 매우 독보적이고 특출나다면 'HOLD'로 명시하고 그 구체적 사유를 작성)
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image108.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image108.png" width="624" alt="">
 
 ### 백그라운드 팩트체커 (Sub-Agent 2)
 
@@ -1053,7 +1053,7 @@ Agent 메뉴에 가면 이 Agent가 Schedule이 걸려 있음을 확인할 수 �
 3. **출처 URL (Mandatory):** 정보를 교차 검증하는 데 사용한 실시간 Google Search 출처 웹사이트 URL을 반드시 항목별로 매칭하여 포함하십시오.
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image82.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image82.png" width="624" alt="">
 
 ### 면접 질문 기획자 (Sub-Agent 3)
 
@@ -1079,22 +1079,22 @@ Agent 메뉴에 가면 이 Agent가 Schedule이 걸려 있음을 확인할 수 �
 3. **문항 수:** 중복되지 않는 핵심적인 심층 질문 총 3가지를 명확한 번호 기호와 함께 리스트로 제시할 것
 ```
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image78.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image78.png" width="624" alt="">
 
 에이전트를 생성합니다.
 
 에이전트와 채팅하기를 시작합니다. 공유 Drive에서 “GOOG전자 입사지원서_이OO.pdf를 업로드 하여 에이전트에 요청합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image112.png" width="594" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image112.png" width="594" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image62.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image62.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image55.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image55.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image80.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image80.png" width="624" alt="">
 
 새 에이전트 세션을 열어서 공유 Drive에서 “GOOG전자 입사지원서_김OO.pdf를 업로드 하여 에이전트에 요청합니다.
 
-<img src="https://raw.githubusercontent.com/mee-nam-lee/gemini-enterprise-lab/refs/heads/main/ge-lab-short/images/image87.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/ge-lab-short/images/image87.png" width="624" alt="">
 
 -- End of Document --
