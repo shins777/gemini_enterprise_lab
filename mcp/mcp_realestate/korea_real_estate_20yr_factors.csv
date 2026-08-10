@@ -1,4 +1,4 @@
-﻿연도,한국은행 기준금리,KOSPI 지수 기말 ,서울 아파트 평균매매가 - 만원 ,지방 5대광역시 평균매매가 - 만원,전국 아파트 매매가격지수 ,소비자물가지수, M2 통화량 - 조원 기말 ,전국 미분양주택 - 호 
+year,interest_rate,kospi,seoul_apartment_avg_price,regional_apartment_avg_price,national_apartment_price_index,cpi,m2_money_supply,unsold_housing
 2006,4.5,1434.46,38000,13500,62.5,74.9,1124,73772
 2007,5.0,1897.13,44000,14200,69.8,76.8,1248,112816
 2008,3.0,1124.47,48000,15000,73.1,80.4,1427,165599

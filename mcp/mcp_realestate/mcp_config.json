@@ -4,7 +4,7 @@
       "name": "Korea Real Estate MCP Server",
       "description": "Provides query and search tools for Korea's 20-year real estate and interest rate factors.",
       "transport": "streamable-http",
-      "url": "https://korea-realestate-mcp-yn77fvmwva-uc.a.run.app/mcp",
+      "url": "https://korea-realestate-mcp-66747595426.us-central1.run.app/mcp",
       "tools": [
         {
           "name": "get_factors_by_year",

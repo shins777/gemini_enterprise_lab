@@ -3,37 +3,37 @@ import logging
 import httpx
 from fastmcp import FastMCP
 
-# Configure logging
+# 로깅 객체 초기화 및 구성
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("google-maps-mcp")
 
-# Read environment variables and set FastMCP host/port
+# 환경 변수를 통한 구글 맵 API 키 로드 및 FastMCP 기본 호스트/포트 수립
 GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY", "")
 os.environ["FASTMCP_HOST"] = os.getenv("HOST", "0.0.0.0")
 os.environ["FASTMCP_PORT"] = os.getenv("PORT", "8080")
 
-# Initialize FastMCP Server
+# FastMCP 서버 인스턴스 기동
 mcp = FastMCP("Google Maps MCP Server")
 
 
 @mcp.tool()
 async def search_location(query: str, location_bias: str = None) -> dict:
     """
-    Search for locations, places, or addresses using Google Maps API.
+    구글 맵스 API를 사용하여 위치, 특정 관심 장소(POI) 또는 주소를 정밀하게 탐색합니다.
 
     Args:
-        query: Name, address, or keyword of the location (e.g., 'Eiffel Tower', 'Gangnam Station, Seoul')
-        location_bias: Optional 'latitude,longitude' string to bias results (e.g., '37.5665,126.9780')
+        query: 장소의 이름, 키워드 또는 명칭 (예: '에펠탑', '서울 강남역')
+        location_bias: 가중치(Bias)를 주어 근처 위주로 찾을 위도,경도 문자열 (예: '37.5665,126.9780')
 
     Returns:
-        Dictionary containing matching places, formatted addresses, coordinates, and place IDs.
+        일치하는 주소, 지도상의 위도/경도 좌표 및 고유 장소 ID(Place ID) 모음.
     """
     api_key = os.getenv("GOOGLE_MAPS_API_KEY", GOOGLE_MAPS_API_KEY)
     if not api_key:
-        return {"error": "GOOGLE_MAPS_API_KEY environment variable is missing."}
+        return {"error": "구글 맵스 API 연동을 위한 GOOGLE_MAPS_API_KEY 환경변수가 설정되지 않았습니다."}
 
     async with httpx.AsyncClient() as client:
-        # Use Places API (New)
+        # 최신 Places API (New) 엔드포인트를 적용합니다.
         url = "https://places.googleapis.com/v1/places:searchText"
         headers = {
             "Content-Type": "application/json",
@@ -73,27 +73,27 @@ async def search_location(query: str, location_bias: str = None) -> dict:
                     })
                 return {"status": "SUCCESS", "query": query, "count": len(results), "results": results}
             
-            return {"status": "NO_RESULTS", "message": f"No locations found for '{query}'."}
+            return {"status": "NO_RESULTS", "message": f"'{query}'에 대한 위치 검색 결과가 존재하지 않습니다."}
 
         except Exception as e:
-            logger.error(f"Error in search_location: {e}")
+            logger.error(f"search_location 수행 도중 오류 발생: {e}")
             return {"status": "ERROR", "message": str(e)}
 
 
 @mcp.tool()
 async def search_restaurants(location: str) -> dict:
     """
-    Search for top 5 highly-rated and popular restaurants or eateries in a specific location or area.
+    지정 장소, 역 주변 또는 명칭 검색을 기반으로 인기 평점이 우수한 식당(맛집) 상위 5곳을 탐색합니다.
 
     Args:
-        location: Name of the station, area, neighborhood, or city to find restaurants in (e.g. '강남역', 'Seoul Station').
+        location: 맛집을 찾을 기준 장소 (예: '강남역', '서울역', '판교')
 
     Returns:
-        Dictionary containing top 5 restaurant details: name, rating, reviews count, formatted address, types, and price level.
+        상위 5개 식당의 이름, 평점, 사용자 평가 개수, 주소, 카테고리 정보가 포함된 딕셔너리.
     """
     api_key = os.getenv("GOOGLE_MAPS_API_KEY", GOOGLE_MAPS_API_KEY)
     if not api_key:
-        return {"error": "GOOGLE_MAPS_API_KEY environment variable is missing."}
+        return {"error": "구글 맵스 API 연동을 위한 GOOGLE_MAPS_API_KEY 환경변수가 설정되지 않았습니다."}
 
     query = f"{location} 맛집"
     async with httpx.AsyncClient() as client:
@@ -115,7 +115,7 @@ async def search_restaurants(location: str) -> dict:
             if "places" in data and data["places"]:
                 places = data["places"]
                 
-                # Sort by rating descending, then by userRatingCount descending
+                # 식당 리스트를 평점 기준 내림차순 정렬 후 2차 가중치로 리뷰 갯수 기준 내림차순 정렬
                 places.sort(key=lambda x: (x.get("rating", 0.0), x.get("userRatingCount", 0)), reverse=True)
                 
                 results = []
@@ -144,29 +144,29 @@ async def search_restaurants(location: str) -> dict:
                     })
                 return {"status": "SUCCESS", "location": location, "count": len(results), "results": results}
             
-            return {"status": "NO_RESULTS", "message": f"No restaurants found for '{location}'."}
+            return {"status": "NO_RESULTS", "message": f"'{location}' 인근에서 맛집을 발견하지 못했습니다."}
 
         except Exception as e:
-            logger.error(f"Error in search_restaurants: {e}")
+            logger.error(f"search_restaurants 수행 도중 오류 발생: {e}")
             return {"status": "ERROR", "message": str(e)}
 
 
 @mcp.tool()
 async def calculate_distance(origin: str, destination: str, mode: str = "driving") -> dict:
     """
-    Calculate travel distance and estimated duration between origin and destination.
+    출발지점과 도착지점 사이의 대략적인 이동 거리와 예상 요율 소요 시간을 추출합니다.
 
     Args:
-        origin: Starting address, place name, or 'lat,lng' coordinates (e.g., 'Seoul Station')
-        destination: Destination address, place name, or 'lat,lng' coordinates (e.g., 'Incheon Airport')
-        mode: Travel mode - 'driving', 'walking', 'bicycling', or 'transit'. Default is 'driving'.
+        origin: 출발지 주소, 건물 명칭 또는 '위도,경도' 좌표셋 (예: '서울역')
+        destination: 도착지 주소, 건물 명칭 또는 '위도,경도' 좌표셋 (예: '인천국제공항')
+        mode: 이동 수단 종류 - 'driving' (자동차), 'walking' (도보), 'bicycling' (자전거), 'transit' (대중교통). 기본값은 'driving'.
 
     Returns:
-        Dictionary containing distance text/value (meters), duration text/value (seconds), origin/destination addresses.
+        상세 연산된 실 이동 거리(미터) 및 실 요율 연산 시간(초) 정보가 포함된 결과셋.
     """
     api_key = os.getenv("GOOGLE_MAPS_API_KEY", GOOGLE_MAPS_API_KEY)
     if not api_key:
-        return {"error": "GOOGLE_MAPS_API_KEY environment variable is missing."}
+        return {"error": "구글 맵스 API 연동을 위한 GOOGLE_MAPS_API_KEY 환경변수가 설정되지 않았습니다."}
 
     valid_modes = {
         "driving": "DRIVE",
@@ -177,7 +177,7 @@ async def calculate_distance(origin: str, destination: str, mode: str = "driving
     travel_mode = valid_modes.get(mode.lower(), "DRIVE")
 
     async with httpx.AsyncClient() as client:
-        # Use Routes API (New)
+        # 최신 구글 Routes API (New) 엔드포인트를 적용합니다.
         url = "https://routes.googleapis.com/distanceMatrix/v2:computeRouteMatrix"
         headers = {
             "Content-Type": "application/json",
@@ -185,7 +185,7 @@ async def calculate_distance(origin: str, destination: str, mode: str = "driving
             "X-Goog-FieldMask": "*"
         }
         
-        # Build waypoint payloads
+        # 주소 문자열 혹은 위도/경도 입력 유무에 따른 웨이포인트(Waypoint) 빌드업
         origin_waypoint = {}
         if "," in origin:
             try:
@@ -219,9 +219,9 @@ async def calculate_distance(origin: str, destination: str, mode: str = "driving
             if isinstance(data, list) and len(data) > 0:
                 result = data[0]
                 
-                # Check for routing success, fallback to TRANSIT if ROUTE_NOT_FOUND
+                # 경로 탐색 불가 시 대중교통으로 자동 롤백 시도
                 if result.get("condition") == "ROUTE_NOT_FOUND" and travel_mode != "TRANSIT":
-                    logger.info("Route not found. Retrying with TRANSIT travel mode as fallback...")
+                    logger.info("선택된 이동 수단으로 경로 검색 불가. 대중교통(TRANSIT) 모드로 백업 시도 중...")
                     payload["travelMode"] = "TRANSIT"
                     resp = await client.post(url, json=payload, headers=headers, timeout=10.0)
                     data = resp.json()
@@ -234,16 +234,16 @@ async def calculate_distance(origin: str, destination: str, mode: str = "driving
                 
                 status_code = result.get("status", {}).get("code")
                 if status_code and status_code != 0:
-                    return {"status": "ERROR", "message": result.get("status", {}).get("message", "Routes API error")}
+                    return {"status": "ERROR", "message": result.get("status", {}).get("message", "Routes API 내부 통신 장애")}
 
                 if result.get("condition") == "ROUTE_NOT_FOUND":
-                    return {"status": "NO_ROUTE", "message": "No route could be found between origin and destination."}
+                    return {"status": "NO_ROUTE", "message": "출발지와 목적지 간의 이동 경로를 탐색할 수 없습니다."}
 
                 distance_meters = result.get("distanceMeters")
                 duration_str = result.get("duration")
                 duration_seconds = int(duration_str.rstrip("s")) if duration_str else 0
                 
-                # Fetch localized text values if available
+                # 현지화 텍스트 반환 처리
                 localized = result.get("localizedValues", {})
                 distance_text = localized.get("distance", {}).get("text", f"{distance_meters} m")
                 duration_text = localized.get("duration", {}).get("text", f"{duration_seconds} s")
@@ -259,15 +259,15 @@ async def calculate_distance(origin: str, destination: str, mode: str = "driving
                     "duration_seconds": duration_seconds
                 }
 
-            return {"status": "ERROR", "message": "No route matrix results found."}
+            return {"status": "ERROR", "message": "경로 메트릭스 연산 결과가 존재하지 않습니다."}
 
         except Exception as e:
-            logger.error(f"Error in calculate_distance: {e}")
+            logger.error(f"calculate_distance 수행 도중 오류 발생: {e}")
             return {"status": "ERROR", "message": str(e)}
 
 
 if __name__ == "__main__":
     host = os.getenv("FASTMCP_HOST", "0.0.0.0")
     port = int(os.getenv("FASTMCP_PORT", "8080"))
-    logger.info(f"Starting Google Maps FastMCP Server on {host}:{port} with streamable-http transport...")
+    logger.info(f"구글 맵 FastMCP 서버를 {host}:{port}에서 streamable-http 전송 규격으로 가동합니다...")
     mcp.run(transport="streamable-http", host=host, port=port)
