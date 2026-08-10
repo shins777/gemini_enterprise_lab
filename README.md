@@ -41,6 +41,36 @@ gemini_enterprise_lab/
 
 ---
 
+## 🔑 환경 변수 및 중요 설정 구성 가이드 (Environment Variables)
+
+본 프로젝트의 모든 모듈(MCP 서버, 검색 에이전트 등)은 보안성 향상 및 유연한 리소스 롤아웃을 위해 **민감 정보 및 기동 종속 변수들을 전량 환경 변수(Environment Variables)로부터 수집**하도록 구축되어 있습니다. 
+
+로컬 구동 혹은 원격 빌드/배포를 진행하기 전에 터미널 환경에 아래의 환경 변수 명세에 해당하는 키들을 주입 및 셋업해 주시기 바랍니다.
+
+### 📋 주요 필수 환경 변수 목록 (Required Variables)
+
+| 환경 변수명 (Key) | 기본값 / 예시값 (Default/Example) | 필수여부 | 역할 및 설명 (Description) |
+| :--- | :--- | :--- | :--- |
+| `GOOGLE_MAPS_API_KEY` | `YOUR_GOOGLE_MAPS_API_KEY` | **필수** | Google Maps MCP 서버가 Places/Geocoding/Routes API를 호출할 때 사용할 인증 키 |
+| `GCP_PROJECT` | `explore-ai-aa934711` | **필수** | 구글 클라우드 리소스를 프로비저닝 및 연동할 타겟 GCP 프로젝트 ID |
+| `GCP_LOCATION` | `us-central1` | 선택 | Vertex AI 및 Cloud Run이 가동될 리전(Region) 기본 위치 |
+| `GCS_STAGING_BUCKET` | `gs://run-sources-explore-ai-aa934711-us-central1` | **필수** | Reasoning Engine 소스 빌드 시 패키징 바이너리를 스테이징할 버킷 경로 |
+| `CLOUDSDK_AUTH_ACCESS_TOKEN`| (동적 발급 토큰) | 선택 | ADC 권한 상속을 통한 수동 리소스 제어 및 CLI 인증 우회용 액세스 토큰 |
+
+### 🛠️ 로컬 터미널 환경 주입 예시
+실습 가이드 진행 전 터미널 창에 아래 형태로 환경 변수들을 가입 및 익스포트하십시오.
+```bash
+# 구글 맵스 인증용 키 입력
+export GOOGLE_MAPS_API_KEY="AIzaSyBQFudqoZejRX..."
+
+# GCP 핵심 자산 설정 주입
+export GCP_PROJECT="explore-ai-aa934711"
+export GCP_LOCATION="us-central1"
+export GCS_STAGING_BUCKET="gs://run-sources-explore-ai-aa934711-us-central1"
+```
+
+---
+
 ## 🌐 1. MCP 서버 Cloud Run 배포 & 등록 가이드
 
 실습 환경의 구글 클라우드 프로젝트 `explore-ai-aa934711`에 완전히 배포 완료된 실시간 MCP 서버 리소스 세부 정보입니다.

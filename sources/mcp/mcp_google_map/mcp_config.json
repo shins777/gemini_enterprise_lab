@@ -6,7 +6,7 @@
       "transport": "streamable-http",
       "url": "https://google-maps-mcp-66747595426.us-central1.run.app/mcp",
       "env": {
-        "GOOGLE_MAPS_API_KEY": "AIzaSyBQFudqoZejRXBcq5OB9Pjv6XCYDD6wVj0"
+        "GOOGLE_MAPS_API_KEY": "YOUR_GOOGLE_MAPS_API_KEY"
       },
       "tools": [
         {

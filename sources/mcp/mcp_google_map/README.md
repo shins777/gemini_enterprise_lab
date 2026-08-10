@@ -26,7 +26,7 @@
 
 1. 구글 맵스 API 키 환경 변수 등록:
    ```bash
-   export GOOGLE_MAPS_API_KEY="AIzaSyBQFudqoZejRXBcq5OB9Pjv6XCYDD6wVj0"
+   export GOOGLE_MAPS_API_KEY="YOUR_GOOGLE_MAPS_API_KEY"
    ```
 
 2. 필수 라이브러리 설치:
@@ -60,7 +60,7 @@ gcloud run deploy google-maps-mcp \
   --region us-central1 \
   --platform managed \
   --allow-unauthenticated \
-  --set-env-vars "GOOGLE_MAPS_API_KEY=AIzaSyBQFudqoZejRXBcq5OB9Pjv6XCYDD6wVj0" \
+  --set-env-vars "GOOGLE_MAPS_API_KEY=YOUR_GOOGLE_MAPS_API_KEY" \
   --port 8080
 ```
 
