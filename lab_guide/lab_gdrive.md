@@ -652,15 +652,16 @@ BigQuery에서 Native로 지원하는 NL2SQL인 Agent를 실습해 보겠습니�
 
 <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image37.png" width="624" alt="">
 
-Gemini Enterprise의 Agent 메뉴에서 “The Look Ecommerce” 에이전트를 선택합니다.
+Gemini Enterprise의 Agent 메뉴에서 “CAA Real Estate Agent” 를 선택합니다.
 
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image89.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image144.png" width="624" alt="">
 
 다음과 같이 자연어로 질문합니다.
 
 ```text
-최근 6개월 월별 카테고리별 매출이 어떻게 돼?
+지난 5년간의 한국 부동산 상황에 대해서 분석해주세요. 
 ```
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image145.png" width="624" alt="">
 
 Authorize를 수행하라는 메시지가 뜨면 한번 수행해 줍니다. 본인의 실습 계정으로 인증을 수행하세요. 이 과정은 OAuth 토큰 만료 시간까지 다시 요청하지 않습니다.
 
@@ -670,7 +671,7 @@ Authorize를 수행하라는 메시지가 뜨면 한번 수행해 줍니다. 본
 
 <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image131.png" width="624" alt="">
 
-```text
+<!-- ```text
 가장 매출이 낮은 제품과 왜 그런지 원인을 분석해줘
 ```
 
@@ -700,7 +701,7 @@ Authorize를 수행하라는 메시지가 뜨면 한번 수행해 줍니다. 본
 
 <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image72.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image73.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image73.png" width="624" alt=""> -->
 
 ## Low Code Agent (Agent Designer)
 ### Prompt로 Agent 만들기
