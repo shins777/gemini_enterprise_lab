@@ -166,14 +166,13 @@ Follow up Questions을 수행해 보세요
 ```text
 회사 복지 제도가 뭐가 있어?
 ```
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image133.png" width="624" alt="">
 
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image116.png" width="624" alt="">
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image23.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image134.png" width="624" alt="">
 
 “Sources”를 클릭해서 검색 소스를 확인하세요
 
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image27.png" width="624" alt="">
+<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image135.png" width="624" alt="">
 
 새로운 채팅을 열어서 “Google Search”를 끄고 다음과 같이 질문해 보세요
 
