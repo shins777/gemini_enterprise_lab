@@ -174,27 +174,7 @@ Follow up Questions을 수행해 보세요
 
 <img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image135.png" width="624" alt="">
 
-새로운 채팅을 열어서 “Google Search”를 끄고 다음과 같이 질문해 보세요
 
-```text
-LG 앰버서더가 뭐야? 하면 누가 참여할 수 있고 혜택이 뭐야?
-```
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image1.png" width="624" alt="">
-
-```text
-어느 분야에 각 몇명씩 모집해?
-```
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image99.png" width="624" alt="">
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image68.png" width="624" alt="">
-
-```text
-LG 앰버서더 4기 지원하면 선물이 뭐야?
-```
-
-<img src="https://raw.githubusercontent.com/shins777/gemini_enterprise_lab/refs/heads/main/lab_guide/images/image24.png" width="624" alt="">
 
 ## Media Generation
 ### 이미지 생성 / 편집
