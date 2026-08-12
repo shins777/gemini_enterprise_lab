@@ -52,6 +52,8 @@
 > 최근 구글의 AI 기술(Google AI Technology) 및 최신 생성형 AI 트렌드를 검색해서 요약해줘. 특히 구글의 최신 AI 모델과 엔터프라이즈 솔루션의 핵심 차별점을 도출하고, 기업의 AI 도입 전략에 적용할 만한 핵심 인사이트를 제시해줘.
 > ```
 
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/1-1.png" width="867" alt="기본 프롬프트 실행 화면">
 </p>
@@ -86,16 +88,25 @@
 진행 중인 채팅 세션을 공유하여 동료와 함께 대화를 이어나갈 수 있습니다.
 
 1. 우측 상단의 **공유(Share)** 버튼을 클릭합니다.
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image45.png" width="800" alt="공유 버튼">
 </p>
 
 2. 생성된 URL을 복사하여 동료에게 전달합니다.
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image35.png" width="533" alt="공유 URL 복사">
 </p>
 
 3. 전달받은 URL로 접속하여 이전 대화 맥락이 잘 유지되는지 확인하고 추가 질문을 진행합니다.
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image9.png" width="600" alt="공유된 세션 화면">
 </p>
@@ -108,6 +119,8 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 ### 2.1 설문조사(Survey) 데이터 분석
 `Excel_example_survey.xlsx` 파일을 대화창에 첨부합니다.
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
 
 <p align="center">
   <img src="images/image95.png" width="800" alt="설문 엑셀 업로드">
@@ -123,6 +136,8 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > ```text
 > 향후 이벤트에 도움이 될 개선사항을 포함한 이벤트 결과 보고서를 작성해줘.
 > ```
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
 
 <p align="center">
   <img src="images/image85.png" width="800" alt="설문 분석 결과">
@@ -147,6 +162,8 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > 매장 내 식사와 포장 판매의 주문당 평균 매출 차이가 의미 있는지 통계적으로 분석해줘.
 > ```
 
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image33.png" width="800" alt="매출 분석 결과">
 </p>
@@ -164,6 +181,8 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > ```text
 > BigQuery New Feature 들에 대해서 각 기능별로 기능 요약을 해주고, 기능별로 GA, Preview 여부를 표로 작성해서 보여줘.
 > ```
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
 
 <p align="center">
   <img src="images/image30.png" width="800" alt="PPT 요약 표">
@@ -191,6 +210,8 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > - Model Armor & Security
 > ```
 
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image14.png" width="800" alt="생성된 포스터 1">
 </p>
@@ -201,6 +222,9 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 ### 4.2 기존 이미지 편집 및 스타일 변환
 1. **`lg wash tower.jpg`** 첨부 후 이미지 도구 선택:
    > 💬 *"좌측 상단의 로고를 제외한 모든 Text를 한국어로 번역해줘."*
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
    <p align="center"><img src="images/image61.png" width="800" alt="이미지 텍스트 번역"></p>
 
 2. **`Handwrite_arch.png`** 첨부:
@@ -220,6 +244,8 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > 향수병을 소개하는 고급스러운 홍보 영상을 만드세요. 호박색 액체로 채워진 투명한 유리 향수병의 각진 마개에 초점을 맞춰 밀착한 클로즈업 돌리 레프트 샷으로 동영상을 시작합니다. 유리병에 물방울이 은은하게 맺혀 있습니다. 병은 욕실의 깔끔한 흰색 대리석 위에 놓여 있습니다. 배경의 창문에서 부드러운 자연광이 흘러들어와 장면을 비춥니다. 유칼립투스 잎과 천연 나무 향의 디퓨저 스틱이 병 주위로 튀지 않게 배치되어 있습니다. 전체적으로 우아하고 신선하며 세련된 분위기입니다.
 > ```
 
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image74.png" width="800" alt="비디오 생성 결과">
 </p>
@@ -232,6 +258,8 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 상세 묘사: "녹아내린 치즈가 옆으로 천천히 흘러내림. 김이 모락모락 피어오름."
 촬영 기법: "전문적인 음식 사진 촬영, 하이 키 조명(high key lighting), 4k 해상도, 슬로우 모션."
 ```
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
 
 <p align="center"><img src="images/image42.png" width="800" alt="치즈버거 비디오"></p>
 
@@ -252,6 +280,8 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > 구글의 AI 기술(Google AI Technology)과 최신 생성형 AI 생태계의 경쟁력 및 미래 전망을 종합적으로 분석해 줘. 먼저 글로벌 AI 시장에서의 구글 Gemini 모델 및 구글 클라우드 AI의 포지셔닝과 핵심 경쟁 우위를 진단해 줘. 이어서 멀티모달 AI, Deep Research, 에이전트 오케스트레이션을 포함한 엔터프라이즈 영역으로의 확장이 가지는 의미를 평가하고, 이를 바탕으로 향후 구글 AI 기술 생태계가 직면할 주요 기회와 위협 요인을 논리적으로 설명해 줘.
 > ```
 
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image75.png" width="467" alt="Deep Research 실행 화면">
 </p>
@@ -264,6 +294,8 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 문서 편집, HTML 구성, 구글 슬라이드 연동 작성이 가능합니다.
 
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image6.png" width="600" alt="Canvas 메뉴">
 </p>
@@ -274,6 +306,8 @@ Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 �
 > 
 > 그리고 슬라이드로 요약해줘. 하얀색 바탕의 깔끔하고 모던한 IT 기술 문서 스타일로 작성해줘.
 > ```
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
 
 <p align="center">
   <img src="images/image4.png" width="800" alt="슬라이드 결과 1">
@@ -290,6 +324,8 @@ Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 �
 
 NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, 이미지)만을 기반으로 환각(Hallucination) 없이 정확히 답변하는 전용 AI 리서치 어시스턴트**입니다.
 
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image120.png" width="533" alt="NotebookLM 메뉴">
 </p>
@@ -297,6 +333,8 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 ### 7.1 노트북 생성 및 출처 입력
 1. NotebookLM 메뉴를 열고 새로 만들기를 클릭합니다.
 2. 소스 추가에서 'LG 안심 홈 가디언', '루미케어', '센티넬 컴패니언' 아이디어 텍스트를 붙여넣습니다.
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
 
 <p align="center">
   <img src="images/image64.png" width="800" alt="소스 텍스트 입력">
@@ -309,6 +347,8 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 > - *"LG '루미케어' - 공감하는 세탁 도우미를 인포그래픽으로 생성해주세요."*
 > - *"LG '안심' 홈 가디언 에코시스템 아이디어를 손으로 그린 듯한 (Sketch Note) 스타일로 작성해주세요."*
 > - *"LG 센티넬 컴패니언 아이디어를 신문 인포그래픽 스타일로 작성해 주세요."*
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
 
 <p align="center">
   <img src="images/image121.png" width="800" alt="인포그래픽 결과">
@@ -339,16 +379,24 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 2. 대화창에 에이전트 역할을 입력합니다:
    > 💬 *"뉴스 링크를 입력 받아서 Social Media 포스팅할 게시물 문구를 생성하는 에이전트를 만들어줘. 간략한 한 줄 문장과 bullet point 5개, 추천 해시태그를 포함해줘."*
 
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image28.png" width="533" alt="에이전트 제작 입력">
 </p>
 
 3. 생성된 에이전트 워크플로우를 **Flow 뷰**에서 확인하고 **Create**를 누릅니다:
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image39.png" width="800" alt="에이전트 플로우 뷰">
 </p>
 
 4. 뉴스 기사 URL을 전달하여 테스트합니다:
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image49.png" width="800" alt="에이전트 테스트 결과">
 </p>
@@ -362,6 +410,8 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 2. **Schedule** 탭에서 **Add Schedule**을 클릭합니다.
 3. 실행 시간(실습 시 현재 시간 기준 2분 뒤)을 설정합니다.
 4. **Update**를 눌러 스케줄 상태가 **Active**가 되었는지 확인합니다.
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
 
 <p align="center">
   <img src="images/image102.png" width="800" alt="스케줄 등록">
@@ -416,6 +466,8 @@ graph TD
 ```
 </details>
 
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image57.png" width="800" alt="메인 에이전트 설정">
 </p>
@@ -434,6 +486,8 @@ graph TD
 #### 3️⃣ Sub-Agent 3: 면접 질문 기획자
 - **Role:** 앞선 심층 평가 결과와 팩트체크 리포트 맥락을 수신하여 약점 및 특이사항을 파고드는 심층 꼬리 질문 3가지 생성.
 
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
+
 <p align="center">
   <img src="images/image82.png" width="800" alt="팩트체커 설정">
 </p>
@@ -443,6 +497,8 @@ graph TD
 
 ### 9.3 멀티 에이전트 파이프라인 실행
 지원자 이력서(`GOOG전자 입사지원서_이OO.pdf`)를 업로드하여 멀티 에이전트 실행 결과를 확인합니다:
+
+*처리 결과는 아래 이미지와 유사하게 생성됩니다.*
 
 <p align="center">
   <img src="images/image112.png" width="733" alt="이력서 업로드">
