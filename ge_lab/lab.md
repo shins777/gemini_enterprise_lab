@@ -18,7 +18,7 @@
 4. **🤖 로우코드 에이전트 스튜디오 (Agent Designer)**
    - 코딩 없이 프롬프트와 데이터 설정만으로 단일/다중 에이전트(Multi-Agent) 시스템을 직접 제작하고 스케줄링할 수 있습니다.
 5. **🎨 멀티모달 콘텐츠 및 캔버스 (Canvas & Media Generation)**
-   - 텍스트, 엑셀/데이터 분석, 프레젠테이션 슬라이드, 최신 Imagen 3 기반 이미지 생성/편집 및 Veo 기반 고품질 동영상을 즉시 생성합니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 - 텍스트, 엑셀/데이터 분석, 프레젠테이션 슬라이드, 최신 Imagen 3 기반 이미지 생성/편집 및 Veo 기반 고품질 동영상을 즉시 생성합니다.</span>
 
 ---
 
@@ -41,10 +41,10 @@
 
 ## 1. 💬 기본 기능 및 스마트 웹 검색
 
-각자 부여받은 **Gemini Enterprise App**에 접속하여 옴니바(Omnibar) 입력, 구글 실시간 웹 검색 연동, 대화 공유 기능을 익힙니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 각자 부여받은 **Gemini Enterprise App**에 접속하여 옴니바(Omnibar) 입력, 구글 실시간 웹 검색 연동, 대화 공유 기능을 익힙니다.</span>
 
 ### 1.1 최신 AI 기술 분석 프롬프트
-대화창에 다음 프롬프트를 입력합니다:
+<span style="color: #1a73e8; font-weight: bold;">👉 대화창에 다음 프롬프트를 입력합니다:</span>
 
 > 💬 **프롬프트:**
 > ```text
@@ -86,18 +86,22 @@
 ### 1.3 협업: 대화 세션 공유하기
 진행 중인 채팅 세션을 공유하여 동료와 함께 대화를 이어나갈 수 있습니다.
 
-1. 우측 상단의 **공유(Share)** 버튼을 클릭합니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 1. 우측 상단의 **공유(Share)** 버튼을 클릭합니다.</span>
 
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
   <img src="images/1-3_1.png" width="800" >
+</p>
+
+<span style="color: #1a73e8; font-weight: bold;">👉 아래와 같이 링크를 복사해서 동료에게 전달해서 접근이 가능한지 확인합니다.</span>
+<p align="left">
   <img src="images/1-3_2.png" width="400" >
   <img src="images/1-3_3.png" width="400" >
 
 </p>
 
-2. 생성된 URL을 복사하여 동료에게 전달합니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 2. 생성된 URL을 복사하여 동료에게 전달합니다.</span>
 
 실행결과 이미지는 다음과 같습니다.
 
@@ -105,7 +109,7 @@
   <img src="images/image35.png" width="533" alt="공유 URL 복사">
 </p>
 
-3. 전달받은 URL로 접속하여 이전 대화 맥락이 잘 유지되는지 확인하고 추가 질문을 진행합니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 3. 전달받은 URL로 접속하여 이전 대화 맥락이 잘 유지되는지 확인하고 추가 질문을 진행합니다.</span>
 
 실행결과 이미지는 다음과 같습니다.
 
@@ -120,7 +124,7 @@
 Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 업로드하는 것만으로 자동 데이터 해석, 패턴 도출, 통계 검정을 수행합니다.
 
 ### 2.1 설문조사(Survey) 데이터 분석
-`Excel_example_survey.xlsx` 파일을 대화창에 첨부합니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 `Excel_example_survey.xlsx` 파일을 대화창에 첨부합니다.</span>
 
 실행결과 이미지는 다음과 같습니다.
 
@@ -151,7 +155,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 ---
 
 ### 2.2 매출(Sales) 데이터 분석
-`coffee orders.xlsx` 파일을 첨부합니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 `coffee orders.xlsx` 파일을 첨부합니다.</span>
 
 > 💬 **매출 추이 및 통계 분석 프롬프트:**
 > ```text
@@ -197,7 +201,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 구글의 최첨단 **Imagen 3** (이미지) 및 **Veo** (동영상) 생성 모델을 활용합니다.
 
 ### 4.1 프롬프트 기반 포스터/이미지 생성
-**이미지 만들기** 도구를 선택하고 프롬프트를 입력합니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 **이미지 만들기** 도구를 선택하고 프롬프트를 입력합니다.</span>
 
 > 💬 **프롬프트:**
 > ```text
@@ -333,8 +337,8 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 </p>
 
 ### 7.1 노트북 생성 및 출처 입력
-1. NotebookLM 메뉴를 열고 새로 만들기를 클릭합니다.
-2. 소스 추가에서 'LG 안심 홈 가디언', '루미케어', '센티넬 컴패니언' 아이디어 텍스트를 붙여넣습니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 1. NotebookLM 메뉴를 열고 새로 만들기를 클릭합니다.</span>
+<span style="color: #1a73e8; font-weight: bold;">👉 2. 소스 추가에서 'LG 안심 홈 가디언', '루미케어', '센티넬 컴패니언' 아이디어 텍스트를 붙여넣습니다.</span>
 
 실행결과 이미지는 다음과 같습니다.
 
@@ -362,7 +366,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 ---
 
 ### 7.3 스크린샷 모음으로 따라하기 가이드 작성
-캡처 이미지 모음(예: `data_agent.zip` 내 10개 캡처 파일)을 소스로 첨부합니다:
+<span style="color: #1a73e8; font-weight: bold;">👉 캡처 이미지 모음(예: `data_agent.zip` 내 10개 캡처 파일)을 소스로 첨부합니다:</span>
 
 > 💬 **프롬프트:** *"BigQuery Data Agent를 생성하는 과정을 초보자도 쉽게 따라할 수 있도록 가이드 문서를 작성해줘."*
 
@@ -374,11 +378,11 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 
 ## 8. 🛠️ 로우코드 에이전트 스튜디오 (Agent Designer)
 
-코딩 없이 아이디어와 프롬프트만으로 나만의 AI 에이전트를 만들고, 조직 전체에 공유하며, 원하는 시간에 자동 실행되도록 스케줄을 설정합니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 코딩 없이 아이디어와 프롬프트만으로 나만의 AI 에이전트를 만들고, 조직 전체에 공유하며, 원하는 시간에 자동 실행되도록 스케줄을 설정합니다.</span>
 
 ### 8.1 소셜 미디어 콘텐츠 생성 에이전트 만들기
-1. **Agent** 메뉴로 이동하여 **새 에이전트**를 클릭합니다.
-2. 대화창에 에이전트 역할을 입력합니다:
+<span style="color: #1a73e8; font-weight: bold;">👉 1. **Agent** 메뉴로 이동하여 **새 에이전트**를 클릭합니다.</span>
+<span style="color: #1a73e8; font-weight: bold;">👉 2. 대화창에 에이전트 역할을 입력합니다:</span>
    > 💬 *"뉴스 링크를 입력 받아서 Social Media 포스팅할 게시물 문구를 생성하는 에이전트를 만들어줘. 간략한 한 줄 문장과 bullet point 5개, 추천 해시태그를 포함해줘."*
 
 실행결과 이미지는 다음과 같습니다.
@@ -409,9 +413,9 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 매일 아침 자동 실행되는 리포트 에이전트를 구성합니다:
 
 1. 만든 에이전트를 클릭하여 **Agent Designer**로 들어갑니다.
-2. **Schedule** 탭에서 **Add Schedule**을 클릭합니다.
-3. 실행 시간(실습 시 현재 시간 기준 2분 뒤)을 설정합니다.
-4. **Update**를 눌러 스케줄 상태가 **Active**가 되었는지 확인합니다.
+<span style="color: #1a73e8; font-weight: bold;">👉 2. **Schedule** 탭에서 **Add Schedule**을 클릭합니다.</span>
+<span style="color: #1a73e8; font-weight: bold;">👉 3. 실행 시간(실습 시 현재 시간 기준 2분 뒤)을 설정합니다.</span>
+<span style="color: #1a73e8; font-weight: bold;">👉 4. **Update**를 눌러 스케줄 상태가 **Active**가 되었는지 확인합니다.</span>
 
 실행결과 이미지는 다음과 같습니다.
 
@@ -498,7 +502,7 @@ graph TD
 </p>
 
 ### 9.3 멀티 에이전트 파이프라인 실행
-지원자 이력서(`GOOG전자 입사지원서_이OO.pdf`)를 업로드하여 멀티 에이전트 실행 결과를 확인합니다:
+<span style="color: #1a73e8; font-weight: bold;">👉 지원자 이력서(`GOOG전자 입사지원서_이OO.pdf`)를 업로드하여 멀티 에이전트 실행 결과를 확인합니다:</span>
 
 실행결과 이미지는 다음과 같습니다.
 
