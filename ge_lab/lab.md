@@ -1,61 +1,67 @@
-# 🚀 Gemini Enterprise Hands-on Workshop Guide
+# 🚀 Gemini Enterprise Hands-on Workshop 가이드
 
-Welcome to the **Gemini Enterprise Hands-on Workshop**! This guide is designed to help you explore and master the enterprise-grade AI capabilities of **Google Gemini Enterprise**. 
-
----
-
-## 💡 What is Gemini Enterprise?
-
-**Gemini Enterprise** is Google Cloud's AI platform tailored for business productivity, enterprise data grounding, and intelligent workflow automation. Unlike consumer AI tools, Gemini Enterprise offers:
-
-1. **🔒 Enterprise-Grade Security & Privacy**: Your prompts, data, and models are fully isolated and protected with strict governance (e.g., Model Armor for PII masking).
-2. **🔌 Deep Enterprise Connectivity**: Direct integration with Google Workspace (Drive, Docs, Gmail) and third-party platforms (Jira, Confluence, Salesforce, Databases).
-3. **🔍 Real-Time Grounding & Deep Research**: Combines live Google Web Search with complex document reasoning and citation verification.
-4. **🤖 No-Code / Low-Code Agent Studio**: Build, schedule, and orchestrate single or multi-agent workflows tailored to specific business processes without writing code.
-5. **🎨 Multimodal Content & Canvas Creation**: Native generation and editing of text, structured tables, presentation slides, images (Imagen 3), and videos (Veo).
+**Gemini Enterprise 핸즈온 워크숍**에 오신 것을 환영합니다! 본 가이드는 **Google Gemini Enterprise**의 기업용 AI 기능과 에이전트 구축 프로세스를 직접 체험하고 쉽게 이해할 수 있도록 구성되었습니다.
 
 ---
 
-## 📌 Workshop Agenda & Overview
+## 💡 Gemini Enterprise란 무엇인가요?
 
-| Module | Key Focus Areas | Hands-on Highlights |
+**Gemini Enterprise**는 기업의 생산성 향상, 내부 데이터 결합(Grounding), 그리고 지능형 업무 자동화를 위해 설계된 구글 클라우드의 차세대 기업용 AI 플랫폼입니다. 일반 소비자용 AI 서비스와 달리 다음과 같은 차별화된 핵심 가치를 제공합니다:
+
+1. **🔒 강력한 보안 및 프라이버시 (Enterprise Security)**
+   - 입력한 데이터와 프롬프트는 모델 학습에 사용되지 않으며, 전용 환경에서 완전히 격리됩니다.
+   - **Model Armor**를 통해 PII(개인식별정보) 및 민감 정보의 유출을 실시간으로 감시하고 마스킹(비식별화) 처리합니다.
+2. **🔌 기업 데이터 및 도구 연결 (Enterprise Connectors)**
+   - Google Workspace(Drive, Docs, Gmail)뿐만 아니라 Jira, Confluence 등 외부 협업 툴 및 엔터프라이즈 시스템 데이터와 직접 연동됩니다.
+3. **🔍 실시간 검색 및 심층 분석 (Grounding & Deep Research)**
+   - 최신 구글 웹 검색을 실시간 데이터 소스로 활용하여 복잡한 보고서 작성 및 수백 개의 소스를 검증하는 심층 리서치를 수행합니다.
+4. **🤖 로우코드 에이전트 스튜디오 (Agent Designer)**
+   - 코딩 없이 프롬프트와 데이터 설정만으로 단일/다중 에이전트(Multi-Agent) 시스템을 직접 제작하고 스케줄링할 수 있습니다.
+5. **🎨 멀티모달 콘텐츠 및 캔버스 (Canvas & Media Generation)**
+   - 텍스트, 엑셀/데이터 분석, 프레젠테이션 슬라이드, 최신 Imagen 3 기반 이미지 생성/편집 및 Veo 기반 고품질 동영상을 즉시 생성합니다.
+
+---
+
+## 📌 워크숍 목차 및 개요
+
+| 모듈 | 핵심 주제 | 실습 주요 내용 |
 | :--- | :--- | :--- |
-| **01. Core Features & Chat** | Omnibar, Web Search, Sharing | Executing business prompts, sharing chat links |
-| **02. Data Analysis (Excel)** | Survey & Sales Data Reasoning | Pivot insights, trend analysis, statistical tests |
-| **03. Document Reasoning (PPT)** | Executive Summarization | Feature extraction & GA/Preview status mapping |
-| **04. Media Generation** | Imagen 3 & Veo Video | Poster generation, image editing, video clips |
-| **05. Deep Research** | Multi-source Synthesis | Deep business analysis & exporting to Docs |
-| **06. Canvas & Slides** | Slide & Report Generator | Architecture design, slide deck creation |
-| **07. NotebookLM** | Grounded AI Assistant | Studio audio, infographics, cinematic slides |
-| **08. Agent Designer** | Low-code Automation | Social media agent, scheduling automated runs |
-| **09. Multi-Agent System** | Root & Sub-agent Orchestration | HR Recruitment evaluation multi-agent pipeline |
-| **10. Demos & Resources** | Advanced Integrations | Conversational Analytics (CA) & MCP Demos |
+| **01. 기본 기능 & 웹 검색** | 옴니바, 웹 검색, 세션 공유 | 트렌드 검색 프롬프트 실행 및 대화 세션 링크 공유 |
+| **02. 데이터 분석 (Excel)** | 설문 & 매출 데이터 추론 | 피벗 분석, 매출 추이 파악, t-test 통계 검정 |
+| **03. 문서 요약 (PPT)** | 신규 기능 요약 및 GA/Preview 분류 | BigQuery PPT 보고서 요약 및 표 정형화 |
+| **04. 미디어 생성 (생성 AI)** | Imagen 3 & Veo 동영상 | 포스터/아키텍처 이미지 편집, 고화질 홍보 영상 생성 |
+| **05. 심층 리서치 (Deep Research)** | 수백 개 소스 종합 분석 | 로봇 사업 종합 분석 보고서 생성 및 Docs 내보내기 |
+| **06. 캔버스 (Canvas & Slide)** | 실시간 문서 및 슬라이드 작업 | GCP 아키텍처 슬라이드 자동 생성 및 PPTX 다운로드 |
+| **07. NotebookLM 활용** | 출처 기반 맞춤형 AI 어시스턴트 | 아이디어 기반 인포그래픽, 촌철살인 슬라이드 제작 |
+| **08. Agent Designer** | 로우코드 업무 자동화 | 소셜 미디어 포스팅 에이전트 제작 및 자동 스케줄링 |
+| **09. 멀티 에이전트 구축** | 메인-하위 에이전트 오케스트레이션 | GOOG전자 채용 서류 검토 3단계 자동화 에이전트 |
+| **10. 데모 및 참고 자료** | 고급 연동 및 스페셜 데모 | Conversational Analytics (CA) 및 MCP 비디오 참고 |
 
 ---
 
-## 1. 💬 Core Features & Smart Web Search
+## 1. 💬 기본 기능 및 스마트 웹 검색
 
-Connect to your assigned **Gemini Enterprise App** to start exploring basic prompts, grounding with live Web Search, and chat sharing.
+각자 부여받은 **Gemini Enterprise App**에 접속하여 옴니바(Omnibar) 입력, 구글 실시간 웹 검색 연동, 대화 공유 기능을 익힙니다.
 
-### 1.1 Market & Competitor Analysis Prompt
-Enter the following prompt into the Omnibar:
+### 1.1 시장 및 경쟁사 분석 프롬프트
+대화창에 다음 프롬프트를 입력합니다:
 
-> 💬 **Prompt:**
+> 💬 **프롬프트:**
 > ```text
 > 나는 10년차 글로벌 마케팅 전문가야.
 > 최근 북미 및 유럽 시장의 ‘스마트홈(ThinQ 연동) 프리미엄 가전’ 트렌드를 검색해서 요약해줘. 특히 주요 경쟁사들의 최근 마케팅 소구점(Selling Point)을 도출하고, LG전자 제품에 적용할 만한 인사이트를 제시해줘.
 > ```
 
 <p align="center">
-  <img src="images/image104.png" width="650" alt="Core Prompt Example">
+  <img src="images/image104.png" width="650" alt="기본 프롬프트 실행 화면">
 </p>
 
-> 💡 **Tip:** Review the generated sources and try clicking the **Follow-up Questions** generated at the bottom.
+> 💡 **팁:** 답변 하단의 Source(출처)를 확인하고 추천되는 Follow-up Questions(추적 질문)를 클릭해보세요.
 
-### 1.2 Additional Business Practice Prompts
+### 1.2 추가 실습 프롬프트 모음
 
 <details>
-<summary>👉 Click to expand additional business prompts (Matter, CES 2026, EU Policy, B2B Robots)</summary>
+<summary>👉 (클릭하여 펼치기) Matter 표준, CES 2026, EU 정책, B2B 로봇 프롬프트 보기</summary>
 
 ```text
 최근 3개월간 북미 테크 매체에서 보도된 '스마트홈 매터(Matter) 표준' 및 'AI 가전' 관련 기사들을 검색해서 주요 동향을 요약해 줘. 이 트렌드를 바탕으로 LG 씽큐(ThinQ) 앱의 2026년 하반기 업데이트에 추가할 만한 타사 기기 연동 기반의 차별화된 고객 경험 시나리오 3가지를 제안해 줘.
@@ -76,38 +82,38 @@ Enter the following prompt into the Omnibar:
 
 ---
 
-### 1.3 Collaboration: Sharing Chat Sessions
-Share your active session with your lab partner using the Share feature.
+### 1.3 협업: 대화 세션 공유하기
+진행 중인 채팅 세션을 공유하여 동료와 함께 대화를 이어나갈 수 있습니다.
 
-1. Click the **Share** button at the top right of the chat window.
+1. 우측 상단의 **공유(Share)** 버튼을 클릭합니다.
 <p align="center">
-  <img src="images/image45.png" width="600" alt="Share Chat Button">
+  <img src="images/image45.png" width="600" alt="공유 버튼">
 </p>
 
-2. Copy the generated URL and send it to your partner.
+2. 생성된 URL을 복사하여 동료에게 전달합니다.
 <p align="center">
-  <img src="images/image35.png" width="400" alt="Copy Share URL">
+  <img src="images/image35.png" width="400" alt="공유 URL 복사">
 </p>
 
-3. Open the shared link to verify the full conversation history and ask follow-up questions together.
+3. 전달받은 URL로 접속하여 이전 대화 맥락이 잘 유지되는지 확인하고 추가 질문을 진행합니다.
 <p align="center">
-  <img src="images/image9.png" width="450" alt="Shared Chat View">
+  <img src="images/image9.png" width="450" alt="공유된 세션 화면">
 </p>
 
 ---
 
-## 2. 📊 Excel Data Analysis & Reasoning
+## 2. 📊 엑셀(Excel) 데이터 분석 및 추론
 
-Gemini Enterprise features advanced code execution and reasoning capabilities to analyze raw Excel and CSV spreadsheets without writing manual formulas or Python scripts.
+Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 업로드하는 것만으로 자동 데이터 해석, 패턴 도출, 통계 검정을 수행합니다.
 
-### 2.1 Survey Analysis
-Upload `Excel_example_survey.xlsx` to the chat.
+### 2.1 설문조사(Survey) 데이터 분석
+`Excel_example_survey.xlsx` 파일을 대화창에 첨부합니다.
 
 <p align="center">
-  <img src="images/image95.png" width="600" alt="Upload Survey Excel">
+  <img src="images/image95.png" width="600" alt="설문 엑셀 업로드">
 </p>
 
-> 💬 **Prompts to try:**
+> 💬 **추천 프롬프트:**
 > ```text
 > 이 문서로 어떤 분석을 할 수 있어?
 > ```
@@ -119,18 +125,18 @@ Upload `Excel_example_survey.xlsx` to the chat.
 > ```
 
 <p align="center">
-  <img src="images/image85.png" width="600" alt="Survey Results Analysis">
+  <img src="images/image85.png" width="600" alt="설문 분석 결과">
 </p>
 <p align="center">
-  <img src="images/image50.png" width="600" alt="Event Report Generation">
+  <img src="images/image50.png" width="600" alt="이벤트 보고서 생성">
 </p>
 
 ---
 
-### 2.2 Sales & Order Data Analysis
-Upload `coffee orders.xlsx` to the chat.
+### 2.2 매출(Sales) 데이터 분석
+`coffee orders.xlsx` 파일을 첨부합니다.
 
-> 💬 **Prompts for Sales Trends & Statistical Testing:**
+> 💬 **매출 추이 및 통계 분석 프롬프트:**
 > ```text
 > (주문 완료일)을 기준으로 일별, 주별, 월별 매출(Orders Total Sales)의 변화를 분석하여 매출이 높은 시기와 낮은 시기를 파악해줘.
 > ```
@@ -142,37 +148,37 @@ Upload `coffee orders.xlsx` to the chat.
 > ```
 
 <p align="center">
-  <img src="images/image33.png" width="600" alt="Sales Trend Analysis">
+  <img src="images/image33.png" width="600" alt="매출 분석 결과">
 </p>
 <p align="center">
-  <img src="images/image20.png" width="600" alt="Dining vs Takeaway Analysis">
+  <img src="images/image20.png" width="600" alt="식사 vs 포장 매출 분석">
 </p>
 
 ---
 
-## 3. 📑 PowerPoint Document Summarization
+## 3. 📑 파워포인트(PPT) 문서 핵심 요약
 
-Upload `202603-BigQuery New Feature 업데이트.pptx` to extract release notes and feature status.
+`202603-BigQuery New Feature 업데이트.pptx` 발표 자료를 업로드하여 주요 변경점을 빠르게 추출합니다.
 
-> 💬 **Prompt:**
+> 💬 **프롬프트:**
 > ```text
 > BigQuery New Feature 들에 대해서 각 기능별로 기능 요약을 해주고, 기능별로 GA, Preview 여부를 표로 작성해서 보여줘.
 > ```
 
 <p align="center">
-  <img src="images/image30.png" width="600" alt="PPT Summary Feature Table">
+  <img src="images/image30.png" width="600" alt="PPT 요약 표">
 </p>
 
 ---
 
-## 4. 🎨 Media Generation (Image & Video)
+## 4. 🎨 미디어 생성 (이미지 및 비디오)
 
-Powered by Google's state-of-the-art **Imagen 3** (Image) and **Veo** (Video) generative models.
+구글의 최첨단 **Imagen 3** (이미지) 및 **Veo** (동영상) 생성 모델을 활용합니다.
 
-### 4.1 Image Creation from Text Prompts
-Select the **Image Generation** tool and enter:
+### 4.1 프롬프트 기반 포스터/이미지 생성
+**이미지 만들기** 도구를 선택하고 프롬프트를 입력합니다.
 
-> 💬 **Prompt:**
+> 💬 **프롬프트:**
 > ```text
 > Gemini Enterprise를 잘 쓰고 싶어하는 직장인을 위한 팁과 핵심 기능을 알려주는 포스터(9:16)를 그려줘.
 > 
@@ -186,40 +192,40 @@ Select the **Image Generation** tool and enter:
 > ```
 
 <p align="center">
-  <img src="images/image14.png" width="600" alt="Generated Poster 1">
+  <img src="images/image14.png" width="600" alt="생성된 포스터 1">
 </p>
 <p align="center">
-  <img src="images/image56.png" width="600" alt="Generated Poster 2">
+  <img src="images/image56.png" width="600" alt="생성된 포스터 2">
 </p>
 
-### 4.2 Image Editing & Translation
-1. Upload **`lg wash tower.jpg`** and select the Image tool:
+### 4.2 기존 이미지 편집 및 스타일 변환
+1. **`lg wash tower.jpg`** 첨부 후 이미지 도구 선택:
    > 💬 *"좌측 상단의 로고를 제외한 모든 Text를 한국어로 번역해줘."*
-   <p align="center"><img src="images/image61.png" width="600" alt="Image Text Translation"></p>
+   <p align="center"><img src="images/image61.png" width="600" alt="이미지 텍스트 번역"></p>
 
-2. Upload **`Handwrite_arch.png`**:
+2. **`Handwrite_arch.png`** 첨부:
    > 💬 *"첨부한 아키텍처를 Google Cloud Architecture 스타일로 다시 그려줘."*
 
-3. Upload a **Personal Photo**:
-   > 💬 *"사진 속 인물을 아이소메트릭(isometric) 시점의 LEGO 미니피규어 포장 상자 스타일로 변환하세요. 상자에는 'Gemini Enterprise Hands on Workshop'라는 라벨을 붙이세요."*
+3. **개인 인물 사진** 첨부:
+   > 💬 *"사진 속 인물을 아이소메트릭(isometric) 시점의 LEGO 미니피규어 포장 상자 스타일로 변환하세요. 상자에는 'Gemini Enterprise Hands on Workshop'라는 제목의 라벨을 붙이세요."*
 
 ---
 
-### 4.3 High-Quality Video Generation (Veo)
+### 4.3 초고화질 비디오 생성 (Veo)
 
-Enter cinematic prompt descriptions to produce commercial-ready videos:
+상세한 연출 프롬프트를 제공하여 하이엔드 광고 영상을 제작합니다.
 
-> 💬 **Perfume Commercial Prompt:**
+> 💬 **고급 향수 홍보 영상 프롬프트:**
 > ```text
 > 향수병을 소개하는 고급스러운 홍보 영상을 만드세요. 호박색 액체로 채워진 투명한 유리 향수병의 각진 마개에 초점을 맞춰 밀착한 클로즈업 돌리 레프트 샷으로 동영상을 시작합니다. 유리병에 물방울이 은은하게 맺혀 있습니다. 병은 욕실의 깔끔한 흰색 대리석 위에 놓여 있습니다. 배경의 창문에서 부드러운 자연광이 흘러들어와 장면을 비춥니다. 유칼립투스 잎과 천연 나무 향의 디퓨저 스틱이 병 주위로 튀지 않게 배치되어 있습니다. 전체적으로 우아하고 신선하며 세련된 분위기입니다.
 > ```
 
 <p align="center">
-  <img src="images/image74.png" width="600" alt="Video Generation Result">
+  <img src="images/image74.png" width="600" alt="비디오 생성 결과">
 </p>
 
 <details>
-<summary>🎬 Click to view Cheeseburger & Skateboarding video prompts</summary>
+<summary>🎬 (클릭) 치즈버거 & 스케이트보드 비디오 프롬프트 보기</summary>
 
 ```text
 프롬프트: "꽉 눌려 짜지는 육즙 가득한 치즈버거의 익스트림 클로즈업 매크로 샷."
@@ -227,7 +233,7 @@ Enter cinematic prompt descriptions to produce commercial-ready videos:
 촬영 기법: "전문적인 음식 사진 촬영, 하이 키 조명(high key lighting), 4k 해상도, 슬로우 모션."
 ```
 
-<p align="center"><img src="images/image42.png" width="600" alt="Cheeseburger Video"></p>
+<p align="center"><img src="images/image42.png" width="600" alt="치즈버거 비디오"></p>
 
 ```text
 프롬프트: "1990년대 VHS 미학. 스케이트보더가 교외의 거리에서 카메라를 스쳐 지나가며 빠르게 올리(ollie) 기술을 선보임."
@@ -237,32 +243,32 @@ Enter cinematic prompt descriptions to produce commercial-ready videos:
 
 ---
 
-## 5. 🔬 Deep Research Mode
+## 5. 🔬 심층 리서치 (Deep Research)
 
-**Deep Research** automatically executes multi-step web searches, reads dozens of sources, cross-references citations, and compiles comprehensive research reports.
+**Deep Research** 기능은 수십~수백 개의 웹 출처를 자동 탐색 및 교차 검증하여 인용 출처가 포함된 전문 보고서를 작성해 줍니다.
 
-> 💬 **Prompt:**
+> 💬 **프롬프트:**
 > ```text
 > 현재 LG전자의 로봇 사업 경쟁력과 미래 전망을 종합적으로 분석해 줘. 먼저 글로벌 및 국내 상업용 로봇 시장에서의 LG전자 포지셔닝과 핵심 경쟁 우위를 진단해 줘. 이어서 최근 공개된 '스마트홈 AI 에이전트'를 포함한 B2C 영역으로의 확장이 가지는 의미를 평가하고, 이를 바탕으로 향후 LG전자 로봇 사업이 직면할 주요 기회와 위협 요인을 논리적으로 설명해 줘.
 > ```
 
 <p align="center">
-  <img src="images/image75.png" width="350" alt="Deep Research Interface">
+  <img src="images/image75.png" width="350" alt="Deep Research 실행 화면">
 </p>
 
-> 💡 **Export:** Click **Export to Docs** to save the generated report directly to Google Drive.
+> 💡 **Docs 내보내기:** 보고서 작성이 완료되면 **Google Docs로 내보내기**를 통해 드라이브 문서로 즉시 저장할 수 있습니다.
 
 ---
 
-## 6. 🎨 Canvas & Presentation Generation
+## 6. 🎨 캔버스 (Canvas) & 발표 슬라이드 생성
 
-Gemini Enterprise **Canvas** allows real-time interactive generation of documents, HTML widgets, and Google Slides.
+Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 문서 편집, HTML 구성, 구글 슬라이드 연동 작성이 가능합니다.
 
 <p align="center">
-  <img src="images/image6.png" width="450" alt="Canvas Interface">
+  <img src="images/image6.png" width="450" alt="Canvas 메뉴">
 </p>
 
-> 💬 **Cloud Architecture Slide Prompt:**
+> 💬 **클라우드 백엔드 아키텍처 슬라이드 프롬프트:**
 > ```text
 > 새로운 모바일 앱을 위한 백엔드 아키텍처를 GCP에서 처음부터 설계하려고 해. 트래픽 자동 확장(Auto-scaling)과 실시간 로그 수집/분석 파이프라인이 필요해. 서버리스(Serverless) 및 완전 관리형(Managed) 서비스 위주로 인프라를 설계하고 각 서비스 선택 이유를 설명해 줘.
 > 
@@ -270,194 +276,193 @@ Gemini Enterprise **Canvas** allows real-time interactive generation of document
 > ```
 
 <p align="center">
-  <img src="images/image4.png" width="600" alt="Generated Slide Preview 1">
+  <img src="images/image4.png" width="600" alt="슬라이드 결과 1">
 </p>
 <p align="center">
-  <img src="images/image52.png" width="600" alt="Generated Slide Preview 2">
+  <img src="images/image52.png" width="600" alt="슬라이드 결과 2">
 </p>
 
-> 📥 **Export to PPTX:** Download your generated slide decks as `.pptx` or open directly in Google Slides.
+> 📥 **PPTX 다운로드:** 생성된 슬라이드는 바로 `.pptx` 파일로 다운로드하거나 구글 슬라이드로 내보낼 수 있습니다.
 
 ---
 
-## 7. 📔 NotebookLM Studio
+## 7. 📔 NotebookLM 활용
 
-NotebookLM acts as a **personalized AI research assistant grounded exclusively in your uploaded source materials**.
-
-<p align="center">
-  <img src="images/image120.png" width="400" alt="NotebookLM Menu">
-</p>
-
-### 7.1 Creating Notebooks & Adding Grounded Sources
-1. Open NotebookLM and create a new notebook.
-2. Paste source text (e.g., *LG "안심" Home Guardian Ecosystem*, *LumiCare*, *Sentinel Companion* product proposals).
+NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, 이미지)만을 기반으로 환각(Hallucination) 없이 정확히 답변하는 전용 AI 리서치 어시스턴트**입니다.
 
 <p align="center">
-  <img src="images/image64.png" width="600" alt="Paste Source Text">
+  <img src="images/image120.png" width="400" alt="NotebookLM 메뉴">
 </p>
 
-### 7.2 Infographic & Sketch Note Generation
-Generate visual artifacts based strictly on the uploaded text sources:
+### 7.1 노트북 생성 및 출처 입력
+1. NotebookLM 메뉴를 열고 새로 만들기를 클릭합니다.
+2. 소스 추가에서 'LG 안심 홈 가디언', '루미케어', '센티넬 컴패니언' 아이디어 텍스트를 붙여넣습니다.
 
-> 💬 **Prompts:**
+<p align="center">
+  <img src="images/image64.png" width="600" alt="소스 텍스트 입력">
+</p>
+
+### 7.2 인포그래픽 & 스케치 노트 생성
+업로드된 소스 내용만을 바탕으로 시각적 인포그래픽을 만듭니다:
+
+> 💬 **프롬프트 예시:**
 > - *"LG '루미케어' - 공감하는 세탁 도우미를 인포그래픽으로 생성해주세요."*
 > - *"LG '안심' 홈 가디언 에코시스템 아이디어를 손으로 그린 듯한 (Sketch Note) 스타일로 작성해주세요."*
 > - *"LG 센티넬 컴패니언 아이디어를 신문 인포그래픽 스타일로 작성해 주세요."*
 
 <p align="center">
-  <img src="images/image121.png" width="600" alt="Infographic Result">
+  <img src="images/image121.png" width="600" alt="인포그래픽 결과">
 </p>
 <p align="center">
-  <img src="images/image97.png" width="600" alt="Sketchnote Result">
+  <img src="images/image97.png" width="600" alt="스케치노트 결과">
 </p>
 
 ---
 
-### 7.3 Step-by-Step Guide Creation from Screenshots
-Upload walkthrough screenshots (e.g., `data_agent.zip` containing 10 image steps) to NotebookLM:
+### 7.3 스크린샷 모음으로 따라하기 가이드 작성
+캡처 이미지 모음(예: `data_agent.zip` 내 10개 캡처 파일)을 소스로 첨부합니다:
 
-> 💬 **Prompt:** *"BigQuery Data Agent를 생성하는 과정을 초보자도 쉽게 따라할 수 있도록 가이드 문서를 작성해줘."*
+> 💬 **프롬프트:** *"BigQuery Data Agent를 생성하는 과정을 초보자도 쉽게 따라할 수 있도록 가이드 문서를 작성해줘."*
 
-| Left Steps | Right Steps |
+| 좌측 단계 | 우측 단계 |
 | :---: | :---: |
 | <img src="images/image66.png" width="280"><br><img src="images/image101.png" width="280"> | <img src="images/image77.png" width="280"><br><img src="images/image91.png" width="280"> |
 
 ---
 
-## 8. 🛠️ Low-Code Agent Studio (Agent Designer)
+## 8. 🛠️ 로우코드 에이전트 스튜디오 (Agent Designer)
 
-Build, test, share, and schedule autonomous custom AI agents without writing code.
+코딩 없이 아이디어와 프롬프트만으로 나만의 AI 에이전트를 만들고, 조직 전체에 공유하며, 원하는 시간에 자동 실행되도록 스케줄을 설정합니다.
 
-### 8.1 Creating a Social Media Content Agent
-1. Navigate to the **Agent** menu and click **New Agent**.
-2. Enter the prompt description:
-   > 💬 *"뉴스 링크를 입력 받아서 Social Media 포스팅할 게시물 문구를 생성하는 에이전트를 만들어줘. 한 줄 요약문, Bullet point 5개, 추천 해시태그를 포함해줘."*
+### 8.1 소셜 미디어 콘텐츠 생성 에이전트 만들기
+1. **Agent** 메뉴로 이동하여 **새 에이전트**를 클릭합니다.
+2. 대화창에 에이전트 역할을 입력합니다:
+   > 💬 *"뉴스 링크를 입력 받아서 Social Media 포스팅할 게시물 문구를 생성하는 에이전트를 만들어줘. 간략한 한 줄 문장과 bullet point 5개, 추천 해시태그를 포함해줘."*
 
 <p align="center">
-  <img src="images/image28.png" width="400" alt="Create Agent Prompt">
+  <img src="images/image28.png" width="400" alt="에이전트 제작 입력">
 </p>
 
-3. View the generated workflow in **Flow View** and click **Create**:
+3. 생성된 에이전트 워크플로우를 **Flow 뷰**에서 확인하고 **Create**를 누릅니다:
 <p align="center">
-  <img src="images/image39.png" width="600" alt="Agent Flow Builder">
+  <img src="images/image39.png" width="600" alt="에이전트 플로우 뷰">
 </p>
 
-4. Test your agent with a news URL:
+4. 뉴스 기사 URL을 전달하여 테스트합니다:
 <p align="center">
-  <img src="images/image49.png" width="600" alt="Agent Execution Result">
-</p>
-
----
-
-### 8.2 Agent Scheduling
-Automate agent executions (e.g., daily morning reports):
-
-1. Open your agent in **Agent Designer**.
-2. Click the **Schedule** tab and select **Add Schedule**.
-3. Set execution time (test by setting it to 2 minutes from now).
-4. Save and verify that the schedule turns **Active**.
-
-<p align="center">
-  <img src="images/image102.png" width="600" alt="Add Agent Schedule">
-</p>
-<p align="center">
-  <img src="images/image51.png" width="600" alt="Active Schedule View">
+  <img src="images/image49.png" width="600" alt="에이전트 테스트 결과">
 </p>
 
 ---
 
-## 9. 🤝 Multi-Agent Orchestration
+### 8.2 에이전트 자동 실행 스케줄링 (Scheduling)
+매일 아침 자동 실행되는 리포트 에이전트를 구성합니다:
 
-Learn how to build a **hierarchical multi-agent system** where a Root Orchestrator delegates specialized tasks to Sub-Agents in sequence.
+1. 만든 에이전트를 클릭하여 **Agent Designer**로 들어갑니다.
+2. **Schedule** 탭에서 **Add Schedule**을 클릭합니다.
+3. 실행 시간(실습 시 현재 시간 기준 2분 뒤)을 설정합니다.
+4. **Update**를 눌러 스케줄 상태가 **Active**가 되었는지 확인합니다.
+
+<p align="center">
+  <img src="images/image102.png" width="600" alt="스케줄 등록">
+</p>
+<p align="center">
+  <img src="images/image51.png" width="600" alt="스케줄 활성화">
+</p>
+
+---
+
+## 9. 🤝 멀티 에이전트(Multi-Agent) 시스템 구축
+
+메인 오케스트레이터(Root Agent)가 3개의 전문 하위 에이전트(Sub-Agents)를 순차적으로 제어하고 결과를 종합하는 **채용 서류 검토 멀티 에이전트**를 제작합니다.
 
 ```mermaid
 graph TD
-    A[Root Agent: Recruitment Orchestrator] --> B[Sub-Agent 1: In-depth Evaluator]
-    A --> C[Sub-Agent 2: Background Fact Checker]
-    A --> D[Sub-Agent 3: Interview Question Designer]
+    A[Root Agent: GOOG전자 채용 총괄] --> B[Sub-Agent 1: 서류 심층 평가자]
+    A --> C[Sub-Agent 2: 백그라운드 팩트체커]
+    A --> D[Sub-Agent 3: 면접 질문 기획자]
     
-    B -- Evaluation Scores & Risks --> A
-    C -- Factcheck Report & URLs --> A
-    D -- Technical Follow-up Questions --> A
+    B -- 정량/정성 평가 점수 & 리스크 --> A
+    C -- 고유명사 검증 & Google Search URL --> A
+    D -- 기술적 꼬리 질문 3가지 --> A
     
-    A --> E[Final Unified Candidate Report]
+    A --> E[최종 단일 종합 검토 리포트]
 ```
 
-### 9.1 Root Agent: GOOG전자 채용 총괄 에이전트
+### 9.1 상위 메인 에이전트: GOOG전자 채용 총괄 에이전트
 - **Name:** GOOG전자 채용 총괄 에이전트
-- **Description:** Orchestrates candidate resume review by sequentially calling Sub-Agents.
+- **Description:** 채용 프로세스 전체를 총괄하며 하위 에이전트를 지정된 순서로 호출하여 결과를 취합합니다.
 - **Model:** Gemini 3.5 Flash
-- **Knowledge Base:** `2026년 GOOG전자 서류전형 평가 가이드라인.docx`
+- **Knowledge:** `2026년 GOOG전자 서류전형 평가 가이드라인.docx`
 
 <details>
-<summary>📜 Click to view Root Agent Instruction Prompt</summary>
+<summary>📜 (클릭) 메인 에이전트 프롬프트 Instruction 보기</summary>
 
 ```text
 ## Role
-당신은 GOOG전자의 채용 프로세스 전체를 오케스트레이션하는 메인 에이전트입니다. 하위 전문가 에이전트 3명을 순서대로 호출하고 결과를 취합하여 최종 종합 리포트를 작성하십시오.
+당신은 GOOG전자의 채용 프로세스 전체를 오케스트레이션하는 메인 에이전트입니다. 3명의 하위 전문가 에이전트를 정해진 순서대로 호출하고 결과를 누락 없이 매끄럽게 취합하여 하나의 최종 종합 리포트를 작성하십시오.
 
 ## Execution Protocol
-1. Silent Execution: 중간 과정 메시지를 노출하지 말고 최종 리포트만 출력하십시오.
-2. Step 1: '서류 심층 평가자' 에이전트를 호출하여 심층 평가 점수를 수집하십시오.
+1. Silent Execution: 사용자에게 중간 과정을 노출하지 말고 오직 최종 결과만 출력해야 합니다.
+2. Step 1: '서류 심층 평가자' 에이전트를 호출하여 평가 결과를 수집하십시오.
 3. Step 2: '백그라운드 팩트체커' 에이전트를 호출하여 팩트체크 리포트를 수집하십시오.
-4. Step 3: '면접 질문 기획자' 에이전트를 호출하여 심층 면접 질문을 기획하십시오.
+4. Step 3: '면접 질문 기획자' 에이전트를 호출하여 앞선 평가와 팩트체크 맥락을 전달하고 질문을 수집하십시오.
 
 ## Output Expectations
 [GOOG전자 채용 서류 종합 검토 리포트]
 1. 서류 심층 평가 결과 (종합 점수, Plus/Minus Point, PASS/FAIL 추천)
-2. 백그라운드 팩트체크 검증 리포트 (고유명사 검증 & Google Search 출처 URL)
+2. 백그라운드 팩트체크 검증 리포트 (고유명사 검증 리포트 & Google Search 출처 URL)
 3. 심층 면접 꼬리 질문 3가지
 ```
 </details>
 
 <p align="center">
-  <img src="images/image57.png" width="600" alt="Root Agent Settings">
+  <img src="images/image57.png" width="600" alt="메인 에이전트 설정">
 </p>
 
 ---
 
-### 9.2 Sub-Agents Configuration
+### 9.2 하위 에이전트(Sub-Agents) 구성
 
 #### 1️⃣ Sub-Agent 1: 서류 심층 평가자
-- **Role:** Analyzes resume against HR scoring guidelines (0-100 points).
-- **Hand-off:** Returns evaluation directly to Parent Agent without talking to user.
+- **Role:** 가이드라인 지식을 바탕으로 직무 적합성, 문제 해결 경험, 조직 적합도를 평가하여 100점 만점 점수 산출.
 
 #### 2️⃣ Sub-Agent 2: 백그라운드 팩트체커
-- **Role:** Extracts key nouns, projects, and companies; verifies truthfulness via Google Search Connector.
-- **Tools:** Google Search Enabled.
+- **Role:** 지원서 내 고유명사(기업명, 프로젝트명 등)를 추출하고 Google Search 연동 툴을 통해 실제 존재 여부 및 출처 URL 검증.
+- **Tools:** Google Search 연동.
 
 #### 3️⃣ Sub-Agent 3: 면접 질문 기획자
-- **Role:** Takes evaluation and factcheck context to design 3 sharp follow-up interview questions.
+- **Role:** 앞선 심층 평가 결과와 팩트체크 리포트 맥락을 수신하여 약점 및 특이사항을 파고드는 심층 꼬리 질문 3가지 생성.
 
 <p align="center">
-  <img src="images/image82.png" width="600" alt="Sub Agent Factchecker">
+  <img src="images/image82.png" width="600" alt="팩트체커 설정">
 </p>
 <p align="center">
-  <img src="images/image78.png" width="600" alt="Sub Agent Interview Planner">
+  <img src="images/image78.png" width="600" alt="면접 질문 기획자 설정">
 </p>
 
-### 9.3 Execution & Candidate Report Result
-Upload candidate resume (`GOOG전자 입사지원서_이OO.pdf`) to trigger the Multi-Agent pipeline:
+### 9.3 멀티 에이전트 파이프라인 실행
+지원자 이력서(`GOOG전자 입사지원서_이OO.pdf`)를 업로드하여 멀티 에이전트 실행 결과를 확인합니다:
 
 <p align="center">
-  <img src="images/image112.png" width="550" alt="Upload Resume">
+  <img src="images/image112.png" width="550" alt="이력서 업로드">
 </p>
 <p align="center">
-  <img src="images/image62.png" width="600" alt="Multi-agent Report Output">
+  <img src="images/image62.png" width="600" alt="최종 종합 리포트 출력">
 </p>
 
 ---
 
-## 10. 📹 Advanced Video Demos & References
+## 10. 📹 고급 연동 영상 및 참고 링크
 
-| Feature | Video Walkthrough Link |
+| 주제 | 유튜브 영상 바로가기 |
 | :--- | :--- |
-| **Canvas Interactive Slides** | 📺 [Watch Canvas Slide Creation](https://www.youtube.com/watch?v=Bk5Ha2cceEY) |
-| **Canvas Video Generation** | 📺 [Watch Canvas Video Walkthrough](https://www.youtube.com/watch?v=4-5qeh4IXVY) |
-| **Model Context Protocol (MCP)** | 📺 [Watch MCP Integration Demo](https://www.youtube.com/watch?v=wIbSGZsU5WI) |
-| **BigQuery CA Agent Creation** | 📺 [Watch Conversational Analytics Agent Build](https://www.youtube.com/watch?v=VFdJIaGQhhY) |
-| **BigQuery CA Agent Usage** | 📺 [Watch Gemini Enterprise CA Demo](https://www.youtube.com/watch?v=l3Qc1RIXCvw) |
+| **Canvas 발표 슬라이드 제작** | 📺 [Canvas 슬라이드 생성 데모 보기](https://www.youtube.com/watch?v=Bk5Ha2cceEY) |
+| **Canvas 동영상 비디오 제작** | 📺 [Canvas 비디오 생성 데모 보기](https://www.youtube.com/watch?v=4-5qeh4IXVY) |
+| **MCP (Model Context Protocol)** | 📺 [MCP 외부 연동 실습 데모 보기](https://www.youtube.com/watch?v=wIbSGZsU5WI) |
+| **BigQuery CA 에이전트 구축** | 📺 [Conversational Analytics Agent 제작 보기](https://www.youtube.com/watch?v=VFdJIaGQhhY) |
+| **Gemini Enterprise CA 연동** | 📺 [Gemini Enterprise CA 연동 데모 보기](https://www.youtube.com/watch?v=l3Qc1RIXCvw) |
 
 ---
 
-<p align="center"><b>🎉 Congratulations on completing the Gemini Enterprise Hands-on Workshop! 🎉</b></p>
+<p align="center"><b>🎉 Gemini Enterprise 핸즈온 워크숍을 완료하신 것을 축하드립니다! 🎉</b></p>
