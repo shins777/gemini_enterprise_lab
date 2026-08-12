@@ -53,7 +53,7 @@
 > ```
 
 <p align="center">
-  <img src="images/image104.png" width="650" alt="기본 프롬프트 실행 화면">
+  <img src="images/image104.png" width="1300" alt="기본 프롬프트 실행 화면">
 </p>
 
 > 💡 **팁:** 답변 하단의 Source(출처)를 확인하고 추천되는 Follow-up Questions(추적 질문)를 클릭해보세요.
@@ -87,17 +87,17 @@
 
 1. 우측 상단의 **공유(Share)** 버튼을 클릭합니다.
 <p align="center">
-  <img src="images/image45.png" width="600" alt="공유 버튼">
+  <img src="images/image45.png" width="1200" alt="공유 버튼">
 </p>
 
 2. 생성된 URL을 복사하여 동료에게 전달합니다.
 <p align="center">
-  <img src="images/image35.png" width="400" alt="공유 URL 복사">
+  <img src="images/image35.png" width="800" alt="공유 URL 복사">
 </p>
 
 3. 전달받은 URL로 접속하여 이전 대화 맥락이 잘 유지되는지 확인하고 추가 질문을 진행합니다.
 <p align="center">
-  <img src="images/image9.png" width="450" alt="공유된 세션 화면">
+  <img src="images/image9.png" width="900" alt="공유된 세션 화면">
 </p>
 
 ---
@@ -110,7 +110,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 `Excel_example_survey.xlsx` 파일을 대화창에 첨부합니다.
 
 <p align="center">
-  <img src="images/image95.png" width="600" alt="설문 엑셀 업로드">
+  <img src="images/image95.png" width="1200" alt="설문 엑셀 업로드">
 </p>
 
 > 💬 **추천 프롬프트:**
@@ -125,10 +125,10 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > ```
 
 <p align="center">
-  <img src="images/image85.png" width="600" alt="설문 분석 결과">
+  <img src="images/image85.png" width="1200" alt="설문 분석 결과">
 </p>
 <p align="center">
-  <img src="images/image50.png" width="600" alt="이벤트 보고서 생성">
+  <img src="images/image50.png" width="1200" alt="이벤트 보고서 생성">
 </p>
 
 ---
@@ -148,10 +148,10 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > ```
 
 <p align="center">
-  <img src="images/image33.png" width="600" alt="매출 분석 결과">
+  <img src="images/image33.png" width="1200" alt="매출 분석 결과">
 </p>
 <p align="center">
-  <img src="images/image20.png" width="600" alt="식사 vs 포장 매출 분석">
+  <img src="images/image20.png" width="1200" alt="식사 vs 포장 매출 분석">
 </p>
 
 ---
@@ -166,7 +166,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > ```
 
 <p align="center">
-  <img src="images/image30.png" width="600" alt="PPT 요약 표">
+  <img src="images/image30.png" width="1200" alt="PPT 요약 표">
 </p>
 
 ---
@@ -192,16 +192,16 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > ```
 
 <p align="center">
-  <img src="images/image14.png" width="600" alt="생성된 포스터 1">
+  <img src="images/image14.png" width="1200" alt="생성된 포스터 1">
 </p>
 <p align="center">
-  <img src="images/image56.png" width="600" alt="생성된 포스터 2">
+  <img src="images/image56.png" width="1200" alt="생성된 포스터 2">
 </p>
 
 ### 4.2 기존 이미지 편집 및 스타일 변환
 1. **`lg wash tower.jpg`** 첨부 후 이미지 도구 선택:
    > 💬 *"좌측 상단의 로고를 제외한 모든 Text를 한국어로 번역해줘."*
-   <p align="center"><img src="images/image61.png" width="600" alt="이미지 텍스트 번역"></p>
+   <p align="center"><img src="images/image61.png" width="1200" alt="이미지 텍스트 번역"></p>
 
 2. **`Handwrite_arch.png`** 첨부:
    > 💬 *"첨부한 아키텍처를 Google Cloud Architecture 스타일로 다시 그려줘."*
@@ -221,7 +221,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > ```
 
 <p align="center">
-  <img src="images/image74.png" width="600" alt="비디오 생성 결과">
+  <img src="images/image74.png" width="1200" alt="비디오 생성 결과">
 </p>
 
 <details>
@@ -233,7 +233,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 촬영 기법: "전문적인 음식 사진 촬영, 하이 키 조명(high key lighting), 4k 해상도, 슬로우 모션."
 ```
 
-<p align="center"><img src="images/image42.png" width="600" alt="치즈버거 비디오"></p>
+<p align="center"><img src="images/image42.png" width="1200" alt="치즈버거 비디오"></p>
 
 ```text
 프롬프트: "1990년대 VHS 미학. 스케이트보더가 교외의 거리에서 카메라를 스쳐 지나가며 빠르게 올리(ollie) 기술을 선보임."
@@ -253,7 +253,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > ```
 
 <p align="center">
-  <img src="images/image75.png" width="350" alt="Deep Research 실행 화면">
+  <img src="images/image75.png" width="700" alt="Deep Research 실행 화면">
 </p>
 
 > 💡 **Docs 내보내기:** 보고서 작성이 완료되면 **Google Docs로 내보내기**를 통해 드라이브 문서로 즉시 저장할 수 있습니다.
@@ -265,7 +265,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 문서 편집, HTML 구성, 구글 슬라이드 연동 작성이 가능합니다.
 
 <p align="center">
-  <img src="images/image6.png" width="450" alt="Canvas 메뉴">
+  <img src="images/image6.png" width="900" alt="Canvas 메뉴">
 </p>
 
 > 💬 **클라우드 백엔드 아키텍처 슬라이드 프롬프트:**
@@ -276,10 +276,10 @@ Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 �
 > ```
 
 <p align="center">
-  <img src="images/image4.png" width="600" alt="슬라이드 결과 1">
+  <img src="images/image4.png" width="1200" alt="슬라이드 결과 1">
 </p>
 <p align="center">
-  <img src="images/image52.png" width="600" alt="슬라이드 결과 2">
+  <img src="images/image52.png" width="1200" alt="슬라이드 결과 2">
 </p>
 
 > 📥 **PPTX 다운로드:** 생성된 슬라이드는 바로 `.pptx` 파일로 다운로드하거나 구글 슬라이드로 내보낼 수 있습니다.
@@ -291,7 +291,7 @@ Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 �
 NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, 이미지)만을 기반으로 환각(Hallucination) 없이 정확히 답변하는 전용 AI 리서치 어시스턴트**입니다.
 
 <p align="center">
-  <img src="images/image120.png" width="400" alt="NotebookLM 메뉴">
+  <img src="images/image120.png" width="800" alt="NotebookLM 메뉴">
 </p>
 
 ### 7.1 노트북 생성 및 출처 입력
@@ -299,7 +299,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 2. 소스 추가에서 'LG 안심 홈 가디언', '루미케어', '센티넬 컴패니언' 아이디어 텍스트를 붙여넣습니다.
 
 <p align="center">
-  <img src="images/image64.png" width="600" alt="소스 텍스트 입력">
+  <img src="images/image64.png" width="1200" alt="소스 텍스트 입력">
 </p>
 
 ### 7.2 인포그래픽 & 스케치 노트 생성
@@ -311,10 +311,10 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 > - *"LG 센티넬 컴패니언 아이디어를 신문 인포그래픽 스타일로 작성해 주세요."*
 
 <p align="center">
-  <img src="images/image121.png" width="600" alt="인포그래픽 결과">
+  <img src="images/image121.png" width="1200" alt="인포그래픽 결과">
 </p>
 <p align="center">
-  <img src="images/image97.png" width="600" alt="스케치노트 결과">
+  <img src="images/image97.png" width="1200" alt="스케치노트 결과">
 </p>
 
 ---
@@ -326,7 +326,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 
 | 좌측 단계 | 우측 단계 |
 | :---: | :---: |
-| <img src="images/image66.png" width="280"><br><img src="images/image101.png" width="280"> | <img src="images/image77.png" width="280"><br><img src="images/image91.png" width="280"> |
+| <img src="images/image66.png" width="560"><br><img src="images/image101.png" width="560"> | <img src="images/image77.png" width="560"><br><img src="images/image91.png" width="560"> |
 
 ---
 
@@ -340,17 +340,17 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
    > 💬 *"뉴스 링크를 입력 받아서 Social Media 포스팅할 게시물 문구를 생성하는 에이전트를 만들어줘. 간략한 한 줄 문장과 bullet point 5개, 추천 해시태그를 포함해줘."*
 
 <p align="center">
-  <img src="images/image28.png" width="400" alt="에이전트 제작 입력">
+  <img src="images/image28.png" width="800" alt="에이전트 제작 입력">
 </p>
 
 3. 생성된 에이전트 워크플로우를 **Flow 뷰**에서 확인하고 **Create**를 누릅니다:
 <p align="center">
-  <img src="images/image39.png" width="600" alt="에이전트 플로우 뷰">
+  <img src="images/image39.png" width="1200" alt="에이전트 플로우 뷰">
 </p>
 
 4. 뉴스 기사 URL을 전달하여 테스트합니다:
 <p align="center">
-  <img src="images/image49.png" width="600" alt="에이전트 테스트 결과">
+  <img src="images/image49.png" width="1200" alt="에이전트 테스트 결과">
 </p>
 
 ---
@@ -364,10 +364,10 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 4. **Update**를 눌러 스케줄 상태가 **Active**가 되었는지 확인합니다.
 
 <p align="center">
-  <img src="images/image102.png" width="600" alt="스케줄 등록">
+  <img src="images/image102.png" width="1200" alt="스케줄 등록">
 </p>
 <p align="center">
-  <img src="images/image51.png" width="600" alt="스케줄 활성화">
+  <img src="images/image51.png" width="1200" alt="스케줄 활성화">
 </p>
 
 ---
@@ -417,7 +417,7 @@ graph TD
 </details>
 
 <p align="center">
-  <img src="images/image57.png" width="600" alt="메인 에이전트 설정">
+  <img src="images/image57.png" width="1200" alt="메인 에이전트 설정">
 </p>
 
 ---
@@ -435,20 +435,20 @@ graph TD
 - **Role:** 앞선 심층 평가 결과와 팩트체크 리포트 맥락을 수신하여 약점 및 특이사항을 파고드는 심층 꼬리 질문 3가지 생성.
 
 <p align="center">
-  <img src="images/image82.png" width="600" alt="팩트체커 설정">
+  <img src="images/image82.png" width="1200" alt="팩트체커 설정">
 </p>
 <p align="center">
-  <img src="images/image78.png" width="600" alt="면접 질문 기획자 설정">
+  <img src="images/image78.png" width="1200" alt="면접 질문 기획자 설정">
 </p>
 
 ### 9.3 멀티 에이전트 파이프라인 실행
 지원자 이력서(`GOOG전자 입사지원서_이OO.pdf`)를 업로드하여 멀티 에이전트 실행 결과를 확인합니다:
 
 <p align="center">
-  <img src="images/image112.png" width="550" alt="이력서 업로드">
+  <img src="images/image112.png" width="1100" alt="이력서 업로드">
 </p>
 <p align="center">
-  <img src="images/image62.png" width="600" alt="최종 종합 리포트 출력">
+  <img src="images/image62.png" width="1200" alt="최종 종합 리포트 출력">
 </p>
 
 ---
