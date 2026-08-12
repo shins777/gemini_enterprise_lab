@@ -54,16 +54,15 @@
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
-  <img src="images/1-1.png" width="867" alt="기본 프롬프트 실행 화면">
+<p align="left">
+  <img src="images/1-1.png" width="700" alt="기본 프롬프트 실행 화면">
 </p>
 
 > 💡 **팁:** 답변 하단의 Source(출처)를 확인하고 추천되는 Follow-up Questions(추적 질문)를 클릭해보세요.
 
 ### 1.2 추가 실습 프롬프트 모음
 
-<details>
-<summary>👉 (클릭하여 펼치기) 멀티모달 AI, RAG 아키텍처, AI 에이전트, 엔터프라이즈 AI ROI 프롬프트 보기</summary>
+<summary>👉아래 프롬프트도 다양하게 테스트 해보세요.  멀티모달 AI, RAG 아키텍처, AI 에이전트, 엔터프라이즈 AI ROI </summary>
 
 ```text
 최근 3개월간 보도된 '멀티모달 AI(Multimodal AI)' 기술 트렌드와 이미지/음성/텍스트 통합 처리 사례를 웹 검색으로 요약해 줘. 이 기술을 활용하여 우리 회사 내부 업무 프로세스(문서 자동화, 고객 응대, 데이터 분석)에 도입할 수 있는 혁신적인 AI 사용 시나리오 3가지를 제안해 줘.
@@ -80,7 +79,7 @@
 ```text
 글로벌 엔터프라이즈 기업들의 '생성형 AI 도입 ROI(투자 대비 효과)' 및 AI 에이전트 전환 성공 사례를 검색해 줘. 이 정보를 바탕으로 C-Level 경영진을 설득하기 위한 '전사 Enterprise AI 플랫폼 도입 제안서'의 세일즈 피치덱(Pitch Deck) 슬라이드별 핵심 목차 구성을 짜줘.
 ```
-</details>
+
 
 ---
 
@@ -91,15 +90,18 @@
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
-  <img src="images/image45.png" width="800" alt="공유 버튼">
+<p align="left">
+  <img src="images/1-3_1.png" width="800" >
+  <img src="images/1-3_2.png" width="400" >
+  <img src="images/1-3_3.png" width="400" >
+
 </p>
 
 2. 생성된 URL을 복사하여 동료에게 전달합니다.
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image35.png" width="533" alt="공유 URL 복사">
 </p>
 
@@ -107,7 +109,7 @@
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image9.png" width="600" alt="공유된 세션 화면">
 </p>
 
@@ -122,7 +124,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image95.png" width="800" alt="설문 엑셀 업로드">
 </p>
 
@@ -139,10 +141,10 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image85.png" width="800" alt="설문 분석 결과">
 </p>
-<p align="center">
+<p align="left">
   <img src="images/image50.png" width="800" alt="이벤트 보고서 생성">
 </p>
 
@@ -164,10 +166,10 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image33.png" width="800" alt="매출 분석 결과">
 </p>
-<p align="center">
+<p align="left">
   <img src="images/image20.png" width="800" alt="식사 vs 포장 매출 분석">
 </p>
 
@@ -184,7 +186,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image30.png" width="800" alt="PPT 요약 표">
 </p>
 
@@ -212,10 +214,10 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image14.png" width="800" alt="생성된 포스터 1">
 </p>
-<p align="center">
+<p align="left">
   <img src="images/image56.png" width="800" alt="생성된 포스터 2">
 </p>
 
@@ -225,7 +227,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-   <p align="center"><img src="images/image61.png" width="800" alt="이미지 텍스트 번역"></p>
+   <p align="left"><img src="images/image61.png" width="800" alt="이미지 텍스트 번역"></p>
 
 2. **`Handwrite_arch.png`** 첨부:
    > 💬 *"첨부한 아키텍처를 Google Cloud Architecture 스타일로 다시 그려줘."*
@@ -246,7 +248,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image74.png" width="800" alt="비디오 생성 결과">
 </p>
 
@@ -261,7 +263,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center"><img src="images/image42.png" width="800" alt="치즈버거 비디오"></p>
+<p align="left"><img src="images/image42.png" width="800" alt="치즈버거 비디오"></p>
 
 ```text
 프롬프트: "1990년대 VHS 미학. 스케이트보더가 교외의 거리에서 카메라를 스쳐 지나가며 빠르게 올리(ollie) 기술을 선보임."
@@ -282,7 +284,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image75.png" width="467" alt="Deep Research 실행 화면">
 </p>
 
@@ -296,7 +298,7 @@ Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image6.png" width="600" alt="Canvas 메뉴">
 </p>
 
@@ -309,10 +311,10 @@ Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image4.png" width="800" alt="슬라이드 결과 1">
 </p>
-<p align="center">
+<p align="left">
   <img src="images/image52.png" width="800" alt="슬라이드 결과 2">
 </p>
 
@@ -326,7 +328,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image120.png" width="533" alt="NotebookLM 메뉴">
 </p>
 
@@ -336,7 +338,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image64.png" width="800" alt="소스 텍스트 입력">
 </p>
 
@@ -350,10 +352,10 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image121.png" width="800" alt="인포그래픽 결과">
 </p>
-<p align="center">
+<p align="left">
   <img src="images/image97.png" width="800" alt="스케치노트 결과">
 </p>
 
@@ -381,7 +383,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image28.png" width="533" alt="에이전트 제작 입력">
 </p>
 
@@ -389,7 +391,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image39.png" width="800" alt="에이전트 플로우 뷰">
 </p>
 
@@ -397,7 +399,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image49.png" width="800" alt="에이전트 테스트 결과">
 </p>
 
@@ -413,10 +415,10 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image102.png" width="800" alt="스케줄 등록">
 </p>
-<p align="center">
+<p align="left">
   <img src="images/image51.png" width="800" alt="스케줄 활성화">
 </p>
 
@@ -468,7 +470,7 @@ graph TD
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image57.png" width="800" alt="메인 에이전트 설정">
 </p>
 
@@ -488,10 +490,10 @@ graph TD
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image82.png" width="800" alt="팩트체커 설정">
 </p>
-<p align="center">
+<p align="left">
   <img src="images/image78.png" width="800" alt="면접 질문 기획자 설정">
 </p>
 
@@ -500,10 +502,10 @@ graph TD
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="center">
+<p align="left">
   <img src="images/image112.png" width="733" alt="이력서 업로드">
 </p>
-<p align="center">
+<p align="left">
   <img src="images/image62.png" width="800" alt="최종 종합 리포트 출력">
 </p>
 
@@ -521,4 +523,4 @@ graph TD
 
 ---
 
-<p align="center"><b>🎉 Gemini Enterprise 핸즈온 워크숍을 완료하신 것을 축하드립니다! 🎉</b></p>
+<p align="left"><b>🎉 Gemini Enterprise 핸즈온 워크숍을 완료하신 것을 축하드립니다! 🎉</b></p>
