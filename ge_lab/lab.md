@@ -103,18 +103,18 @@
 
 <span style="color: #1a73e8; font-weight: bold;">👉 2. 생성된 URL을 복사하여 동료에게 전달합니다.</span>
 
-실행결과 이미지는 다음과 같습니다.
+동료의 브라우저에서 복사해서 붙여놓은 후 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image35.png" width="533" alt="공유 URL 복사">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/1-3_4.png" width="533" alt="공유 URL 복사">
 </p>
 
 <span style="color: #1a73e8; font-weight: bold;">👉 3. 전달받은 URL로 접속하여 이전 대화 맥락이 잘 유지되는지 확인하고 추가 질문을 진행합니다.</span>
 
-실행결과 이미지는 다음과 같습니다.
+Continue the converstaion 버튼을 누르고 실행한 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image9.png" width="600" alt="공유된 세션 화면">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/1-3_5.png" width="600" alt="공유된 세션 화면">
 </p>
 
 ---
@@ -124,32 +124,32 @@
 Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 업로드하는 것만으로 자동 데이터 해석, 패턴 도출, 통계 검정을 수행합니다.
 
 ### 2.1 설문조사(Survey) 데이터 분석
-<span style="color: #1a73e8; font-weight: bold;">👉 `Excel_example_survey.xlsx` 파일을 대화창에 첨부합니다.</span>
+<span style="color: #1a73e8; font-weight: bold;">👉 `kospi_industry_index.xlsx` 파일을 대화창에 첨부합니다.</span>
 
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image95.png" width="800" alt="설문 엑셀 업로드">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/2-1_1.png" width="800" alt="설문 엑셀 업로드">
 </p>
+
 
 > 💬 **추천 프롬프트:**
 > ```text
 > 이 문서로 어떤 분석을 할 수 있어?
 > ```
-> ```text
-> 가장 만족도가 높았던 세션은 무엇이고, 가장 만족도가 낮았던 세션은 무엇이며, 이유가 뭐였어?
-> ```
-> ```text
-> 향후 이벤트에 도움이 될 개선사항을 포함한 이벤트 결과 보고서를 작성해줘.
-> ```
-
-실행결과 이미지는 다음과 같습니다.
-
 <p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image85.png" width="800" alt="설문 분석 결과">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/2-1_2.png" width="800" alt="">
 </p>
 <p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image50.png" width="800" alt="이벤트 보고서 생성">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/2-1_3.png" width="800" alt="">
+</p>
+
+> 💬 **추천 프롬프트:**
+> ```text
+> AI 기술주에 관심 있습니다. 전반적인 IT, 통신쪽의 주가지수 흐름은 어떻게 해석해야 할까요 ?
+> ```
+<p align="left">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/2-1_4.png" width="800" alt="">
 </p>
 
 ---
@@ -157,7 +157,9 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 ### 2.2 매출(Sales) 데이터 분석
 <span style="color: #1a73e8; font-weight: bold;">👉 `coffee orders.xlsx` 파일을 첨부합니다.</span>
 
-> 💬 **매출 추이 및 통계 분석 프롬프트:**
+아래와 같이 다양한 통계 분석 요구사항을 요청합니다. 
+
+> 💬 **추천 매출 추이 및 통계 분석 프롬프트:**
 > ```text
 > (주문 완료일)을 기준으로 일별, 주별, 월별 매출(Orders Total Sales)의 변화를 분석하여 매출이 높은 시기와 낮은 시기를 파악해줘.
 > ```
@@ -168,15 +170,19 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 > 매장 내 식사와 포장 판매의 주문당 평균 매출 차이가 의미 있는지 통계적으로 분석해줘.
 > ```
 
-실행결과 이미지는 다음과 같습니다.
+마지막 프롬프트 행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image33.png" width="800" alt="매출 분석 결과">
-</p>
-<p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image20.png" width="800" alt="식사 vs 포장 매출 분석">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/2-2_1.png" width="800" alt="매출 분석 결과">
 </p>
 
+> 💬 **그래프 생성 추천 프롬프트:**
+> ```text
+> 상품별 파이차트 보여줘.
+> ```
+<p align="left">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/2-2_2.png" width="800" alt="매출 분석 결과">
+</p>
 ---
 
 ## 3. 📑 파워포인트(PPT) 문서 핵심 요약
