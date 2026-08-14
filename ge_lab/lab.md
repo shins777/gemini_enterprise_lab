@@ -55,7 +55,7 @@
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/1-1.png" width="700" alt="기본 프롬프트 실행 화면">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/1-1.png" width="700" alt="기본 프롬프트 실행 화면">
 </p>
 
 > 💡 **팁:** 답변 하단의 Source(출처)를 확인하고 추천되는 Follow-up Questions(추적 질문)를 클릭해보세요.
@@ -91,13 +91,13 @@
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/1-3_1.png" width="800" >
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/1-3_1.png" width="800" >
 </p>
 
 <span style="color: #1a73e8; font-weight: bold;">👉 아래와 같이 링크를 복사해서 동료에게 전달해서 접근이 가능한지 확인합니다.</span>
 <p align="left">
-  <img src="images/1-3_2.png" width="400" >
-  <img src="images/1-3_3.png" width="400" >
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/1-3_2.png" width="400" >
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/1-3_3.png" width="400" >
 
 </p>
 
@@ -106,7 +106,7 @@
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image35.png" width="533" alt="공유 URL 복사">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image35.png" width="533" alt="공유 URL 복사">
 </p>
 
 <span style="color: #1a73e8; font-weight: bold;">👉 3. 전달받은 URL로 접속하여 이전 대화 맥락이 잘 유지되는지 확인하고 추가 질문을 진행합니다.</span>
@@ -114,7 +114,7 @@
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image9.png" width="600" alt="공유된 세션 화면">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image9.png" width="600" alt="공유된 세션 화면">
 </p>
 
 ---
@@ -129,7 +129,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image95.png" width="800" alt="설문 엑셀 업로드">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image95.png" width="800" alt="설문 엑셀 업로드">
 </p>
 
 > 💬 **추천 프롬프트:**
@@ -146,10 +146,10 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image85.png" width="800" alt="설문 분석 결과">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image85.png" width="800" alt="설문 분석 결과">
 </p>
 <p align="left">
-  <img src="images/image50.png" width="800" alt="이벤트 보고서 생성">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image50.png" width="800" alt="이벤트 보고서 생성">
 </p>
 
 ---
@@ -171,10 +171,10 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image33.png" width="800" alt="매출 분석 결과">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image33.png" width="800" alt="매출 분석 결과">
 </p>
 <p align="left">
-  <img src="images/image20.png" width="800" alt="식사 vs 포장 매출 분석">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image20.png" width="800" alt="식사 vs 포장 매출 분석">
 </p>
 
 ---
@@ -191,7 +191,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image30.png" width="800" alt="PPT 요약 표">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image30.png" width="800" alt="PPT 요약 표">
 </p>
 
 ---
@@ -219,10 +219,10 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image14.png" width="800" alt="생성된 포스터 1">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image14.png" width="800" alt="생성된 포스터 1">
 </p>
 <p align="left">
-  <img src="images/image56.png" width="800" alt="생성된 포스터 2">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image56.png" width="800" alt="생성된 포스터 2">
 </p>
 
 ### 4.2 기존 이미지 편집 및 스타일 변환
@@ -231,7 +231,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-   <p align="left"><img src="images/image61.png" width="800" alt="이미지 텍스트 번역"></p>
+   <p align="left"><img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image61.png" width="800" alt="이미지 텍스트 번역"></p>
 
 2. **`Handwrite_arch.png`** 첨부:
    > 💬 *"첨부한 아키텍처를 Google Cloud Architecture 스타일로 다시 그려줘."*
@@ -253,7 +253,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image74.png" width="800" alt="비디오 생성 결과">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image74.png" width="800" alt="비디오 생성 결과">
 </p>
 
 <details>
@@ -267,7 +267,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 
 실행결과 이미지는 다음과 같습니다.
 
-<p align="left"><img src="images/image42.png" width="800" alt="치즈버거 비디오"></p>
+<p align="left"><img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image42.png" width="800" alt="치즈버거 비디오"></p>
 
 ```text
 프롬프트: "1990년대 VHS 미학. 스케이트보더가 교외의 거리에서 카메라를 스쳐 지나가며 빠르게 올리(ollie) 기술을 선보임."
@@ -289,7 +289,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image75.png" width="467" alt="Deep Research 실행 화면">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image75.png" width="467" alt="Deep Research 실행 화면">
 </p>
 
 > 💡 **Docs 내보내기:** 보고서 작성이 완료되면 **Google Docs로 내보내기**를 통해 드라이브 문서로 즉시 저장할 수 있습니다.
@@ -303,7 +303,7 @@ Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image6.png" width="600" alt="Canvas 메뉴">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image6.png" width="600" alt="Canvas 메뉴">
 </p>
 
 > 💬 **클라우드 백엔드 아키텍처 슬라이드 프롬프트:**
@@ -316,10 +316,10 @@ Gemini Enterprise **Canvas** 기능을 이용하면 실시간 인터랙티브 �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image4.png" width="800" alt="슬라이드 결과 1">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image4.png" width="800" alt="슬라이드 결과 1">
 </p>
 <p align="left">
-  <img src="images/image52.png" width="800" alt="슬라이드 결과 2">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image52.png" width="800" alt="슬라이드 결과 2">
 </p>
 
 > 📥 **PPTX 다운로드:** 생성된 슬라이드는 바로 `.pptx` 파일로 다운로드하거나 구글 슬라이드로 내보낼 수 있습니다.
@@ -333,7 +333,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image120.png" width="533" alt="NotebookLM 메뉴">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image120.png" width="533" alt="NotebookLM 메뉴">
 </p>
 
 ### 7.1 노트북 생성 및 출처 입력
@@ -343,7 +343,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image64.png" width="800" alt="소스 텍스트 입력">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image64.png" width="800" alt="소스 텍스트 입력">
 </p>
 
 ### 7.2 인포그래픽 & 스케치 노트 생성
@@ -357,10 +357,10 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image121.png" width="800" alt="인포그래픽 결과">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image121.png" width="800" alt="인포그래픽 결과">
 </p>
 <p align="left">
-  <img src="images/image97.png" width="800" alt="스케치노트 결과">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image97.png" width="800" alt="스케치노트 결과">
 </p>
 
 ---
@@ -372,7 +372,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 
 | 좌측 단계 | 우측 단계 |
 | :---: | :---: |
-| <img src="images/image66.png" width="373"><br><img src="images/image101.png" width="373"> | <img src="images/image77.png" width="373"><br><img src="images/image91.png" width="373"> |
+| <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image66.png" width="373"><br><img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image101.png" width="373"> | <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image77.png" width="373"><br><img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image91.png" width="373"> |
 
 ---
 
@@ -388,7 +388,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image28.png" width="533" alt="에이전트 제작 입력">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image28.png" width="533" alt="에이전트 제작 입력">
 </p>
 
 3. 생성된 에이전트 워크플로우를 **Flow 뷰**에서 확인하고 **Create**를 누릅니다:
@@ -396,7 +396,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image39.png" width="800" alt="에이전트 플로우 뷰">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image39.png" width="800" alt="에이전트 플로우 뷰">
 </p>
 
 4. 뉴스 기사 URL을 전달하여 테스트합니다:
@@ -404,7 +404,7 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image49.png" width="800" alt="에이전트 테스트 결과">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image49.png" width="800" alt="에이전트 테스트 결과">
 </p>
 
 ---
@@ -420,10 +420,10 @@ NotebookLM은 **사용자가 직접 업로드한 원본 자료(PDF, 텍스트, �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image102.png" width="800" alt="스케줄 등록">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image102.png" width="800" alt="스케줄 등록">
 </p>
 <p align="left">
-  <img src="images/image51.png" width="800" alt="스케줄 활성화">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image51.png" width="800" alt="스케줄 활성화">
 </p>
 
 ---
@@ -475,7 +475,7 @@ graph TD
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image57.png" width="800" alt="메인 에이전트 설정">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image57.png" width="800" alt="메인 에이전트 설정">
 </p>
 
 ---
@@ -495,10 +495,10 @@ graph TD
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image82.png" width="800" alt="팩트체커 설정">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image82.png" width="800" alt="팩트체커 설정">
 </p>
 <p align="left">
-  <img src="images/image78.png" width="800" alt="면접 질문 기획자 설정">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image78.png" width="800" alt="면접 질문 기획자 설정">
 </p>
 
 ### 9.3 멀티 에이전트 파이프라인 실행
@@ -507,10 +507,10 @@ graph TD
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img src="images/image112.png" width="733" alt="이력서 업로드">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image112.png" width="733" alt="이력서 업로드">
 </p>
 <p align="left">
-  <img src="images/image62.png" width="800" alt="최종 종합 리포트 출력">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image62.png" width="800" alt="최종 종합 리포트 출력">
 </p>
 
 ---
