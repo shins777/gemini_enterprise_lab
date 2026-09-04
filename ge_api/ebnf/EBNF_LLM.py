@@ -216,39 +216,89 @@ def extract_ebnf_with_llm(
     }
 
 
-if __name__ == "__main__":
-    query = (
-        sys.argv[1]
-        if len(sys.argv) > 1
-        else "2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘"
-    )
+def print_result(result: Dict[str, Any], query_idx: Optional[int] = None) -> None:
+    """Print formatted EBNF extraction results and performance metrics."""
+    prefix = f"[{query_idx}] " if query_idx is not None else ""
+    print(f"\n{prefix}🔍 질의 (Query): {result['raw_query']}")
 
+    print("📋 Extracted Filter Information (주어진 조건 정보):")
+    has_info = False
+    for key, val in result.get("extracted_info", {}).items():
+        if val:
+            has_info = True
+            print(f"  • {key:10}: {val}")
+    if not has_info:
+        print("  • (추출된 조건 메타데이터 없음)")
+
+    print(f"\n🎯 Clean Query (검색어): {result.get('clean_query')}")
+    print(f"👉 EBNF Filter (조합된 EBNF 필터):\n{result.get('ebnf_filter') if result.get('ebnf_filter') else '(None)'}")
+
+    status_badge = "✅ PASS (< 1.0s)" if result["sub_second"] else "⚠️ OVER 1.0s"
+    print("─" * 68)
+    print(f"⏱️  Performance Telemetry:")
+    print(f"  • LLM Inference Latency : {result['llm_inference_ms']} ms")
+    print(f"  • Total Request Latency  : {result['total_latency_ms']} ms")
+    print(f"  • Target (< 1.0s SLA)   : {status_badge}")
+    print("─" * 68)
+
+
+def interactive_session(
+    initial_query: Optional[str] = None,
+    project_id: str = DEFAULT_PROJECT,
+) -> None:
+    """Run continuous query session after one-time client connection & warmup."""
     print("\n" + "=" * 68)
-    print("🚀 Gemini 3.5 Flash Lite - Optimized Sub-Second EBNF Filter Extractor")
+    print("🚀 Gemini 3.5 Flash Lite - Continuous Interactive EBNF Filter Extractor")
     print(f"Model: {DEFAULT_MODEL} | Location: {DEFAULT_LOCATION}")
     print("=" * 68)
 
     # 1. Warm-up connection (DNS, TCP, TLS handshake)
-    print("⚡ Pre-warming connection...")
-    warmup_ms = warmup()
-    print(f"   Warm-up completed in {warmup_ms} ms (Connection established & ready)\n")
+    print("⚡ Pre-warming connection (DNS, TCP, TLS handshake)...")
+    warmup_ms = warmup(project_id=project_id)
+    print(f"   Warm-up completed in {warmup_ms} ms (Connection established & persistent)\n")
+    print("💡 Enter queries continuously. Type 'q', 'quit', or 'exit' to stop.")
+    print("─" * 68)
 
-    # 2. Extract EBNF filter with LLM
-    print(f"🔍 Input Query: {query}")
-    result = extract_ebnf_with_llm(query)
+    latencies = []
+    query_count = 0
 
-    print("\n📋 Extracted Filter Information (주어진 조건 정보):")
-    for key, val in result.get("extracted_info", {}).items():
-        if val:
-            print(f"  • {key:10}: {val}")
+    # If an initial query was passed via command line, process it first
+    if initial_query:
+        query_count += 1
+        res = extract_ebnf_with_llm(initial_query, project_id=project_id)
+        latencies.append(res["llm_inference_ms"])
+        print_result(res, query_idx=query_count)
 
-    print(f"\n🎯 Clean Query (검색어): {result.get('clean_query')}")
-    print(f"\n👉 EBNF Filter (조합된 EBNF 필터):\n{result.get('ebnf_filter')}")
+    while True:
+        try:
+            user_input = input("\n💬 질문 입력 (종료: q/exit) > ").strip()
+        except (KeyboardInterrupt, EOFError):
+            print("\n\n👋 세션을 종료합니다.")
+            break
 
-    status_badge = "✅ PASS (< 1.0s)" if result["sub_second"] else "⚠️ OVER 1.0s"
-    print("\n" + "─" * 68)
-    print("⏱️  Performance Telemetry:")
-    print(f"  • LLM Inference Latency : {result['llm_inference_ms']} ms")
-    print(f"  • Total Request Latency  : {result['total_latency_ms']} ms")
-    print(f"  • Target (< 1.0s SLA)   : {status_badge}")
-    print("─" * 68 + "\n")
+        if not user_input:
+            continue
+
+        if user_input.lower() in ("q", "quit", "exit"):
+            print("\n👋 세션을 종료합니다.")
+            break
+
+        query_count += 1
+        res = extract_ebnf_with_llm(user_input, project_id=project_id)
+        latencies.append(res["llm_inference_ms"])
+        print_result(res, query_idx=query_count)
+
+    if latencies:
+        avg_lat = sum(latencies) / len(latencies)
+        pass_count = sum(1 for l in latencies if l < 1000)
+        print(f"\n📊 세션 요약 통계 (Session Summary):")
+        print(f"  • 총 처리 쿼리 수 : {len(latencies)} 건")
+        print(f"  • 평균 응답 시간  : {avg_lat:.1f} ms")
+        print(f"  • 최소 응답 시간  : {min(latencies):.1f} ms")
+        print(f"  • 최대 응답 시간  : {max(latencies):.1f} ms")
+        print(f"  • 1초 이내 달성률 : {pass_count / len(latencies) * 100:.1f}% ({pass_count}/{len(latencies)})\n")
+
+
+if __name__ == "__main__":
+    init_query = sys.argv[1] if len(sys.argv) > 1 else None
+    interactive_session(initial_query=init_query)

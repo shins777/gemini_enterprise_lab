@@ -135,13 +135,13 @@ python3 ge_api/ebnf/EBNF.py
 python3 ge_api/ebnf/EBNF.py "세계 증시 보고서를 신항식이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
 ```
 
-#### Gemini 3.5 Flash Lite 최적화 추출기 실행:
+#### Gemini 3.5 Flash Lite 지속 대화형(Continuous Interactive) 추출기 실행:
 ```bash
-# 기본 쿼리 실행 (사전 웜업 후 1초 이내 처리)
+# 초기 클라이언트 연결 및 Warm-up을 1회 완료한 후, 지속적으로 질문을 입력받아 레이턴시를 측정
 python3 ge_api/ebnf/EBNF_LLM.py
 
-# 복잡한 질의 실행
-python3 ge_api/ebnf/EBNF_LLM.py "소속은 인사팀이고 이영희가 쓴 2024년 채용 계획서 PPT 파일"
+# 특정 질문을 먼저 실행한 후 대화형 루프로 진입할 수도 있습니다:
+python3 ge_api/ebnf/EBNF_LLM.py "2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘"
 ```
 
 ---
