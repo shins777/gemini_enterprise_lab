@@ -15,6 +15,14 @@ This directory contains production-grade client libraries, utilities, and CLI to
 * **[`discovery_engine`](discovery_engine/)**: Discovery Engine API caller targeting `AssistantService.StreamAssist` with customizable `generationSpec.modelId` (e.g. `gemini-3.5-flash-lite`, `gemini-3.5-flash`).
   * Explicit `generationSpec.modelId` configuration
   * Grounded retrieval and real-time streaming
+* **[`EBNF.py`](EBNF.py)**: Standalone, zero-LLM search filter condition extractor and EBNF synthesizer.
+  * Completely removes Gemini/LLM dependencies (runs purely in local Python, < 1ms latency, $0 cost).
+  * Automatically extracts:
+    - **Year / Date (년도)**: `2024년 이후` -> `year >= 2024`
+    - **Document Type (문서 타입)**: `PDF 파일` -> `file_type = "pdf"`
+    - **Document Topic (문서 주제)**: `재무 보고서` -> `category = "재무 보고서"`
+    - **Author (작성자)**: `홍길동이 작성한` -> `author = "홍길동"`
+  * Returns synthesized EBNF filter string conforming to Google Cloud Discovery Engine & AIP-160 specifications.
 * **[`call_gemini_3_5_flash_lite.py`](call_gemini_3_5_flash_lite.py)**: Direct caller for the `gemini-3.5-flash-lite` foundation model on Vertex AI using the official `google-genai` SDK with **Extended Backus-Naur Form (EBNF) Filter Synthesis**.
   * **Automated EBNF Filter Composition**: Analyzes natural language queries and synthesizes valid Discovery Engine / AIP-160 EBNF filter strings (e.g. `year >= 2024 AND file_type = "pdf"`).
   * **Programmatic Filter Builder (`EBNFFilterBuilder`)**: Fluent interface for constructing EBNF filter syntax programmatically.
