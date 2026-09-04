@@ -10,6 +10,18 @@
 
 ```tree
 gemini_enterprise_lab/
+├── ge_api/                          # Gemini Enterprise & Vertex AI API 통합 모듈
+│   ├── stream_assist/               # Gemini Enterprise Stream Assist 클라이언트 & 데이터 검색
+│   │   ├── stream_assist.py         # 실시간 스트리밍, 엔터프라이즈 데이터 추출, 레이턴시 측정
+│   │   ├── .env.example             # 환경 변수 설정 템플릿
+│   │   └── README.md                # Stream Assist 한글/영문 가이드
+│   ├── discovery_engine/            # Discovery Engine API 연동 모듈
+│   │   ├── call_gemini_3_5_flash_lite.py # Discovery Engine streamAssist 커스텀 모델 호출
+│   │   ├── .env.example             # 환경 변수 설정 템플릿
+│   │   └── README.md                # Discovery Engine API 연동 가이드
+│   ├── call_gemini_3_5_flash_lite.py# Vertex AI Gemini 3.5 Flash Lite 직접 호출
+│   └── README.md                    # ge_api 모듈 전체 가이드
+│
 ├── sources/                         # 전체 소스 코드 저장 디렉토리
 │   ├── mcp/                         # MCP (Model Context Protocol) 서버 모듈
 │   │   ├── mcp_google_map/          # Google Maps MCP 서버 (FastMCP)
@@ -177,6 +189,33 @@ python3 query_agent.py
 | `소비자물가지수` | `cpi` | `Float` | 전국 소비자 물가 지수 (CPI) |
 | `M2 통화량 - 조원 기말` | `m2_money_supply` | `Integer` | 광의통화 M2 총량 (단위: 조원) |
 | `전국 미분양주택 - 호` | `unsold_housing` | `Integer` | 미분양 누적 주택 잔여 세대수 (단위: 호) |
+
+---
+
+## 🌐 4. Gemini Enterprise & Vertex AI API 통합 가이드 (`ge_api`)
+
+프로그래밍 방식으로 **Gemini Enterprise** 및 **Vertex AI** 서비스를 호출하고 데이터를 검색할 수 있는 파이썬 클라이언트 및 CLI 도구 모음입니다.
+
+### 📍 주요 모듈 요약
+
+| 모듈 경로 | 주요 기능 | 지원 모델 / 프로토콜 |
+| :--- | :--- | :--- |
+| **`ge_api/stream_assist/`** | Gemini Enterprise 실시간 스트리밍 답변 생성 및 사내 그라운딩 데이터(문서, URI, 인용구) 검색 | `gemini-3.5-flash` (Discovery Engine Assistant API) |
+| **`ge_api/discovery_engine/`** | Discovery Engine API 기반 커스텀 `generationSpec.modelId` 지정 호출 | `gemini-3.5-flash-lite`, `gemini-3.5-flash` |
+| **`ge_api/call_gemini_3_5_flash_lite.py`** | Vertex AI 기반 `gemini-3.5-flash-lite` 초저지연(Sub-2s) 직접 호출 | `gemini-3.5-flash-lite` (Google GenAI SDK) |
+
+### 🚀 실행 예시
+
+```bash
+# 1. Gemini Enterprise 실시간 스트리밍 & 레이턴시 측정
+python3 ge_api/stream_assist/stream_assist.py "국내외 생성형 AI 도입 전략을 2줄로 요약해줘."
+
+# 2. Vertex AI Gemini 3.5 Flash Lite 직접 호출
+python3 ge_api/call_gemini_3_5_flash_lite.py "경량화 LLM의 장점을 설명해줘."
+
+# 3. Discovery Engine API 모델 지정 호출
+python3 ge_api/discovery_engine/call_gemini_3_5_flash_lite.py "자기소개를 한 줄로 해줘." gemini-3.5-flash
+```
 
 ---
 

@@ -225,7 +225,7 @@ Gemini Enterprise는 코드 수식 작성 없이 대용량 엑셀 데이터를 �
 실행결과 이미지는 다음과 같습니다.
 
 <p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image14.png" width="800" alt="생성된 포스터 1">
+  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image14.png" width="800" alt="생성된 정보">
 </p>
 <p align="left">
   <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="images/image56.png" width="800" alt="생성된 포스터 2">
