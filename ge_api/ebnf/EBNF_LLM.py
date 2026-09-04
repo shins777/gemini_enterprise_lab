@@ -151,7 +151,10 @@ def extract_ebnf_with_llm(
     # Fast-Path Option: check ultra-fast local rule extraction (< 5ms)
     if fast_path:
         try:
-            from ge_api.EBNF import extract_ebnf_filter
+            try:
+                from ge_api.ebnf.EBNF import extract_ebnf_filter
+            except ImportError:
+                from EBNF import extract_ebnf_filter
             fast_res = extract_ebnf_filter(query)
             if fast_res.get("attributes"):
                 total_ms = (time.perf_counter() - start_time) * 1000
