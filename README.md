@@ -11,6 +11,11 @@
 ```tree
 gemini_enterprise_lab/
 ├── ge_api/                          # Gemini Enterprise & Vertex AI API 통합 모듈
+│   ├── ebnf/                        # EBNF 검색 필터 자동 추출 모듈 (Discovery Engine & AIP-160)
+│   │   ├── EBNF.py                  # Zero-LLM 순수 규칙 기반 초저지연 추출기 (< 5ms, $0)
+│   │   ├── EBNF_LLM.py              # Gemini 3.5 Flash Lite 지속 대화형 추출기 (1초 이내 처리)
+│   │   ├── __init__.py              # ebnf 패키지 진입점
+│   │   └── README.md                # EBNF 상세 아키텍처 및 한국어 기술 가이드
 │   ├── stream_assist/               # Gemini Enterprise Stream Assist 클라이언트 & 데이터 검색
 │   │   ├── stream_assist.py         # 실시간 스트리밍, 엔터프라이즈 데이터 추출, 레이턴시 측정
 │   │   ├── .env.example             # 환경 변수 설정 템플릿
@@ -19,7 +24,6 @@ gemini_enterprise_lab/
 │   │   ├── call_gemini_3_5_flash_lite.py # Discovery Engine streamAssist 커스텀 모델 호출
 │   │   ├── .env.example             # 환경 변수 설정 템플릿
 │   │   └── README.md                # Discovery Engine API 연동 가이드
-│   ├── call_gemini_3_5_flash_lite.py# Vertex AI Gemini 3.5 Flash Lite 직접 호출
 │   └── README.md                    # ge_api 모듈 전체 가이드
 │
 ├── sources/                         # 전체 소스 코드 저장 디렉토리
@@ -200,22 +204,29 @@ python3 query_agent.py
 
 | 모듈 경로 | 주요 기능 | 지원 모델 / 프로토콜 |
 | :--- | :--- | :--- |
+| **`ge_api/ebnf/`** | Google Cloud Discovery Engine & AIP-160 표준 EBNF 검색 필터 자동 추출 엔진 (규칙 기반 & LLM 기반) | 로컬 정규식 (< 5ms, $0) / `gemini-3.5-flash-lite` (< 1.0s) |
+| ↳ **`EBNF.py`** | Zero-LLM 순수 규칙 기반 초저지연 추출기 (복합 다문장 & 구어체 질의 지원, $0 비용) | 순수 로컬 파이썬 (정규 표현식 & 문법 파서) |
+| ↳ **`EBNF_LLM.py`** | Gemini 3.5 Flash Lite 1초 이내 처리 & 1회 연결 후 지속 질문 입력 대화형 세션 (실시간 레이턴시 측정) | `gemini-3.5-flash-lite` (Google GenAI SDK) |
 | **`ge_api/stream_assist/`** | Gemini Enterprise 실시간 스트리밍 답변 생성 및 사내 그라운딩 데이터(문서, URI, 인용구) 검색 | `gemini-3.5-flash` (Discovery Engine Assistant API) |
 | **`ge_api/discovery_engine/`** | Discovery Engine API 기반 커스텀 `generationSpec.modelId` 지정 호출 | `gemini-3.5-flash-lite`, `gemini-3.5-flash` |
-| **`ge_api/call_gemini_3_5_flash_lite.py`** | Vertex AI 기반 `gemini-3.5-flash-lite` 초저지연(Sub-2s) 직접 호출 | `gemini-3.5-flash-lite` (Google GenAI SDK) |
 
 ### 🚀 실행 예시
 
 ```bash
-# 1. Gemini Enterprise 실시간 스트리밍 & 레이턴시 측정
+# 1. EBNF 필터 추출: Zero-LLM 규칙 기반 초고속 추출 (< 5ms, $0)
+python3 ge_api/ebnf/EBNF.py "세계 증시 보고서를 신항식이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
+
+# 2. EBNF 필터 추출: Gemini 3.5 Flash Lite 지속 대화형 세션 (1회 연결/Warmup 후 질문 지속 입력 & 레이턴시 측정)
+python3 ge_api/ebnf/EBNF_LLM.py
+
+# 3. Gemini Enterprise 실시간 스트리밍 & 레이턴시 측정
 python3 ge_api/stream_assist/stream_assist.py "국내외 생성형 AI 도입 전략을 2줄로 요약해줘."
 
-# 2. Vertex AI Gemini 3.5 Flash Lite 직접 호출
-python3 ge_api/call_gemini_3_5_flash_lite.py "경량화 LLM의 장점을 설명해줘."
-
-# 3. Discovery Engine API 모델 지정 호출
+# 4. Discovery Engine API 모델 지정 호출
 python3 ge_api/discovery_engine/call_gemini_3_5_flash_lite.py "자기소개를 한 줄로 해줘." gemini-3.5-flash
 ```
+
+상세 아키텍처 및 1초 이내 최적화 기법은 **[`ge_api/ebnf/README.md`](ge_api/ebnf/README.md)** 문서를 참고하세요.
 
 ---
 

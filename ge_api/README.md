@@ -17,7 +17,7 @@ This directory contains production-grade client libraries, utilities, and CLI to
   * Grounded retrieval and real-time streaming
 * **[`ebnf`](ebnf/)**: EBNF Search Filter Parsing Engine for Discovery Engine & AIP-160 (Detailed documentation: [README.md](ebnf/README.md)).
   * **[`EBNF.py`](ebnf/EBNF.py)**: Standalone, zero-LLM search filter condition extractor and EBNF synthesizer (< 5ms latency, $0 cost). Handles complex multi-sentence queries and diverse conditions (year, category, author, department, status, file_type).
-  * **[`EBNF_LLM.py`](ebnf/EBNF_LLM.py)**: Ultra-fast Gemini 3.5 Flash Lite extractor optimized for sub-second (< 1.0s) response times via client singleton, compact prompting, zero-token local post-processing, and connection warm-up.
+  * **[`EBNF_LLM.py`](ebnf/EBNF_LLM.py)**: Ultra-fast Gemini 3.5 Flash Lite extractor optimized for sub-second (< 1.0s) response times. Features a continuous interactive session mode with one-time connection warm-up and real-time per-query latency tracking.
 
 ---
 
@@ -31,8 +31,8 @@ python3 ge_api/ebnf/EBNF.py "세계 증시 보고서를 신항식이 작성했�
 
 ### 2. Direct Vertex AI Call with AI EBNF Filter Synthesis (`ebnf/EBNF_LLM.py`)
 ```bash
-# Sub-second Gemini 3.5 Flash Lite extraction (< 1.0s SLA)
-python3 ge_api/ebnf/EBNF_LLM.py "2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘"
+# Continuous interactive query loop with one-time client warm-up & real-time latency (< 1.0s SLA)
+python3 ge_api/ebnf/EBNF_LLM.py
 ```
 
 ### 3. Programmatic EBNF Filter Composition in Python

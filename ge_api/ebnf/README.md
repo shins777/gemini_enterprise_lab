@@ -109,6 +109,10 @@ Google Cloud의 최신 경량 모델인 **Gemini 3.5 Flash Lite**를 활용하�
 #### ⑤ 하이브리드 패스트패스 옵션 (`fast_path=True`)
 - **개선점**: 기업용 검색 엔진에서 엄격한 SLA(< 50ms)가 요구될 경우, 구조적 패턴이 명확한 질의는 `EBNF.py`를 통해 **~5 ms** 만에 즉시 반환하고, 복잡한 비정형 질의만 Gemini 3.5 Flash Lite로 폴백.
 
+#### ⑥ 초기 연결 & Warmup 1회 처리 후 지속 대화형 질의 세션 (`interactive_session()`)
+- **개선점**: 매번 스크립트를 재실행하여 연결을 맺고 끊는 대신, 초기 1회 클라이언트 연결 및 Warm-up을 완료한 후 지속적으로 질문을 입력받는 인터랙티브 루프 제공.
+- **효과**: 활성화된 지속 연결(Persistent Keep-Alive Connection) 상에서 연속 질의를 처리하므로 콜드스타트가 원천 차단되며, 쿼리별 순수 LLM 추론 시간과 세션 종합 통계(평균, 최소, 최대, 1초 이내 달성률)를 실시간으로 확인 가능.
+
 ---
 
 ## 📊 4. 벤치마크 및 성능 비교
@@ -142,6 +146,48 @@ python3 ge_api/ebnf/EBNF_LLM.py
 
 # 특정 질문을 먼저 실행한 후 대화형 루프로 진입할 수도 있습니다:
 python3 ge_api/ebnf/EBNF_LLM.py "2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘"
+```
+
+**실행 화면 예시:**
+```text
+====================================================================
+🚀 Gemini 3.5 Flash Lite - Continuous Interactive EBNF Filter Extractor
+Model: gemini-3.5-flash-lite | Location: global
+====================================================================
+⚡ Pre-warming connection (DNS, TCP, TLS handshake)...
+   Warm-up completed in 1204.1 ms (Connection established & persistent)
+
+💡 Enter queries continuously. Type 'q', 'quit', or 'exit' to stop.
+────────────────────────────────────────────────────────────────────
+
+💬 질문 입력 (종료: q/exit) > 2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘
+
+[1] 🔍 질의 (Query): 2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘
+📋 Extracted Filter Information (주어진 조건 정보):
+  • 문서종류      : 재무 보고서
+  • 문서 타입     : pdf
+  • 작성 일자     : >= 2024
+
+🎯 Clean Query (검색어): 재무 보고서
+👉 EBNF Filter (조합된 EBNF 필터):
+category = "재무 보고서" AND file_type = "pdf" AND year >= 2024
+────────────────────────────────────────────────────────────────────
+⏱️  Performance Telemetry:
+  • LLM Inference Latency : 900.6 ms
+  • Total Request Latency  : 903.6 ms
+  • Target (< 1.0s SLA)   : ✅ PASS (< 1.0s)
+────────────────────────────────────────────────────────────────────
+
+💬 질문 입력 (종료: q/exit) > exit
+
+👋 세션을 종료합니다.
+
+📊 세션 요약 통계 (Session Summary):
+  • 총 처리 쿼리 수 : 3 건
+  • 평균 응답 시간  : 999.0 ms
+  • 최소 응답 시간  : 900.6 ms
+  • 최대 응답 시간  : 1138.7 ms
+  • 1초 이내 달성률 : 66.7% (2/3)
 ```
 
 ---
