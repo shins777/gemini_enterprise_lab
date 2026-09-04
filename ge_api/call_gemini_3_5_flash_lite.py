@@ -424,6 +424,150 @@ def compose_ebnf_filter(
     )
 
 
+def compose_ebnf_filter_local(query: str) -> EBNFFilterResult:
+    """Extract filter conditions and compose an EBNF filter locally WITHOUT calling Gemini.
+
+    This local rule-based extractor uses regex pattern matching and search operator syntax:
+    - Zero API cost ($0)
+    - Sub-millisecond latency (< 1ms)
+    - 100% deterministic evaluation
+    - No external network or credentials needed
+
+    Supports:
+    - Search syntax: filetype:pdf, author:"John Doe", dept:HR, year:>=2024, status:draft
+    - Natural language (Korean/English):
+      - File formats (PDF, Word, Excel, PPT, etc.)
+      - Years and date ranges (2024년 이후, from 2023, 2022~2024년, etc.)
+      - Departments & disjunctions (HR or Legal, 인사 또는 법무)
+      - Authors (by John Doe, 작성자: 홍길동)
+      - Status & negation (draft 제외, not draft)
+
+    Args:
+        query: User input query string.
+
+    Returns:
+        EBNFFilterResult with synthesized EBNF filter, clean query, attributes, and latency.
+    """
+    start = time.perf_counter()
+    working_text = query
+    clauses: List[str] = []
+    attributes: dict[str, Any] = {}
+
+    # 1. Search Operator Syntax (e.g. filetype:pdf, author:"John Doe", year:>=2024)
+    op_pattern = re.compile(r'(?:(\b\w+):("([^"]+)"|(\S+)))')
+    found_ops = []
+    for m in op_pattern.finditer(working_text):
+        key, full_val, quoted, unquoted = m.group(1).lower(), m.group(2), m.group(3), m.group(4)
+        val = quoted if quoted is not None else unquoted
+        if key in ("filetype", "type", "ext", "format"):
+            clauses.append(f'file_type = "{val.lower()}"')
+            attributes["file_type"] = val.lower()
+            found_ops.append(m.group(0))
+        elif key in ("author", "owner", "creator"):
+            clauses.append(f'author = "{val}"')
+            attributes["author"] = val
+            found_ops.append(m.group(0))
+        elif key in ("department", "dept", "team"):
+            clauses.append(f'department = "{val}"')
+            attributes["department"] = val
+            found_ops.append(m.group(0))
+        elif key in ("year", "date"):
+            if val.startswith((">=", "<=", ">", "<", "!=")):
+                op = val[:2] if val.startswith((">=", "<=", "!=")) else val[:1]
+                num = val[len(op):]
+                clauses.append(f"year {op} {num}")
+                attributes["year"] = f"{op} {num}"
+            else:
+                clauses.append(f"year = {val}")
+                attributes["year"] = val
+            found_ops.append(m.group(0))
+        elif key in ("status", "priority", "category", "tag"):
+            clauses.append(f'{key} = "{val}"')
+            attributes[key] = val
+            found_ops.append(m.group(0))
+
+    for op in found_ops:
+        working_text = working_text.replace(op, "")
+
+    # 2. File type detection in natural language
+    filetype_match = re.search(r"(?i)\b(pdf|docx?|xlsx?|pptx?|csv|txt|json|html)\b|(워드|엑셀|파워포인트)", working_text)
+    if filetype_match and "file_type" not in attributes:
+        val = filetype_match.group(0).lower()
+        mapping = {"워드": "docx", "엑셀": "xlsx", "파워포인트": "pptx"}
+        ft = mapping.get(val, val)
+        clauses.append(f'file_type = "{ft}"')
+        attributes["file_type"] = ft
+        working_text = re.sub(r"(?i)\b(pdf|docx?|xlsx?|pptx?|csv|txt|json|html)\s*(?:파일|문서)?|(워드|엑셀|파워포인트)\s*(?:파일|문서)?", "", working_text)
+
+    # 3. Year / Date detection
+    year_range = re.search(r"(\d{4})\s*(?:년)?\s*(?:~|-|부터|에서)\s*(\d{4})\s*(?:년)?(?:\s*사이)?|\b(?:between)\s*(\d{4})\s*(?:and|-)\s*(\d{4})\b", working_text, re.IGNORECASE)
+    if year_range and "year" not in attributes:
+        y1 = year_range.group(1) or year_range.group(3)
+        y2 = year_range.group(2) or year_range.group(4)
+        clauses.append(f"year >= {y1} AND year <= {y2}")
+        attributes["year"] = f"{y1}..{y2}"
+        working_text = working_text.replace(year_range.group(0), "")
+    elif "year" not in attributes:
+        year_gte = re.search(r"(\d{4})\s*년?\s*(?:이후|부터|이상)|\b(?:from|after|since)\s*(\d{4})\b", working_text, re.IGNORECASE)
+        if year_gte:
+            y = year_gte.group(1) or year_gte.group(2)
+            clauses.append(f"year >= {y}")
+            attributes["year"] = f">= {y}"
+            working_text = working_text.replace(year_gte.group(0), "")
+        else:
+            year_lte = re.search(r"(\d{4})\s*년?\s*(?:이전|까지|이하)|\b(?:before|until|prior to)\s*(\d{4})\b", working_text, re.IGNORECASE)
+            if year_lte:
+                y = year_lte.group(1) or year_lte.group(2)
+                clauses.append(f"year <= {y}")
+                attributes["year"] = f"<= {y}"
+                working_text = working_text.replace(year_lte.group(0), "")
+
+    # 4. Department disjunction (e.g. HR or Legal, 인사 또는 법무)
+    dept_disjunction = re.search(r"\b(HR|Legal|Finance|Engineering|Marketing|Sales)\s*(?:or|또는|혹은|\/)\s*(HR|Legal|Finance|Engineering|Marketing|Sales)\b|\b(인사|법무|재무|개발|영업)\s*(?:또는|혹은|\/)\s*(인사|법무|재무|개발|영업)\b", working_text, re.IGNORECASE)
+    if dept_disjunction and "department" not in attributes:
+        d1 = dept_disjunction.group(1) or dept_disjunction.group(3)
+        d2 = dept_disjunction.group(2) or dept_disjunction.group(4)
+        clauses.append(f'department: ANY("{d1}", "{d2}")')
+        attributes["department"] = [d1, d2]
+        working_text = working_text.replace(dept_disjunction.group(0), "")
+
+    # 5. Author in natural language (e.g. by John Doe, 작성자: 홍길동, 홍길동이 작성한)
+    author_match = re.search(r"(?:by|authored by)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)|작성자\s*[:=]?\s*([가-힣a-zA-Z]+)|([가-힣a-zA-Z]+)\s*(?:이|가)?\s*작성한", working_text)
+    if author_match and "author" not in attributes:
+        author_name = author_match.group(1) or author_match.group(2) or author_match.group(3)
+        if author_name and author_name.lower() not in ("pdf", "word", "excel"):
+            clauses.append(f'author = "{author_name.strip()}"')
+            attributes["author"] = author_name.strip()
+            working_text = working_text.replace(author_match.group(0), "")
+
+    # 6. Status & Negation (e.g. not draft, 초안 제외)
+    neg_status = re.search(r"(?:not|excluding|except)\s*(draft|archived|resolved)|\b(draft|초안|임시)\s*(?:제외|말고|아닌)", working_text, re.IGNORECASE)
+    if neg_status and "status" not in attributes:
+        s = neg_status.group(1) or neg_status.group(2)
+        mapping = {"초안": "draft", "임시": "draft"}
+        st = mapping.get(s, s)
+        clauses.append(f'NOT status = "{st}"')
+        attributes["status"] = f"NOT {st}"
+        working_text = working_text.replace(neg_status.group(0), "")
+
+    # Clean up remaining text to form clean_query
+    clean = re.sub(r"[에|을|를|의|에서|로|으로]\b", " ", working_text)
+    clean = re.sub(r"\b(찾아줘|검색해줘|보여줘|알려줘|작성된|생성된|문서|파일|find|show me|search for|look for|get me)\b", " ", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\s+", " ", clean).strip()
+
+    ebnf_filter = " AND ".join(clauses)
+    elapsed = time.perf_counter() - start
+
+    return EBNFFilterResult(
+        raw_query=query,
+        clean_query=clean,
+        ebnf_filter=ebnf_filter,
+        attributes=attributes,
+        explanation="Synthesized locally via rule-based regex and search operator extraction (zero API calls).",
+        latency_seconds=round(elapsed, 4),
+    )
+
+
 def format_ebnf_filter_banner(result: EBNFFilterResult) -> str:
     """Format an EBNFFilterResult into a clear, readable terminal display."""
     lines = [
@@ -531,40 +675,41 @@ def stream_content(
 # 7. Main CLI Execution
 # ==============================================================================
 if __name__ == "__main__":
-    # Default query demonstrating EBNF filter extraction if no CLI argument given
-    query = (
-        sys.argv[1]
-        if len(sys.argv) > 1
-        else "2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘"
+    # Check for --local flag
+    use_only_local = "--local" in sys.argv
+    args = [a for a in sys.argv[1:] if a != "--local"]
+    if args:
+        query = args[0]
+
+    # Step 1: Local Rule-Based EBNF Filter Extraction (Zero API calls, <1ms)
+    print("⚡ [Approach 1] Local Rule-Based Extraction (No LLM Call, <1ms):")
+    local_result = compose_ebnf_filter_local(query)
+    print(format_ebnf_filter_banner(local_result))
+    print()
+
+    # Step 2: AI-Powered EBNF Filter Extraction via Gemini 3.5 Flash Lite
+    if not use_only_local:
+        print("🤖 [Approach 2] Gemini 3.5 Flash Lite AI Extraction:")
+        try:
+            filter_result = compose_ebnf_filter(query)
+            print(format_ebnf_filter_banner(filter_result))
+            print()
+        except Exception as e:
+            print(f"⚠️ Filter composition warning: {e}\n", file=sys.stderr)
+            filter_result = local_result
+    else:
+        filter_result = local_result
+
+    # Step 3: Programmatic Builder Demonstration
+    print("🛠️  [Approach 3] Programmatic EBNFFilterBuilder:")
+    demo_filter = (
+        EBNFFilterBuilder()
+        .equals("file_type", "pdf")
+        .greater_or_equal("year", 2024)
+        .any_of("category", ["finance", "accounting"])
+        .build()
     )
-
-    print("\n" + "=" * 72)
-    print(f"🚀 Gemini 3.5 Flash Lite: EBNF Filter Synthesis & Model Execution")
-    print(f"Target Model:    {DEFAULT_MODEL}")
-    print(f"Vertex Location: {DEFAULT_LOCATION}")
-    print("=" * 72 + "\n")
-
-    # Step 1: Automatic EBNF Filter Composition
-    print("⏳ Analyzing query and composing Extended Backus-Naur Form filter...\n")
-    try:
-        filter_result = compose_ebnf_filter(query)
-        print(format_ebnf_filter_banner(filter_result))
-        print()
-
-        # Step 2: Programmatic Builder Demonstration
-        print("🛠️  Programmatic EBNFFilterBuilder Demonstration:")
-        demo_filter = (
-            EBNFFilterBuilder()
-            .equals("file_type", "pdf")
-            .greater_or_equal("year", 2024)
-            .any_of("category", ["finance", "accounting"])
-            .build()
-        )
-        print(f"  • Programmatically built filter: {demo_filter}\n")
-
-    except Exception as e:
-        print(f"⚠️ Filter composition warning: {e}\n", file=sys.stderr)
-        filter_result = EBNFFilterResult(raw_query=query, clean_query=query, ebnf_filter="")
+    print(f"  • Programmatically built filter: {demo_filter}\n")
 
     # Step 3: Stream Gemini 3.5 Flash Lite Response
     print(f"💬 Generating Response for: '{filter_result.clean_query}'")
