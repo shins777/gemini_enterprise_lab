@@ -47,31 +47,25 @@ python3 ge_api/EBNF.py "홍길동이 작성한 2023년 보안 감사 보고서 �
 python3 ge_api/EBNF_LLM.py "2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘"
 ```
 
-### 2. Programmatic EBNF Filter Composition in Python
+### 3. Programmatic EBNF Filter Composition in Python
 ```python
-from ge_api import compose_ebnf_filter, compose_ebnf_filter_local, EBNFFilterBuilder
+from ge_api import extract_ebnf_filter, extract_ebnf_with_llm
 
-# 1. Pure Local Rule-Based Extraction (No Gemini/API call, < 1ms latency, $0 cost)
-local_res = compose_ebnf_filter_local("2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘")
-print("Local Clean Query:", local_res.clean_query)  # "재무 보고서"
-print("Local EBNF Filter:", local_res.ebnf_filter)  # "file_type = \"pdf\" AND year >= 2024"
-print("Local Latency:", local_res.latency_seconds)  # ~0.001s
+query = "2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘"
 
-# 2. AI-Powered Extraction via Gemini 3.5 Flash Lite (Deep semantic parsing)
-ai_res = compose_ebnf_filter("Find all security audit reports in HR or Legal from 2023 onwards by author John Doe")
-print("AI EBNF Filter:", ai_res.ebnf_filter)
-# "(department = \"HR\" OR department = \"Legal\") AND year >= 2023 AND author = \"John Doe\""
+# 1. Standalone Zero-LLM Extraction (Local Python, < 1ms, $0 cost)
+local_res = extract_ebnf_filter(query)
+print("Local Filter:", local_res["ebnf_filter"])
+# 'year >= 2024 AND file_type = "pdf" AND category = "재무 보고서"'
+print("Local Attributes:", local_res["attributes"])
+# {'year': '>= 2024', 'file_type': 'pdf', 'category': '재무 보고서'}
 
-# 3. Fluent Programmatic Builder (from UI form controls, date pickers, dropdowns)
-filter_str = (
-    EBNFFilterBuilder()
-    .equals("file_type", "pdf")
-    .greater_or_equal("year", 2024)
-    .text_match("department", "Finance")
-    .any_of("tag", ["audit", "compliance"])
-    .build()
-)
-print("Built EBNF Filter:", filter_str)
+# 2. AI-Powered Extraction via Gemini 3.5 Flash Lite
+llm_res = extract_ebnf_with_llm(query)
+print("LLM Filter:", llm_res["ebnf_filter"])
+# 'category = "재무 보고서" AND file_type = "pdf" AND year >= 2024'
+print("Extracted Info:", llm_res["extracted_info"])
+# {'문서종류': '재무 보고서', '문서 타입': 'pdf', '작성자': None, '작성 일자': '2024년 이후'}
 ```
 
 ### 3. Gemini Enterprise Grounded Stream Assist

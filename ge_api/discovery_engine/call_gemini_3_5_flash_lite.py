@@ -224,11 +224,10 @@ if __name__ == "__main__":
 
     # Optional: Automatically compose and display EBNF filter information
     try:
-        from ge_api import compose_ebnf_filter
-        from ge_api.EBNF_LLM import format_ebnf_filter_banner
-        filter_res = compose_ebnf_filter(prompt)
-        if filter_res.has_filter:
-            print(format_ebnf_filter_banner(filter_res) + "\n")
+        from ge_api.EBNF import extract_ebnf_filter, format_filter_output
+        filter_res = extract_ebnf_filter(prompt)
+        if filter_res.get("ebnf_filter"):
+            print(format_filter_output(filter_res) + "\n")
     except Exception:
         pass
 
