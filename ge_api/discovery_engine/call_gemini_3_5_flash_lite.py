@@ -224,7 +224,8 @@ if __name__ == "__main__":
 
     # Optional: Automatically compose and display EBNF filter information
     try:
-        from ge_api.call_gemini_3_5_flash_lite import compose_ebnf_filter, format_ebnf_filter_banner
+        from ge_api import compose_ebnf_filter
+        from ge_api.EBNF_LLM import format_ebnf_filter_banner
         filter_res = compose_ebnf_filter(prompt)
         if filter_res.has_filter:
             print(format_ebnf_filter_banner(filter_res) + "\n")

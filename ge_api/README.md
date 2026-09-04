@@ -23,7 +23,7 @@ This directory contains production-grade client libraries, utilities, and CLI to
     - **Document Topic (문서 주제)**: `재무 보고서` -> `category = "재무 보고서"`
     - **Author (작성자)**: `홍길동이 작성한` -> `author = "홍길동"`
   * Returns synthesized EBNF filter string conforming to Google Cloud Discovery Engine & AIP-160 specifications.
-* **[`call_gemini_3_5_flash_lite.py`](call_gemini_3_5_flash_lite.py)**: Direct caller for the `gemini-3.5-flash-lite` foundation model on Vertex AI using the official `google-genai` SDK with **Extended Backus-Naur Form (EBNF) Filter Synthesis**.
+* **[`EBNF_LLM.py`](EBNF_LLM.py)** (formerly `call_gemini_3_5_flash_lite.py`): Direct caller for the `gemini-3.5-flash-lite` foundation model on Vertex AI using the official `google-genai` SDK with **AI-Powered Extended Backus-Naur Form (EBNF) Filter Synthesis**.
   * **Automated EBNF Filter Composition**: Analyzes natural language queries and synthesizes valid Discovery Engine / AIP-160 EBNF filter strings (e.g. `year >= 2024 AND file_type = "pdf"`).
   * **Programmatic Filter Builder (`EBNFFilterBuilder`)**: Fluent interface for constructing EBNF filter syntax programmatically.
   * **Low Latency (<2s)**: Ultra-fast query analysis and streaming responses.
@@ -33,13 +33,18 @@ This directory contains production-grade client libraries, utilities, and CLI to
 
 ## 🚀 Quick Usage
 
-### 1. Direct Vertex AI Call with Automatic EBNF Filter Synthesis
+### 1. Standalone Zero-LLM EBNF Filter Extraction (`EBNF.py`)
 ```bash
-# Analyze query and auto-synthesize EBNF filter (Korean)
-python3 ge_api/call_gemini_3_5_flash_lite.py "2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘"
+# Pure local rule-based extraction (Zero Gemini calls, < 1ms latency, $0 cost)
+python3 ge_api/EBNF.py "2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘"
 
-# Complex search with multiple metadata filters (English)
-python3 ge_api/call_gemini_3_5_flash_lite.py "Find all security audit reports in HR or Legal from 2023 onwards by author John Doe"
+# With author and different doc types
+python3 ge_api/EBNF.py "홍길동이 작성한 2023년 보안 감사 보고서 워드 문서를 찾아줘"
+```
+
+### 2. Direct Vertex AI Call with AI EBNF Filter Synthesis (`EBNF_LLM.py`)
+```bash
+python3 ge_api/EBNF_LLM.py "2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘"
 ```
 
 ### 2. Programmatic EBNF Filter Composition in Python
