@@ -222,6 +222,15 @@ if __name__ == "__main__":
     print(f"Prompt: {prompt}")
     print("=" * 70 + "\n")
 
+    # Optional: Automatically compose and display EBNF filter information
+    try:
+        from ge_api.call_gemini_3_5_flash_lite import compose_ebnf_filter, format_ebnf_filter_banner
+        filter_res = compose_ebnf_filter(prompt)
+        if filter_res.has_filter:
+            print(format_ebnf_filter_banner(filter_res) + "\n")
+    except Exception:
+        pass
+
     start_time = time.perf_counter()
     first_token_time = None
 
