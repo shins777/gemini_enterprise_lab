@@ -2,7 +2,7 @@
 """EBNF Search Filter Extractor (Standalone / Zero-LLM).
 
 Advanced rule-based and pattern extraction engine capable of handling diverse conversational,
-multi-sentence, and colloquial queries (e.g. "세계 증시 보고서를 신항식이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야.").
+multi-sentence, and colloquial queries (e.g. "세계 증시 보고서를 홍길동이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야.").
 Synthesizes Extended Backus-Naur Form (EBNF) filters conforming to Google Cloud Discovery Engine & AIP-160.
 """
 
@@ -16,7 +16,7 @@ def extract_ebnf_filter(query: str) -> Dict[str, Any]:
     """Extract search filter conditions and synthesize an EBNF filter string locally.
 
     Handles diverse query patterns:
-    - Author (작성자): '신항식이 작성했어', '신항식이 썼어', '신항식 작성', '작성자: 신항식', 'by John Doe'
+    - Author (작성자): '홍길동이 작성했어', '홍길동이 썼어', '홍길동 작성', '작성자: 홍길동', 'by John Doe'
     - Department (부서/팀): '아마도 AI 팀이야', '소속은 AI팀', '인사팀에서', '개발본부', 'dept:Finance'
     - Year/Date (년도/일자): '2025년도에', '2024년 이후에', '2023년 이전에', '2022~2024년 사이', 'after 2024'
     - Document Topic (문서 주제/종류): '세계 증시 보고서', '재무 보고서', '보안 감사 보고서', '마케팅 기획서'
@@ -37,7 +37,7 @@ def extract_ebnf_filter(query: str) -> Dict[str, Any]:
     clause_dict = {}
     attributes = {}
 
-    # 1. Search Operator Syntax (e.g. filetype:pdf, author:"신항식", year:>=2025, dept:AI)
+    # 1. Search Operator Syntax (e.g. filetype:pdf, author:"홍길동", year:>=2025, dept:AI)
     op_pattern = re.compile(r'(?:(\b\w+):("([^"]+)"|(\S+)))')
     for m in list(op_pattern.finditer(working)):
         k, _, q_val, u_val = m.group(1).lower(), m.group(2), m.group(3), m.group(4)
@@ -126,7 +126,7 @@ def extract_ebnf_filter(query: str) -> Dict[str, Any]:
             working = working.replace(dept_m.group(0), " ")
 
     # 4. Author Extraction (작성자)
-    # Handles: "신항식이 작성했어", "신항식이 썼어", "신항식이 등록했어", "작성자: 신항식", "by John Doe"
+    # Handles: "홍길동이 작성했어", "홍길동이 썼어", "홍길동이 등록했어", "작성자: 홍길동", "by John Doe"
     author_m = re.search(
         r"(?:(?:\s|^)([가-힣]{2,4}|[가-힣]\s+[가-힣]{1,3}|[A-Za-z\s]{2,15})(?:이|가|은|는)?\s*(작성했어|작성했음|작성함|작성한|만들었어|만듦|만든|썼어|쓴|등록했어|등록한|올렸어|올린|배포했어|배포한)|(?:작성자|글쓴이|작성인)\s*[:=은는이가]?\s*([가-힣a-zA-Z]+)|(?:by|authored by|written by)\s+([A-Za-z\s]+))",
         working,
@@ -261,7 +261,7 @@ if __name__ == "__main__":
     target_query = (
         sys.argv[1]
         if len(sys.argv) > 1
-        else "세계 증시 보고서를 신항식이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
+        else "세계 증시 보고서를 홍길동이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
     )
 
     result = extract_ebnf_filter(target_query)

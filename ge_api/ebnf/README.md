@@ -33,7 +33,7 @@ Google Cloud Discovery Engine은 검색 시 고도화된 구조적 메타데이�
 | :--- | :--- | :--- | :--- |
 | `category` | 문서 주제 및 종류 | "재무 보고서", "세계 증시 보고서" | `category = "재무 보고서"` |
 | `file_type` | 파일 확장자 | "PDF 파일", "워드 문서", "PPT" | `file_type = "pdf"`, `file_type = "docx"` |
-| `author` | 작성자 성명 | "신항식이 작성했어", "이영희가 쓴" | `author = "신항식"` |
+| `author` | 작성자 성명 | "홍길동이 작성했어", "이영희가 쓴" | `author = "홍길동"` |
 | `year` | 작성 년도 및 기간 | "2024년 이후", "2025년도에", "2022~2024년" | `year >= 2024`, `year = 2025`, `year >= 2022 AND year <= 2024` |
 | `department` | 소속 부서 및 팀 | "아마도 AI 팀이야", "소속은 인사팀" | `department = "AI 팀"`, `department = "인사팀"` |
 | `status` | 문서 상태 및 부정/제외 | "초안 제외하고", "임시 문서 말고" | `NOT status = "draft"` |
@@ -48,11 +48,11 @@ Gemini나 외부 API 호출 없이, 순수 정규 표현식 및 형태소/조사
 1. **극단적인 초저지연**: 쿼리당 **~0.05 ms ~ 6 ms** (밀리초 단위) 이내 처리.
 2. **비용 0원 ($0)**: API 호출이 전혀 없어 대규모 고빈도 트래픽에도 비용이 발생하지 않음.
 3. **복합 다문장 & 구어체 질의 완벽 대응**:
-   - 예: `"세계 증시 보고서를 신항식이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."`
-   - 변환 결과: `department = "AI 팀" AND author = "신항식" AND year = 2025 AND category = "세계 증시 보고서"`
+   - 예: `"세계 증시 보고서를 홍길동이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."`
+   - 변환 결과: `department = "AI 팀" AND author = "홍길동" AND year = 2025 AND category = "세계 증시 보고서"`
 
 ### 🧠 파이프라인 처리 순서
-1. **검색 연산자 추출**: `author:신항식`, `filetype:pdf`, `year:>=2025` 등 표준 연산자 파싱
+1. **검색 연산자 추출**: `author:홍길동`, `filetype:pdf`, `year:>=2025` 등 표준 연산자 파싱
 2. **년도/기간 선추출**: `2024년 이후에`, `2025년도에` 등을 먼저 추출하여 작성자나 문서명과의 충돌 방지
 3. **부서/소속팀 추출**: `아마도`, `혹시`, `소속은` 등의 구어체 접두사와 결합된 부서명 및 약어(`AI 팀`, `IT 팀` vs `인사팀`) 정규화
 4. **작성자 추출**: 능동태 과거형 서술어(`작성했어`, `작성한`, `쓴`, `만들었어`, `등록했어`)와 결합된 성명을 추출하고, 수동태(`작성된 재무 보고서`)는 문서명으로 정확히 격리
@@ -136,7 +136,7 @@ Google Cloud의 최신 경량 모델인 **Gemini 3.5 Flash Lite**를 활용하�
 python3 ge_api/ebnf/EBNF.py
 
 # 커스텀 대화형 쿼리 테스트
-python3 ge_api/ebnf/EBNF.py "세계 증시 보고서를 신항식이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
+python3 ge_api/ebnf/EBNF.py "세계 증시 보고서를 홍길동이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
 ```
 
 #### Gemini 3.5 Flash Lite 지속 대화형(Continuous Interactive) 추출기 실행:
@@ -197,7 +197,7 @@ category = "재무 보고서" AND file_type = "pdf" AND year >= 2024
 ```python
 from ge_api.ebnf import extract_ebnf_filter, extract_ebnf_with_llm
 
-query = "세계 증시 보고서를 신항식이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
+query = "세계 증시 보고서를 홍길동이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
 
 # 1. Zero-LLM 순수 규칙 기반 호출 (지연시간: ~5ms, $0)
 res_rule = extract_ebnf_filter(query)
@@ -221,8 +221,8 @@ print("Mode:", res_hybrid["mode"])
 
 | 입력 자연어 질의 | 추출된 조건 속성 | 생성된 EBNF 필터 문자열 |
 | :--- | :--- | :--- |
-| `세계 증시 보고서를 신항식이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야.` | 부서: AI 팀<br>작성자: 신항식<br>년도: 2025<br>주제: 세계 증시 보고서 | `department = "AI 팀" AND author = "신항식" AND year = 2025 AND category = "세계 증시 보고서"` |
+| `세계 증시 보고서를 홍길동이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야.` | 부서: AI 팀<br>작성자: 홍길동<br>년도: 2025<br>주제: 세계 증시 보고서 | `department = "AI 팀" AND author = "홍길동" AND year = 2025 AND category = "세계 증시 보고서"` |
 | `2024년 이후에 작성된 재무 보고서 PDF 파일을 찾아줘` | 년도: >= 2024<br>타입: pdf<br>주제: 재무 보고서 | `year >= 2024 AND file_type = "pdf" AND category = "재무 보고서"` |
 | `소속은 인사팀이고 이영희가 쓴 2024년 채용 계획서 PPT 파일` | 부서: 인사팀<br>작성자: 이영희<br>년도: 2024<br>타입: pptx<br>주제: 채용 계획서 | `department = "인사팀" AND author = "이영희" AND year = 2024 AND file_type = "pptx" AND category = "채용 계획서"` |
 | `초안 제외하고 김철수가 작성한 2023년 이전 보안 감사 보고서 워드 파일` | 상태: NOT draft<br>작성자: 김철수<br>년도: <= 2023<br>타입: docx<br>주제: 보안 감사 보고서 | `author = "김철수" AND year <= 2023 AND file_type = "docx" AND NOT status = "draft" AND category = "보안 감사 보고서"` |
-| `author:신항식 year:>=2025 filetype:pdf` | 작성자: 신항식<br>년도: >= 2025<br>타입: pdf | `author = "신항식" AND year >= 2025 AND file_type = "pdf"` |
+| `author:홍길동 year:>=2025 filetype:pdf` | 작성자: 홍길동<br>년도: >= 2025<br>타입: pdf | `author = "홍길동" AND year >= 2025 AND file_type = "pdf"` |

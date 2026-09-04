@@ -26,7 +26,7 @@ This directory contains production-grade client libraries, utilities, and CLI to
 ### 1. Standalone Zero-LLM EBNF Filter Extraction (`ebnf/EBNF.py`)
 ```bash
 # Pure local rule-based extraction (Zero Gemini calls, < 5ms latency, $0 cost)
-python3 ge_api/ebnf/EBNF.py "세계 증시 보고서를 신항식이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
+python3 ge_api/ebnf/EBNF.py "세계 증시 보고서를 홍길동이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
 ```
 
 ### 2. Direct Vertex AI Call with AI EBNF Filter Synthesis (`ebnf/EBNF_LLM.py`)

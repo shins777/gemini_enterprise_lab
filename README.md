@@ -214,7 +214,7 @@ python3 query_agent.py
 
 ```bash
 # 1. EBNF 필터 추출: Zero-LLM 규칙 기반 초고속 추출 (< 5ms, $0)
-python3 ge_api/ebnf/EBNF.py "세계 증시 보고서를 신항식이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
+python3 ge_api/ebnf/EBNF.py "세계 증시 보고서를 홍길동이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
 
 # 2. EBNF 필터 추출: Gemini 3.5 Flash Lite 지속 대화형 세션 (1회 연결/Warmup 후 질문 지속 입력 & 레이턴시 측정)
 python3 ge_api/ebnf/EBNF_LLM.py

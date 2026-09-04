@@ -33,7 +33,7 @@ Synthesize an AIP-160 EBNF filter for user query.
 Fields:
 - category: full document topic/kind (e.g. "재무 보고서", "세계 증시 보고서", "채용 계획서")
 - file_type: extension (e.g. "pdf", "docx", "pptx")
-- author: author person name (e.g. "신항식", "홍길동")
+- author: author person name (e.g. "홍길동", "김철수")
 - year: year expression (e.g. ">= 2024", "= 2025")
 - department: department/team (e.g. "AI 팀", "인사팀")
 Rules:
