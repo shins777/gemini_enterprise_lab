@@ -9,6 +9,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 from typing import Any, Dict
 
 import google.auth
@@ -74,6 +75,7 @@ def get_genai_client(project_id: str = DEFAULT_PROJECT) -> genai.Client:
 
 def extract_ebnf_with_llm(query: str, project_id: str = DEFAULT_PROJECT) -> Dict[str, Any]:
     """Extract filter conditions from query and compose an EBNF filter using Gemini 3.5 Flash Lite."""
+    start_time = time.perf_counter()
     client = get_genai_client(project_id=project_id)
 
     response = client.models.generate_content(
@@ -85,11 +87,16 @@ def extract_ebnf_with_llm(query: str, project_id: str = DEFAULT_PROJECT) -> Dict
             temperature=0.0,
         ),
     )
+    elapsed = time.perf_counter() - start_time
 
     try:
-        return json.loads(response.text)
+        data = json.loads(response.text)
     except Exception:
-        return {"raw_response": response.text, "clean_query": query, "ebnf_filter": ""}
+        data = {"raw_response": response.text, "clean_query": query, "ebnf_filter": ""}
+
+    data["latency_seconds"] = round(elapsed, 3)
+    data["latency_ms"] = round(elapsed * 1000, 1)
+    return data
 
 
 if __name__ == "__main__":
@@ -113,4 +120,5 @@ if __name__ == "__main__":
             print(f"  • {key:10}: {val}")
 
     print(f"\n🎯 Clean Query (검색어): {result.get('clean_query')}")
-    print(f"\n👉 EBNF Filter (조합된 EBNF 필터):\n{result.get('ebnf_filter')}\n")
+    print(f"\n👉 EBNF Filter (조합된 EBNF 필터):\n{result.get('ebnf_filter')}")
+    print(f"\n⏱️  Latency: {result.get('latency_seconds')}s ({result.get('latency_ms')} ms)\n")
