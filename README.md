@@ -26,15 +26,8 @@ gemini_enterprise_lab/
 │   │   └── README.md                # Discovery Engine API 연동 가이드
 │   └── README.md                    # ge_api 모듈 전체 가이드
 │
-├── sources/                         # 전체 소스 코드 저장 디렉토리
+├── src/                             # 전체 소스 코드 저장 디렉토리
 │   ├── mcp/                         # MCP (Model Context Protocol) 서버 모듈
-│   │   ├── mcp_google_map/          # Google Maps MCP 서버 (FastMCP)
-│   │   │   ├── server.py            # 구글 맵 탐색 & 거리 계산 기능 구현
-│   │   │   ├── mcp_config.json      # Agent Platform 등록용 MCP 메타데이터 설정
-│   │   │   ├── Dockerfile           # Cloud Run 컨테이너 빌드 정의
-│   │   │   ├── deploy.sh            # 자동화 배포 스크립트
-│   │   │   └── README.md            # 구글 맵 MCP 한글 가이드
-│   │   │
 │   │   └── mcp_realestate/          # 한국 부동산 20개년 요인 분석 MCP 서버
 │   │       ├── server.py            # 부동산 지표 및 금리 데이터 질의 구현
 │   │       ├── korea_real_estate_20yr_factors.csv # 영문 헤더로 정리된 부동산 데이터셋
@@ -44,7 +37,7 @@ gemini_enterprise_lab/
 │   │       └── README.md            # 부동산 MCP 한글 가이드
 │   │
 │   └── agent/                       # Reasoning Engine 검색 에이전트 모듈
-│       └── agent_search/            # A2A 호환 검색 에이전트 (Google ADK 기반)
+│       └── agent_realestate/        # A2A 호환 검색 에이전트 (Google ADK 기반)
 │           ├── agent.py             # 구글 검색 도구가 결합된 ADK 에이전트 선언
 │           ├── deploy.py            # Vertex AI Agent Engine 배포용 스크립트
 │           ├── query_agent.py       # 배포된 Reasoning Engine 실시간 질의 클라이언트
@@ -67,73 +60,55 @@ gemini_enterprise_lab/
 
 | 환경 변수명 (Key) | 기본값 / 예시값 (Default/Example) | 필수여부 | 역할 및 설명 (Description) |
 | :--- | :--- | :--- | :--- |
-| `GOOGLE_MAPS_API_KEY` | `YOUR_GOOGLE_MAPS_API_KEY` | **필수** | Google Maps MCP 서버가 Places/Geocoding/Routes API를 호출할 때 사용할 인증 키 |
-| `GCP_PROJECT` | `explore-ai-aa934711` | **필수** | 구글 클라우드 리소스를 프로비저닝 및 연동할 타겟 GCP 프로젝트 ID |
-| `GCP_LOCATION` | `us-central1` | 선택 | Vertex AI 및 Cloud Run이 가동될 리전(Region) 기본 위치 |
-| `GCS_STAGING_BUCKET` | `gs://run-sources-explore-ai-aa934711-us-central1` | **필수** | Reasoning Engine 소스 빌드 시 패키징 바이너리를 스테이징할 버킷 경로 |
+| `PROJECT_ID` | `explore-ai-c53f5e43` | **필수** | 구글 클라우드 리소스를 프로비저닝 및 연동할 타겟 GCP 프로젝트 ID |
+| `REGION` | `us-central1` | 선택 | Vertex AI 및 Cloud Run이 가동될 리전(Region) 기본 위치 |
+| `GCS_STAGING_BUCKET` | `gs://run-sources-explore-ai-c53f5e43-us-central1` | **필수** | Reasoning Engine 소스 빌드 시 패키징 바이너리를 스테이징할 버킷 경로 |
 | `CLOUDSDK_AUTH_ACCESS_TOKEN`| (동적 발급 토큰) | 선택 | ADC 권한 상속을 통한 수동 리소스 제어 및 CLI 인증 우회용 액세스 토큰 |
 
 ### 🛠️ 로컬 터미널 환경 주입 예시
 실습 가이드 진행 전 터미널 창에 아래 형태로 환경 변수들을 가입 및 익스포트하십시오.
 ```bash
-# 구글 맵스 인증용 키 입력
-export GOOGLE_MAPS_API_KEY="AIzaSyBQFudqoZejRX..."
-
 # GCP 핵심 자산 설정 주입
-export GCP_PROJECT="explore-ai-aa934711"
-export GCP_LOCATION="us-central1"
-export GCS_STAGING_BUCKET="gs://run-sources-explore-ai-aa934711-us-central1"
+export PROJECT_ID="explore-ai-c53f5e43"
+export REGION="us-central1"
+export GCS_STAGING_BUCKET="gs://run-sources-explore-ai-c53f5e43-us-central1"
 ```
 
 ---
 
 ## 🌐 1. MCP 서버 Cloud Run 배포 & 등록 가이드
 
-실습 환경의 구글 클라우드 프로젝트 `explore-ai-aa934711`에 완전히 배포 완료된 실시간 MCP 서버 리소스 세부 정보입니다.
+실습 환경의 구글 클라우드 프로젝트 `explore-ai-c53f5e43`에 완전히 배포 완료된 실시간 MCP 서버 리소스 세부 정보입니다.
 
 ### 📍 배포 리소스 요약 (Deployed Resources)
 
 | MCP 서버 이름 | 클라우드 런 배포 URL (HTTP Endpoint) | 지역 (Region) | 인증 방식 (Auth) |
 | :--- | :--- | :--- | :--- |
-| **Google Maps MCP Server** | `https://google-maps-mcp-66747595426.us-central1.run.app/mcp` | `us-central1` | Unauthenticated / GCP OIDC |
-| **Korea Real Estate MCP Server** | `https://korea-realestate-mcp-66747595426.us-central1.run.app/mcp` | `us-central1` | Unauthenticated / GCP OIDC |
+| **Korea Real Estate MCP Server** | `https://korea-realestate-mcp-277211498595.us-central1.run.app/mcp` | `us-central1` | Unauthenticated (Public) |
 
 ### 🛠️ 수동 빌드 & 배포 방법
-만약 수정된 소스 코드를 반영하여 클라우드 런에 재배포하려면 각 MCP 서버 디렉토리 내부에서 다음 명령어를 실행하십시오. (ADC 액세스 토큰 사용 기준)
+만약 수정된 소스 코드를 반영하여 클라우드 런에 재배포하려면 대상 MCP 서버 디렉토리 내부에서 다음 명령어를 실행하십시오. (ADC 액세스 토큰 사용 기준)
 
 ```bash
 # 1. 대상 MCP 서버 디렉토리로 이동
-cd sources/mcp/mcp_google_map  # 또는 sources/mcp/mcp_realestate
+cd src/mcp/mcp_realestate
 
 # 2. 클라우드 런에 소스 코드 기반 빌드 및 배포 수행
-CLOUDSDK_AUTH_ACCESS_TOKEN="$(gcloud auth application-default print-access-token)" \
-gcloud run deploy [서비스-이름] \
-  --source . \
-  --project explore-ai-aa934711 \
-  --region us-central1 \
-  --platform managed \
-  --allow-unauthenticated \
-  --port 8080
+./deploy.sh
 ```
 
 ### 📋 Agent Platform 등록 절차 (Agent Registry)
-배포된 MCP 서버들을 제미나이 에이전트에서 도구(Tool)로 연동하기 위해 **Agent Platform**에 등록해야 합니다.
+배포된 MCP 서버를 제미나이 에이전트에서 도구(Tool)로 연동하기 위해 **Agent Platform**에 등록해야 합니다.
 
 1. **Agent Platform Admin Console** (Gemini Enterprise Admin)에 접속합니다.
 2. **Agent Registry** ➔ **MCP Server Registration** 메뉴로 이동합니다.
 3. **Add Custom MCP Server** 단추를 누르고 아래 값을 입력합니다.
 
-#### Google Maps MCP 설정
-* **Server Name:** `Google Maps MCP Server`
-* **Transport:** `SSE` (Server-Sent Events) 또는 `HTTP` (Streamable-HTTP)
-* **Server URL / SSE Endpoint:** `https://google-maps-mcp-66747595426.us-central1.run.app/mcp`
-* **Authentication:** `GCP IAM OIDC token` 또는 `Unauthenticated`
-
 #### Korea Real Estate MCP 설정
 * **Server Name:** `Korea Real Estate MCP Server`
 * **Transport:** `SSE` (Server-Sent Events) 또는 `HTTP` (Streamable-HTTP)
-* **Server URL / SSE Endpoint:** `https://korea-realestate-mcp-66747595426.us-central1.run.app/mcp`
-* **Authentication:** `GCP IAM OIDC token` 또는 `Unauthenticated`
+* **Server URL / SSE Endpoint:** `https://korea-realestate-mcp-277211498595.us-central1.run.app/mcp`
+* **Authentication:** `Unauthenticated` (또는 GCP IAM OIDC token)
 
 ---
 
@@ -153,16 +128,16 @@ Google ADK와 Gemini 2.5 Flash를 결합하여 제작된 구글 검색 기반의
 로컬에 구성된 에이전트 파이썬 정의를 가공하여 Vertex AI Agent Engine에 빌드 및 배포하려면 아래 환경 변수를 주입하고 배포 스크립트를 수행하십시오.
 
 ```bash
-cd sources/agent/agent_search
+cd src/agent/agent_realestate
 
 # 의존성 패키지 설치
 pip install -r requirements.txt
 
 # 에이전트 엔진 배포 실행
 CLOUDSDK_AUTH_ACCESS_TOKEN="$(gcloud auth application-default print-access-token)" \
-GCP_PROJECT="explore-ai-aa934711" \
-GCP_LOCATION="us-central1" \
-GCS_STAGING_BUCKET="gs://run-sources-explore-ai-aa934711-us-central1" \
+PROJECT_ID="explore-ai-c53f5e43" \
+REGION="us-central1" \
+GCS_STAGING_BUCKET="gs://run-sources-explore-ai-c53f5e43-us-central1" \
 python3 deploy.py
 ```
 
@@ -170,7 +145,7 @@ python3 deploy.py
 배포가 정상적으로 완료되면 스트리밍 질의 클라이언트를 실행하여 생성된 Reasoning Engine이 실시간 구글 검색 도구를 활용하여 답변을 산출하는지 확인할 수 있습니다.
 
 ```bash
-cd sources/agent/agent_search
+cd src/agent/agent_realestate
 python3 query_agent.py
 ```
 
@@ -233,5 +208,5 @@ python3 ge_api/discovery_engine/call_gemini_3_5_flash_lite.py "자기소개를 �
 ## 💡 개발자를 위한 아키텍처 참고사항 (Developer Architecture Notes)
 
 1. **FastMCP와 Streamable-HTTP:** 본 실습 가이드에 활용된 MCP 서버들은 파이썬 FastMCP 프레임워크 상에서 가동되며, 기존의 표준 `stdio` 입출력 방식 대신 클라우드 네이티브 서버 환경에 최적화된 **`streamable-http`** 전송 규격을 채택하여 빌드되었습니다. 이로 인해 무상태(Stateless) 아키텍처인 구글 Cloud Run 환경에서 완전한 멀티스레드 기반 비동기 API 엔드포인트 연동이 보장됩니다.
-2. **Google ADK & A2A Wrapper:** `agent_search` 폴더 내의 에이전트는 차세대 에이전트 오케스트레이션 설계 모델인 **Agent-to-Agent (A2A)** 표준을 준수합니다. Google ADK가 제공하는 `to_a2a()` 변환 데코레이터를 거쳐 빌드된 이 엔진은 Vertex AI 상에서 독립적인 인스턴스로 분리되어 동작하면서도 타 에이전트 카드를 해석하고 프록시를 통해 유연하게 메시지를 중계 및 오케스트레이션할 수 있습니다.
+2. **Google ADK & A2A Wrapper:** `agent_realestate` 폴더 내의 에이전트는 차세대 에이전트 오케스트레이션 설계 모델인 **Agent-to-Agent (A2A)** 표준을 준수합니다. Google ADK가 제공하는 `to_a2a()` 변환 데코레이터를 거쳐 빌드된 이 엔진은 Vertex AI 상에서 독립적인 인스턴스로 분리되어 동작하면서도 타 에이전트 카드를 해석하고 프록시를 통해 유연하게 메시지를 중계 및 오케스트레이션할 수 있습니다.
 3. **IAM 최소 권한 법칙:** Cloud Run과 Vertex AI 간 리소스 빌드업 시 발생하던 스토리지 및 아티팩트 권한 충돌은 기본 Compute Engine 서비스 계정에 권한을 유기적으로 바인딩함으로써 해결되었으며, 실제 프로덕션 수준의 인프라 전환 시에는 개별 사용자 세분화 정책을 권장합니다.
