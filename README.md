@@ -1,212 +1,239 @@
-# 🚀 Gemini Enterprise Lab (구글 제미나이 엔터프라이즈 실습 가이드)
+# 🚀 Gemini Enterprise Lab - 통합 마스터 플랫폼 가이드
 
-본 저장소는 **Gemini Enterprise (제미나이 엔터프라이즈)** 및 **Vertex AI Agent Platform** 환경에서 구동되는 고성능, 프로덕션 등급의 맞춤형 **MCP (Model Context Protocol) 서버**와 **A2A (Agent-to-Agent) 검색 에이전트**의 배포 및 연동 자산을 포함하고 있습니다.
+**Gemini Enterprise Lab** 리포지토리에 오신 것을 환영합니다.  
+본 프로젝트는 **Gemini Enterprise (구글 제미나이 엔터프라이즈)** 및 **Google Cloud Vertex AI** 생태계를 기반으로 구축된 핸즈온 랩 실습 가이드, 자율형 AI 에이전트 스킬, 프로덕션 백엔드 마이크로서비스, 그리고 프로그래밍 방식의 엔터프라이즈 API 클라이언트 도구를 집대성한 통합 플랫폼입니다.
+
+노코드 기반의 AI 업무 에이전트를 제작하는 비즈니스 실무자부터, 멀티모달 미디어를 창작하는 마케터, Model Context Protocol (MCP) 서버 및 Vertex AI Reasoning Engine을 설계·배포하는 클라우드 소프트웨어 엔지니어까지 엔드투엔드(End-to-End) 자산을 제공합니다.
 
 ---
 
-## 📂 프로젝트 구조 (Project Structure)
+## 📌 목차
 
-저장소의 전체 구조는 다음과 같이 깔끔하고 모듈화되어 관리됩니다.
+1. [전체 시스템 아키텍처 개요](#1-전체-시스템-아키텍처-개요)
+2. [리포지토리 디렉토리 구조](#2-리포지토리-디렉토리-구조)
+3. [4대 핵심 영역 심층 분석](#3-4대-핵심-영역-심층-분석)
+   - [영역 1: 핸즈온 랩 실습 커리큘럼 (`ge_lab/`)](#영역-1-핸즈온-랩-실습-커리큘럼-ge_lab)
+   - [영역 2: 자율형 워크스페이스 스킬 (`.agents/`)](#영역-2-자율형-워크스페이스-스킬-agents)
+   - [영역 3: 백엔드 마이크로서비스 및 MCP 서버 (`src/`)](#영역-3-백엔드-마이크로서비스-및-mcp-서버-src)
+   - [영역 4: 엔터프라이즈 API 제품군 및 EBNF 엔진 (`ge_api/`)](#영역-4-엔터프라이즈-api-제품군-및-ebnf-엔진-ge_api)
+4. [환경 변수 설정 및 Google Cloud 인증](#4-환경-변수-설정-및-google-cloud-인증)
+5. [빠른 시작 가이드 (Quick Start)](#5-빠른-시작-가이드-quick-start)
+6. [보안 가드레일 및 엔터프라이즈 데이터 프라이버시](#6-보안-가드레일-및-엔터프라이즈-데이터-프라이버시)
 
-```tree
+---
+
+## 1. 전체 시스템 아키텍처 개요
+
+본 저장소는 Gemini Enterprise 플랫폼의 유기적인 4개 레이어를 통합 지원합니다:
+
+```mermaid
+flowchart TD
+    subgraph "1. 사용자 인터페이스 및 웹 앱 레이어"
+        UI["Gemini Enterprise 웹 어플리케이션<br/>(챗, 인터랙티브 캔버스, Agent Designer, 스마트 수신함)"]
+        Labs["ge_lab/<br/>(실무 핸즈온 랩 매뉴얼)"]
+    end
+
+    subgraph "2. 자율형 AI 에이전트 스킬 레이어 (.agents/)"
+        SkillsCatalog[".agents/skills/<br/>YAML 규격, 프롬프트 템플릿 및 검증 체크리스트"]
+        AgentCore["AI 에이전트 런타임 / Jetski"]
+        SkillsCatalog --> AgentCore
+    end
+
+    subgraph "3. 엔터프라이즈 API 및 검색 엔진 (ge_api/)"
+        StreamAssist["Stream Assist API<br/>(실시간 스트리밍 & 사내 그라운딩 인용)"]
+        EBNF["EBNF 필터 추출 엔진<br/>(Zero-LLM < 5ms 및 초저지연 Flash Lite)"]
+        Discovery["Discovery Engine API<br/>(커스텀 generationSpec 모델 호출)"]
+    end
+
+    subgraph "4. 프로덕션 백엔드 인프라 서비스 (src/)"
+        MCP["Cloud Run 기반 FastMCP 서버<br/>(한국 부동산 20개년 경제 지표 분석)"]
+        A2A["Vertex AI Reasoning Engine<br/>(A2A 호환 검색 에이전트 & Google ADK)"]
+    end
+
+    Labs -.->|사용자 랩 실습 가이드 제공| UI
+    AgentCore -->|자율 워크플로우 자동화 지원| UI
+    UI -->|도구(Tool) 호출| MCP
+    UI -->|에이전트 위임| A2A
+    StreamAssist --> UI
+```
+
+---
+
+## 2. 리포지토리 디렉토리 구조
+
+```text
 gemini_enterprise_lab/
-├── ge_api/                          # Gemini Enterprise & Vertex AI API 통합 모듈
-│   ├── ebnf/                        # EBNF 검색 필터 자동 추출 모듈 (Discovery Engine & AIP-160)
-│   │   ├── EBNF.py                  # Zero-LLM 순수 규칙 기반 초저지연 추출기 (< 5ms, $0)
-│   │   ├── EBNF_LLM.py              # Gemini 3.5 Flash Lite 지속 대화형 추출기 (1초 이내 처리)
-│   │   ├── __init__.py              # ebnf 패키지 진입점
-│   │   └── README.md                # EBNF 상세 아키텍처 및 한국어 기술 가이드
-│   ├── stream_assist/               # Gemini Enterprise Stream Assist 클라이언트 & 데이터 검색
-│   │   ├── stream_assist.py         # 실시간 스트리밍, 엔터프라이즈 데이터 추출, 레이턴시 측정
-│   │   ├── .env.example             # 환경 변수 설정 템플릿
-│   │   └── README.md                # Stream Assist 한글/영문 가이드
-│   ├── discovery_engine/            # Discovery Engine API 연동 모듈
-│   │   ├── call_gemini_3_5_flash_lite.py # Discovery Engine streamAssist 커스텀 모델 호출
-│   │   ├── .env.example             # 환경 변수 설정 템플릿
-│   │   └── README.md                # Discovery Engine API 연동 가이드
-│   └── README.md                    # ge_api 모듈 전체 가이드
+├── README.md                            # 리포지토리 마스터 가이드 문서 (본 문서)
+├── GEMINI.md                            # 워크스페이스 보안 규칙, 비밀정보 격리 및 스킬 자동 탐색 원칙
 │
-├── src/                             # 전체 소스 코드 저장 디렉토리
-│   ├── mcp/                         # MCP (Model Context Protocol) 서버 모듈
-│   │   └── mcp_realestate/          # 한국 부동산 20개년 요인 분석 MCP 서버
-│   │       ├── server.py            # 부동산 지표 및 금리 데이터 질의 구현
-│   │       ├── korea_real_estate_20yr_factors.csv # 영문 헤더로 정리된 부동산 데이터셋
-│   │       ├── mcp_config.json      # Agent Platform 등록용 MCP 메타데이터 설정
-│   │       ├── Dockerfile           # Cloud Run 컨테이너 빌드 정의
-│   │       ├── deploy.sh            # 자동화 배포 스크립트
-│   │       └── README.md            # 부동산 MCP 한글 가이드
-│   │
-│   └── agent/                       # Reasoning Engine 검색 에이전트 모듈
-│       └── agent_realestate/        # A2A 호환 검색 에이전트 (Google ADK 기반)
-│           ├── agent.py             # 구글 검색 도구가 결합된 ADK 에이전트 선언
-│           ├── deploy.py            # Vertex AI Agent Engine 배포용 스크립트
-│           ├── query_agent.py       # 배포된 Reasoning Engine 실시간 질의 클라이언트
-│           ├── a2a_server.py        # 로컬 프록시용 A2A API 서버 규격 구현
-│           ├── requirements.txt     # 에이전트 실행에 필요한 의존성 패키지 목록
-│           └── README.md            # 에이전트 엔진 배포 및 연동 한글 가이드
+├── .agents/                             # 자율형 AI 에이전트 워크스페이스 스킬 저장소
+│   ├── README.md                        # 스킬 카탈로그 총괄 및 스킬 작성 명세서
+│   └── skills/
+│       ├── ge-general/                  # Gemini Enterprise 10대 핵심 기능 검증 스킬
+│       ├── media-gen/                   # Imagen 3 및 Veo 기반 멀티모달 미디어 생성/편집
+│       ├── nocode-agent/                # 노코드 단일 에이전트 및 멀티스텝 워크플로우 에이전트
+│       └── build-mcp-server/            # Cloud Run 상의 Streamable HTTP MCP 서버 배포
 │
-└── README.md                        # 본 마스터 한글 가이드 문서
+├── ge_lab/                              # 실무 중심 단계별 핸즈온 랩 커리큘럼
+│   ├── README.md                        # 핸즈온 랩 마스터 포털 및 커리큘럼 매트릭스
+│   ├── ge_general/                      # 트랙 1: 엔터프라이즈 일반 핵심 기능 (10개 랩)
+│   ├── media_gen/                       # 트랙 2: 멀티모달 미디어 생성 및 편집 (9개 랩)
+│   ├── nocode_agent/                    # 트랙 3: 노코드 및 워크플로우 에이전트 스튜디오 (4개 랩)
+│   └── agent_platform/                  # 트랙 4: 에이전트 플랫폼 및 인프라 연동 확장
+│
+├── ge_api/                              # 엔터프라이즈 API 제품군 및 프로그래밍 도구
+│   ├── README.md                        # ge_api 모듈 종합 개요 및 퀵스타트
+│   ├── ebnf/                            # 초저지연 EBNF 검색 필터 자동 추출 엔진
+│   ├── stream_assist/                   # 실시간 스트리밍 및 엔터프라이즈 사내 데이터 추출 클라이언트
+│   └── discovery_engine/                # Discovery Engine 커스텀 모델 호출 모듈
+│
+└── src/                                 # 프로덕션 백엔드 서비스 및 에이전트 소스
+    ├── README.md                        # 백엔드 소스 총괄 가이드 및 배포 절차
+    ├── .env.example                     # 환경 변수 설정 템플릿
+    ├── mcp/                             # Model Context Protocol (MCP) 마이크로서비스
+    │   └── mcp_realestate/              # 한국 부동산 20개년 요인 분석 FastMCP 서버 (Cloud Run)
+    └── agent/                           # Vertex AI Reasoning Engine 검색 에이전트
+        └── agent_realestate/            # Google ADK 기반 A2A 호환 검색 에이전트
 ```
 
 ---
 
-## 🔑 환경 변수 및 중요 설정 구성 가이드 (Environment Variables)
+## 3. 4대 핵심 영역 심층 분석
 
-본 프로젝트의 모든 모듈(MCP 서버, 검색 에이전트 등)은 보안성 향상 및 유연한 리소스 롤아웃을 위해 **민감 정보 및 기동 종속 변수들을 전량 환경 변수(Environment Variables)로부터 수집**하도록 구축되어 있습니다. 
+### 영역 1: 핸즈온 랩 실습 커리큘럼 (`ge_lab/`)
 
-로컬 구동 혹은 원격 빌드/배포를 진행하기 전에 터미널 환경에 아래의 환경 변수 명세에 해당하는 키들을 주입 및 셋업해 주시기 바랍니다.
+- **포털 가이드**: [`ge_lab/README.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/README.md)
+- **대상 독자**: 비즈니스 기획자, 마케팅 실무자, HR 채용 담당자, 솔루션 엔지니어.
+- **특징**: 별도 로컬 코딩 없이 브라우저의 Gemini Enterprise 공식 앱에서 즉시 수행 가능한 100% 웹 기반 실습 매뉴얼.
 
-### 📋 주요 필수 환경 변수 목록 (Required Variables)
+| 실습 트랙 | 매뉴얼 경로 | 모듈 수 | 핵심 기술 및 파운데이션 모델 |
+| :--- | :--- | :---: | :--- |
+| **엔터프라이즈 일반 기능** | [`ge_lab/ge_general/ge_general.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/ge_general/ge_general.md) | 10개 랩 | Direct Q&A, Web Grounding, 사내 커넥터 (Drive/Gmail/Jira), 인터랙티브 캔버스, 스마트 수신함, MCP |
+| **멀티모달 미디어 제작** | [`ge_lab/media_gen/ge_media.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/media_gen/ge_media.md) | 9개 랩 | Imagen 3 (제품 샷, 대화형 인페인팅, 인포그래픽, 배너), Veo (B-roll, 모션 비디오, 9:16 세로형 영상) |
+| **노코드 에이전트 스튜디오** | [`ge_lab/nocode_agent/nocode_agent.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/nocode_agent.md) | 4개 랩 | Agent Designer, 비주얼 빌더, Cron 스케줄링, 위협 수준 조건 분기, 사람 필수 승인(HITL), Google Drive 저장 |
 
-| 환경 변수명 (Key) | 기본값 / 예시값 (Default/Example) | 필수여부 | 역할 및 설명 (Description) |
-| :--- | :--- | :--- | :--- |
-| `PROJECT_ID` | `explore-ai-c53f5e43` | **필수** | 구글 클라우드 리소스를 프로비저닝 및 연동할 타겟 GCP 프로젝트 ID |
-| `REGION` | `us-central1` | 선택 | Vertex AI 및 Cloud Run이 가동될 리전(Region) 기본 위치 |
-| `GCS_STAGING_BUCKET` | `gs://run-sources-explore-ai-c53f5e43-us-central1` | **필수** | Reasoning Engine 소스 빌드 시 패키징 바이너리를 스테이징할 버킷 경로 |
-| `CLOUDSDK_AUTH_ACCESS_TOKEN`| (동적 발급 토큰) | 선택 | ADC 권한 상속을 통한 수동 리소스 제어 및 CLI 인증 우회용 액세스 토큰 |
+---
 
-### 🛠️ 로컬 터미널 환경 주입 예시
-실습 가이드 진행 전 터미널 창에 아래 형태로 환경 변수들을 가입 및 익스포트하십시오.
+### 영역 2: 자율형 워크스페이스 스킬 (`.agents/`)
+
+- **포털 가이드**: [`.agents/README.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/README.md)
+- **대상 독자**: 자율형 AI 코딩 에이전트 (Jetski, DeepMind 에이전트 도구) 및 AI 어시스턴트.
+- **특징**: 표준화된 Jetski / Agent Skill 명세를 기반으로 AI 에이전트가 자율적으로 도메인 지식을 로딩하여 사용자 작업을 자동화.
+
+에이전트는 `.agents/skills/*/*/SKILL.md`를 재귀 탐색하여 필요한 스킬을 자동으로 호출합니다:
+- [**`ge-general`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/ge-general/SKILL.md): 10대 핵심 기능 검증 시나리오 및 체크리스트.
+- [**`media-gen`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/media-gen/SKILL.md): 시각적 연출을 위한 조명, 카메라 렌즈, 프롬프트 엔지니어링 지침.
+- [**`nocode-agent`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-agent/SKILL.md): 단일 에이전트 및 다단계 워크플로우 에이전트 설계 스펙.
+- [**`build-mcp-server`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/build-mcp-server/SKILL.md): Cloud Run 컨테이너 빌드 및 배포 절차.
+
+---
+
+### 영역 3: 백엔드 마이크로서비스 및 MCP 서버 (`src/`)
+
+- **포털 가이드**: [`src/README.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/README.md)
+- **대상 독자**: 클라우드 엔지니어, 백엔드 개발자 및 엔터프라이즈 AI 시스템 아키텍트.
+- **특징**: 기업 내부 데이터와 외부 도구를 Gemini Enterprise 및 Vertex AI에 연결하는 프로덕션 레디 마이크로서비스.
+
+#### 1. 한국 부동산 20개년 MCP 서버 ([`src/mcp/mcp_realestate/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/mcp/mcp_realestate))
+- **프레임워크**: `FastMCP` (`streamable-http` / SSE 전송 규격).
+- **데이터셋**: 2006년부터 2025년까지의 공식 거시경제 및 아파트 매매 지표 20개년 데이터셋([`korea_real_estate_20yr_factors.csv`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/mcp/mcp_realestate/korea_real_estate_20yr_factors.csv)).
+- **제공 도구**: `get_factors_by_year`, `get_factors_range`, `get_all_factors`.
+- **배포 주소**: `https://korea-realestate-mcp-277211498595.us-central1.run.app/mcp` (Google Cloud Run).
+
+#### 2. Vertex AI Reasoning Engine 검색 에이전트 ([`src/agent/agent_realestate/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/agent/agent_realestate))
+- **프레임워크**: Google ADK (Agent Development Kit) & Gemini 2.5 Flash.
+- **기능 및 표준**: 구글 검색 도구 내장 및 Agent-to-Agent (A2A) 표준 래퍼(`to_a2a()`).
+- **배포 인스턴스**: `projects/66747595426/locations/us-central1/reasoningEngines/2482267896227561472`.
+- **클라이언트 도구**: 실시간 스트리밍 대화형 CLI([`query_agent.py`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/agent/agent_realestate/query_agent.py)) 및 로컬 A2A 프록시 서버([`a2a_server.py`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/agent/agent_realestate/a2a_server.py)).
+
+---
+
+### 영역 4: 엔터프라이즈 API 제품군 및 EBNF 엔진 (`ge_api/`)
+
+- **포털 가이드**: [`ge_api/README.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_api/README.md)
+- **대상 독자**: 풀스택 개발자, 검색 엔지니어 및 API 연동 담당자.
+- **특징**: Discovery Engine 및 AIP-160 검색 필터링을 위한 초고속 파이썬 라이브러리.
+
+#### 1. EBNF 필터 자동 추출 엔진 ([`ge_api/ebnf/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_api/ebnf))
+- **`EBNF.py`**: Zero-LLM 순수 규칙 기반 초저지연 필터 추출기 (< 5ms, 비용 $0).
+- **`EBNF_LLM.py`**: Gemini 3.5 Flash Lite 기반 1초 이내 처리 지속 대화형 추출기 (실시간 레이턴시 측정).
+
+#### 2. 실시간 그라운딩 Stream Assist 클라이언트 ([`ge_api/stream_assist/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_api/stream_assist))
+- Gemini Enterprise `AssistantService.StreamAssist` 파이썬 클라이언트로 실시간 응답 스트리밍, 사내 데이터 인용(Citation), 모델 사고 과정(Thoughts) 모니터링 지원.
+
+#### 3. Discovery Engine 커스텀 모델 호출 모듈 ([`ge_api/discovery_engine/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_api/discovery_engine))
+- `generationSpec.modelId`를 직접 지정하여 호출하는 특화 유틸리티.
+
+---
+
+## 4. 환경 변수 설정 및 Google Cloud 인증
+
+### 4.1 중앙 환경 설정 템플릿
+[`src/.env.example`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/.env.example)을 복사하여 로컬 환경 설정 파일(`.env`)을 생성합니다:
+
 ```bash
-# GCP 핵심 자산 설정 주입
-export PROJECT_ID="explore-ai-c53f5e43"
-export REGION="us-central1"
-export GCS_STAGING_BUCKET="gs://run-sources-explore-ai-c53f5e43-us-central1"
+# 설정 템플릿 복사 (주의: .env 파일은 절대 커밋하지 마십시오)
+cp src/.env.example src/.env
+```
+
+| 주요 환경 변수명 | 기본값 / 예시 | 용도 |
+| :--- | :--- | :--- |
+| `PROJECT_ID` | `explore-ai-c53f5e43` | Cloud Run 및 Vertex AI 리소스를 구동할 대상 GCP 프로젝트 ID |
+| `REGION` | `us-central1` | Google Cloud 주 배포 리전 |
+| `GCS_STAGING_BUCKET` | `gs://run-sources-explore-ai-c53f5e43-us-central1` | Reasoning Engine 빌드용 바이너리 아티팩트 스테이징 버킷 |
+| `HOST` / `PORT` | `0.0.0.0` / `8080` | 로컬 FastMCP 서버 바인딩 호스트 및 포트 |
+| `A2A_HOST` / `A2A_PORT` | `0.0.0.0` / `8000` | 로컬 A2A 프록시 서버 바인딩 호스트 및 포트 |
+
+### 4.2 Google Cloud 인증 (ADC) 설정
+터미널에서 Application Default Credentials (ADC)를 활성화합니다:
+```bash
+gcloud auth login
+gcloud auth application-default login
+gcloud config set project explore-ai-c53f5e43
 ```
 
 ---
 
-## 🌐 1. MCP 서버 Cloud Run 배포 & 등록 가이드
+## 5. 빠른 시작 가이드 (Quick Start)
 
-실습 환경의 구글 클라우드 프로젝트 `explore-ai-c53f5e43`에 완전히 배포 완료된 실시간 MCP 서버 리소스 세부 정보입니다.
-
-### 📍 배포 리소스 요약 (Deployed Resources)
-
-| MCP 서버 이름 | 클라우드 런 배포 URL (HTTP Endpoint) | 지역 (Region) | 인증 방식 (Auth) |
-| :--- | :--- | :--- | :--- |
-| **Korea Real Estate MCP Server** | `https://korea-realestate-mcp-277211498595.us-central1.run.app/mcp` | `us-central1` | Unauthenticated (Public) |
-
-### 🛠️ 수동 빌드 & 배포 방법
-만약 수정된 소스 코드를 반영하여 클라우드 런에 재배포하려면 대상 MCP 서버 디렉토리 내부에서 다음 명령어를 실행하십시오. (ADC 액세스 토큰 사용 기준)
-
+### 단계 1: Zero-LLM EBNF 검색 필터 추출 (< 5ms)
 ```bash
-# 1. 대상 MCP 서버 디렉토리로 이동
+python3 ge_api/ebnf/EBNF.py "2025년도에 홍길동이 작성한 AI 규제 보고서 PDF 문서를 찾아줘."
+```
+
+### 단계 2: Gemini Enterprise 실시간 스트리밍 질의
+```bash
+python3 ge_api/stream_assist/stream_assist.py "국내외 생성형 AI 도입 전략을 2줄로 요약해줘."
+```
+
+### 단계 3: 로컬 FastMCP 부동산 서버 구동
+```bash
 cd src/mcp/mcp_realestate
-
-# 2. 클라우드 런에 소스 코드 기반 빌드 및 배포 수행
-./deploy.sh
-```
-
-### 📋 Agent Platform 등록 절차 (Agent Registry)
-배포된 MCP 서버를 제미나이 에이전트에서 도구(Tool)로 연동하기 위해 **Agent Platform**에 등록해야 합니다.
-
-1. **Agent Platform Admin Console** (Gemini Enterprise Admin)에 접속합니다.
-2. **Agent Registry** ➔ **MCP Server Registration** 메뉴로 이동합니다.
-3. **Add Custom MCP Server** 단추를 누르고 아래 값을 입력합니다.
-
-#### Korea Real Estate MCP 설정
-* **Server Name:** `Korea Real Estate MCP Server`
-* **Transport:** `SSE` (Server-Sent Events) 또는 `HTTP` (Streamable-HTTP)
-* **Server URL / SSE Endpoint:** `https://korea-realestate-mcp-277211498595.us-central1.run.app/mcp`
-* **Authentication:** `Unauthenticated` (또는 GCP IAM OIDC token)
-
----
-
-## 🤖 2. Search Agent Engine (Reasoning Engine) 가이드
-
-Google ADK와 Gemini 2.5 Flash를 결합하여 제작된 구글 검색 기반의 **A2A 호환 검색 에이전트**를 구글 클라우드 Vertex AI Reasoning Engine 서비스에 배포 및 테스팅하는 법을 다룹니다.
-
-### 📍 배포 리소스 요약 (Vertex AI Reasoning Engine)
-* **프로젝트 ID (Project ID):** `explore-ai-aa934711`
-* **위치 (Location):** `us-central1`
-* **Reasoning Engine 고유 리소스 경로:**
-  ```text
-  projects/66747595426/locations/us-central1/reasoningEngines/2482267896227561472
-  ```
-
-### 🚀 배포/재배포 실행 (Deployment)
-로컬에 구성된 에이전트 파이썬 정의를 가공하여 Vertex AI Agent Engine에 빌드 및 배포하려면 아래 환경 변수를 주입하고 배포 스크립트를 수행하십시오.
-
-```bash
-cd src/agent/agent_realestate
-
-# 의존성 패키지 설치
 pip install -r requirements.txt
-
-# 에이전트 엔진 배포 실행
-CLOUDSDK_AUTH_ACCESS_TOKEN="$(gcloud auth application-default print-access-token)" \
-PROJECT_ID="explore-ai-c53f5e43" \
-REGION="us-central1" \
-GCS_STAGING_BUCKET="gs://run-sources-explore-ai-c53f5e43-us-central1" \
-python3 deploy.py
+python3 server.py
 ```
 
-### 🧪 배포된 에이전트 테스트 (Query Client)
-배포가 정상적으로 완료되면 스트리밍 질의 클라이언트를 실행하여 생성된 Reasoning Engine이 실시간 구글 검색 도구를 활용하여 답변을 산출하는지 확인할 수 있습니다.
-
+### 단계 4: Vertex AI Reasoning Engine 원격 질의 테스트
 ```bash
 cd src/agent/agent_realestate
+pip install -r requirements.txt
 python3 query_agent.py
 ```
 
----
-
-## 📈 3. 한국 부동산 20개년 데이터셋 명세 (Korean Real Estate Dataset Spec)
-
-에이전트가 보다 일관성 있고 표준화된 명칭으로 질의할 수 있도록 기존 한국어 헤더 구조를 **완벽한 영문 표준 카멜/스네이크 케이스 포맷**으로 교체 및 마이그레이션했습니다.
-
-### 📊 헤더 변환 테이블 (CSV Headers Translation)
-
-| 기존 한글 헤더 (Korean) | 변경된 영문 헤더 (English) | 데이터 타입 (Type) | 상세 설명 (Description) |
-| :--- | :--- | :--- | :--- |
-| `연도` | `year` | `Integer` | 분석 대상 연도 (2006 ~ 2025) |
-| `한국은행 기준금리` | `interest_rate` | `Float` | 한국은행 공시 연간 기준금리 (%) |
-| `KOSPI 지수 기말` | `kospi` | `Float` | 연도 기말 종가 기준 KOSPI 종합지수 |
-| `서울 아파트 평균매매가 - 만원` | `seoul_apartment_avg_price` | `Integer` | 서울 권역 아파트 평균 매매 거래 가격 (단위: 만원) |
-| `지방 5대광역시 평균매매가 - 만원` | `regional_apartment_avg_price` | `Integer` | 5대 광역시 평균 매매 거래 가격 (단위: 만원) |
-| `전국 아파트 매매가격지수` | `national_apartment_price_index` | `Float` | 전국 아파트 매매 가격 누적 지수 |
-| `소비자물가지수` | `cpi` | `Float` | 전국 소비자 물가 지수 (CPI) |
-| `M2 통화량 - 조원 기말` | `m2_money_supply` | `Integer` | 광의통화 M2 총량 (단위: 조원) |
-| `전국 미분양주택 - 호` | `unsold_housing` | `Integer` | 미분양 누적 주택 잔여 세대수 (단위: 호) |
+### 단계 5: 핸즈온 랩 실습 진행
+[`ge_lab/README.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/README.md) 포털에서 원하는 트랙을 선택하여 실습을 진행합니다:
+- **엔터프라이즈 일반 기능 실습**: [`ge_lab/ge_general/ge_general.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/ge_general/ge_general.md)
+- **멀티모달 이미지 및 비디오 제작**: [`ge_lab/media_gen/ge_media.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/media_gen/ge_media.md)
+- **노코드 및 워크플로우 에이전트**: [`ge_lab/nocode_agent/nocode_agent.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/nocode_agent.md)
 
 ---
 
-## 🌐 4. Gemini Enterprise & Vertex AI API 통합 가이드 (`ge_api`)
+## 6. 보안 가드레일 및 엔터프라이즈 데이터 프라이버시
 
-프로그래밍 방식으로 **Gemini Enterprise** 및 **Vertex AI** 서비스를 호출하고 데이터를 검색할 수 있는 파이썬 클라이언트 및 CLI 도구 모음입니다.
-
-### 📍 주요 모듈 요약
-
-| 모듈 경로 | 주요 기능 | 지원 모델 / 프로토콜 |
-| :--- | :--- | :--- |
-| **`ge_api/ebnf/`** | Google Cloud Discovery Engine & AIP-160 표준 EBNF 검색 필터 자동 추출 엔진 (규칙 기반 & LLM 기반) | 로컬 정규식 (< 5ms, $0) / `gemini-3.5-flash-lite` (< 1.0s) |
-| ↳ **`EBNF.py`** | Zero-LLM 순수 규칙 기반 초저지연 추출기 (복합 다문장 & 구어체 질의 지원, $0 비용) | 순수 로컬 파이썬 (정규 표현식 & 문법 파서) |
-| ↳ **`EBNF_LLM.py`** | Gemini 3.5 Flash Lite 1초 이내 처리 & 1회 연결 후 지속 질문 입력 대화형 세션 (실시간 레이턴시 측정) | `gemini-3.5-flash-lite` (Google GenAI SDK) |
-| **`ge_api/stream_assist/`** | Gemini Enterprise 실시간 스트리밍 답변 생성 및 사내 그라운딩 데이터(문서, URI, 인용구) 검색 | `gemini-3.5-flash` (Discovery Engine Assistant API) |
-| **`ge_api/discovery_engine/`** | Discovery Engine API 기반 커스텀 `generationSpec.modelId` 지정 호출 | `gemini-3.5-flash-lite`, `gemini-3.5-flash` |
-
-### 🚀 실행 예시
-
-```bash
-# 1. EBNF 필터 추출: Zero-LLM 규칙 기반 초고속 추출 (< 5ms, $0)
-python3 ge_api/ebnf/EBNF.py "세계 증시 보고서를 홍길동이 작성했어 2025년도에 그 문서를 찾아줘. 아마도 AI 팀이야."
-
-# 2. EBNF 필터 추출: Gemini 3.5 Flash Lite 지속 대화형 세션 (1회 연결/Warmup 후 질문 지속 입력 & 레이턴시 측정)
-python3 ge_api/ebnf/EBNF_LLM.py
-
-# 3. Gemini Enterprise 실시간 스트리밍 & 레이턴시 측정
-python3 ge_api/stream_assist/stream_assist.py "국내외 생성형 AI 도입 전략을 2줄로 요약해줘."
-
-# 4. Discovery Engine API 모델 지정 호출
-python3 ge_api/discovery_engine/call_gemini_3_5_flash_lite.py "자기소개를 한 줄로 해줘." gemini-3.5-flash
-```
-
-상세 아키텍처 및 1초 이내 최적화 기법은 **[`ge_api/ebnf/README.md`](ge_api/ebnf/README.md)** 문서를 참고하세요.
-
----
-
-## 💡 개발자를 위한 아키텍처 참고사항 (Developer Architecture Notes)
-
-1. **FastMCP와 Streamable-HTTP:** 본 실습 가이드에 활용된 MCP 서버들은 파이썬 FastMCP 프레임워크 상에서 가동되며, 기존의 표준 `stdio` 입출력 방식 대신 클라우드 네이티브 서버 환경에 최적화된 **`streamable-http`** 전송 규격을 채택하여 빌드되었습니다. 이로 인해 무상태(Stateless) 아키텍처인 구글 Cloud Run 환경에서 완전한 멀티스레드 기반 비동기 API 엔드포인트 연동이 보장됩니다.
-2. **Google ADK & A2A Wrapper:** `agent_realestate` 폴더 내의 에이전트는 차세대 에이전트 오케스트레이션 설계 모델인 **Agent-to-Agent (A2A)** 표준을 준수합니다. Google ADK가 제공하는 `to_a2a()` 변환 데코레이터를 거쳐 빌드된 이 엔진은 Vertex AI 상에서 독립적인 인스턴스로 분리되어 동작하면서도 타 에이전트 카드를 해석하고 프록시를 통해 유연하게 메시지를 중계 및 오케스트레이션할 수 있습니다.
-3. **IAM 최소 권한 법칙:** Cloud Run과 Vertex AI 간 리소스 빌드업 시 발생하던 스토리지 및 아티팩트 권한 충돌은 기본 Compute Engine 서비스 계정에 권한을 유기적으로 바인딩함으로써 해결되었으며, 실제 프로덕션 수준의 인프라 전환 시에는 개별 사용자 세분화 정책을 권장합니다.
+> [!IMPORTANT]
+> **엄격한 비밀정보 보호 및 엔터프라이즈 컴플라이언스 원칙**  
+> [`GEMINI.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/GEMINI.md) 준수 가이드라인:
+> 1. **비밀정보 유출 절대 방지**: `.env` 파일, 개인 API 키(`GOOGLE_API_KEY`), 서비스 계정 비공개 키, 액세스 토큰은 절대로 스테이징하거나 커밋/푸시하지 않습니다.
+> 2. **안전한 템플릿만 커밋 허용**: 플레이스홀더 값만 담긴 예시 템플릿(예: `.env.example`)만 버전 관리에 포함됩니다.
+> 3. **엔터프라이즈 프라이버시 경계**: Gemini Enterprise 웹 앱 내에서 입력된 모든 프롬프트, 사내 업로드 문서 및 지식 파일은 Google 기본 파운데이션 모델 재학습에 일체 활용되지 않으며 테넌트 내에서 격리 보호됩니다.
+> 4. **사전 점검 필수**: Git 커밋 또는 푸시 작업을 진행하기 전 반드시 `git status`와 스테이징 변경점을 점검하여 민감한 정보가 포함되어 있지 않은지 확인하십시오.
