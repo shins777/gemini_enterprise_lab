@@ -2,7 +2,7 @@
 
 본 문서는 **Gemini Enterprise** 환경에서 별도의 코딩이나 복잡한 외부 API 연동 없이, 직관적인 웹 챗 인터페이스와 멀티모달 업로드 기능만을 활용하여 최고 품질의 **이미지(Image) 및 동영상(Video)을 생성하고 편집**할 수 있도록 구성된 실무 핸즈온 랩 실행 환경 가이드입니다.
 
-Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을 바탕으로, 비즈니스 실무자가 마케팅 애셋, 기획서 다이어그램, SNS 숏폼 영상, 제품 프로모션 B-roll 등을 신속하고 정교하게 제작하는 10가지 단계별 실습 시나리오와 프롬프트 기법, 검증 체크리스트를 제공합니다.
+Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을 바탕으로, 비즈니스 실무자가 마케팅 애셋, 기획서 다이어그램, SNS 숏폼 영상, 제품 프로모션 B-roll 등을 신속하고 정교하게 제작하는 9가지 단계별 실습 시나리오와 프롬프트 기법, 검증 체크리스트를 제공합니다.
 
 ---
 
@@ -15,12 +15,11 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
    - [Lab 3. 사내 자산 기반 Image-to-Image 스타일 변환](#lab-3-사내-자산-기반-image-to-image-스타일-변환)
    - [Lab 4. 비즈니스 인포그래픽 및 다이어그램 시각화](#lab-4-비즈니스-인포그래픽-및-다이어그램-시각화)
    - [Lab 5. 카피라이트 공간(Negative Space)을 고려한 마케팅 배너 제작](#lab-5-카피라이트-공간negative-space을-고려한-마케팅-배너-제작)
-4. [Video 생성 및 편집 실습 (5 Modules)](#4-video-생성-및-편집-실습-5-modules)
+4. [Video 생성 및 편집 실습 (4 Modules)](#4-video-생성-및-편집-실습-4-modules)
    - [Lab 6. 텍스트 프롬프트를 통한 시네마틱 B-roll 클립 생성](#lab-6-텍스트-프롬프트를-통한-시네마틱-b-roll-클립-생성)
    - [Lab 7. 정적 이미지 기반 모션 비디오 생성 (Image-to-Video)](#lab-7-정적-이미지-기반-모션-비디오-생성-image-to-video)
    - [Lab 8. 멀티턴 대화형 비디오 분위기 및 환경 전환 (Video Editing)](#lab-8-멀티턴-대화형-비디오-분위기-및-환경-전환-video-editing)
    - [Lab 9. 소셜 미디어 플랫폼 맞춤형 숏폼(9:16) 영상 제작](#lab-9-소셜-미디어-플랫폼-맞춤형-숏폼916-영상-제작)
-   - [Lab 10. 스토리보드 기획 및 씬(Scene) 동시 렌더링](#lab-10-스토리보드-기획-및-씬scene-동시-렌더링)
 5. [실무 프롬프트 작성 치트시트 (Cheat Sheet)](#5-실무-프롬프트-작성-치트시트-cheat-sheet)
 6. [트러블슈팅 및 운영 권장사항 (FAQ)](#6-트러블슈팅-및-운영-권장사항-faq)
 
@@ -31,20 +30,19 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 **Gemini Enterprise**는 기업의 데이터 보안과 거버넌스를 완벽히 준수하면서도, 최신 생성 AI 모델의 강력한 창작 역량을 비즈니스 워크플로우에 결합합니다.  
 소비자용 AI 서비스와 달리, 입력된 프롬프트나 업로드된 사내 자산은 기본적으로 모델 재학습에 사용되지 않으며 엔터프라이즈 보안 경계 내에서 안전하게 격리됩니다.
 
-### 10가지 핵심 기능 검증 매트릭스
+### 9가지 핵심 기능 검증 매트릭스
 
 | 모듈 | 기능 영역 | 핵심 검증 목표 | 주요 활용 모델 및 도구 |
 | :--- | :--- | :--- | :--- |
 | **Lab 1** | **Concept Art & Product Shot** | 자연어 지시를 통한 고해상도 상용 제품 콘셉트 샷 생성 | Imagen 3 (Text-to-Image) |
 | **Lab 2** | **Multi-turn In-painting** | 대화 컨텍스트를 계승한 특정 요소 교체 및 부분 수정 | Conversational In-painting |
 | **Lab 3** | **Image-to-Image Transformation** | 사내 자산/스케치의 고유 아이덴티티 보존 및 스타일 변환 | Multimodal Upload & Style Transfer |
-| **Lab 4** | **Business Infographics** | 복합 단계 프로세스 및 시스템 흐름의 직관적 시각화 | Layout & Diagram Synthesis |
+| **Lab 4** | **Business Infographics** | 디지털 마케팅 퍼널 및 옴니채널 캠페인 전략의 직관적 시각화 | Layout & Diagram Synthesis |
 | **Lab 5** | **Negative Space Marketing Banner** | 텍스트 카피 오버레이 영역을 선반영한 광고 배너 제작 | Composition & Margin Control |
 | **Lab 6** | **Cinematic B-roll Video** | 정밀한 카메라 동선과 조명 디렉팅 기반 고화질 비디오 생성 | Veo (Text-to-Video) |
 | **Lab 7** | **Image-to-Video Motion** | 정적 제품 샷에 자연스러운 물리 모션 및 줌인 연출 부여 | Veo (Image-to-Video) |
 | **Lab 8** | **Video Atmosphere Editing** | 기생성 비디오의 시간대, 날씨, 컬러 톤 대화형 변경 | Video-to-Video Editing |
 | **Lab 9** | **Mobile Short-form Video (9:16)** | 세로형 규격에 맞춘 360도 턴테이블 회전 티저 영상 제작 | 9:16 Vertical Video Synthesis |
-| **Lab 10** | **Storyboard & Scene Rendering** | 3단 영상 기획 스토리보드 도출 및 1단계 씬 동시 렌더링 | End-to-End Planning & Video Rendering |
 
 ---
 
@@ -54,21 +52,16 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 1. **Gemini Enterprise 전용 계정**: 실습용 Google Workspace 또는 Cloud Identity 계정으로 로그인합니다.
 2. **라이선스 및 권한 확인**:
    - Gemini Enterprise 활성화 라이선스 부여 여부 확인
-   - 엔터프라이즈 데이터 보호(Enterprise Data Protection) 상태 확인
-3. **참조 실습 자산 확인**:
-   - `ge_lab/media_gen/resources/files/` 디렉토리에 제공된 실습 샘플 파일 준비
-     - `hands_in_reed.png` (Image-to-Video 모션 실습용)
-     - `Infografía_AI.jpg` (이미지 스타일 변환 및 번역 실습용)
-     - `handwrite_arch.png` (아키텍처 스케치 변환 실습용)
-4. **기본 실습 원칙**:
+3. **기본 실습 원칙**:
    - **멀티턴 대화형 정제 (Iterative Refinement)**: 단 한 번의 프롬프트로 완벽한 결과를 요구하기보다, 1차 생성 후 연속 대화를 통해 구체적인 수정 사항을 단계별로 지시합니다.
    - **전문 시각 용어 명시**: 종횡비(Aspect Ratio), 카메라 앵글 및 모션, 조명(Lighting), 렌더링 스타일 키워드를 명확하게 포함할수록 완성도가 극대화됩니다.
 
 ### 2.2 UI 인터페이스 레이아웃 및 도구 조작
 
-<p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/gen_image1.png" width="750" alt="Gemini Enterprise 미디어 생성 인터페이스">
-</p>
+- 이미지와 동영상 작업시 아래와 같이 툴을 선택해서 처리하는 것을 추천합니다. 필요에 따라서 프롬프트로만으로도 해당 툴을 enable 할수 있습니다. 
+
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/prep-1.png" width="600">
+
 
 - **어시스턴트 프롬프트 옴니바**: 텍스트 입력창에서 직접 상세 프롬프트를 입력합니다.
 - **`+` (파일 추가) 버튼**: 프롬프트 입력창 좌측의 `+` 아이콘을 통해 로컬 이미지, 스케치, 사진 파일을 즉시 업로드합니다.
@@ -90,13 +83,18 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 
 #### 1) 실행 환경 설정
 - 새 대화 세션을 시작합니다.
-- 하단 도구 패널에서 **[이미지 만들기]**가 활성화되어 있는지 확인합니다.
+- 하단 도구 패널에서 [이미지 만들기]가 활성화되어 있는지 확인합니다.
+
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab1-1.png" width="600">
 
 #### 2) 실습 프롬프트
 > 💬 **프롬프트 1 (친환경 제품 스튜디오 샷):**
 > ```text
 > 친환경 대나무 소재로 제작된 미니멀한 텀블러를 따뜻한 톤의 원목 책상 위에 놓은 제품 샷을 생성해줘. 부드러운 자연광 스튜디오 조명, 얕은 피사계 심도(아웃포커스 배경), 8K 고해상도 포토리얼리스틱 스타일, 가로형(16:9) 비율로 렌더링해줘.
 > ```
+
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab1-2.png" width="600">
+
 
 > 💬 **프롬프트 2 (엔터프라이즈 솔루션 홍보 포스터):**
 > ```text
@@ -110,9 +108,8 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 > - 현대적이고 세련된 테크 블루 & 퍼플 그라데이션 조명, 클린한 레이아웃
 > ```
 
-<p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/gen_image2.png" width="700" alt="생성된 포스터 결과">
-</p>
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab1-3.png" width="600">
+
 
 #### 3) 검증 포인트
 - [ ] 피사체의 재질감(대나무 결, 금속 마감, 유리 반사 등)이 사실적으로 표현되는가?
@@ -132,19 +129,23 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 #### 2) 실습 프롬프트
 > 💬 **프롬프트 1 (배경 전환 및 오브젝트 추가):**
 > ```text
-> 방금 생성한 이미지에서 제품(텀블러)의 본체 디자인, 크기, 중앙 위치는 절대 바꾸지 말고 그대로 유지해줘. 아래 두 가지만 정밀하게 수정해줘:
-> 1. 배경의 원목 책상을 '현대적이고 고급스러운 화이트 마블(대리석) 테이블'로 교체해줘.
+> 방금 생성한 친환경 제품 스튜디오 샷 이미지에서 제품(텀블러)의 본체 디자인, 크기, 중앙 위치는 절대 바꾸지 말고 그대로 유지해줘. 아래 두 가지만 정밀하게 수정해줘:
+> 1. 배경의 원목 책상을 '현대적이고 고급스러운 화이트 색상'으로 교체해줘.
 > 2. 텀블러 오른쪽에 작고 세련된 다육식물 화분을 하나 자연스러운 광원 그림자와 함께 추가해줘.
 > ```
+
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab2-1.png" width="600">
 
 > 💬 **프롬프트 2 (조명 및 시간대 미세 조정):**
 > ```text
 > 현재 이미지의 마블 테이블과 다육식물 배치는 유지한 채, 조명을 '차분한 늦은 오후의 은은한 골든 아워 햇살'로 변경하고 테이블 표면에 부드러운 빛 반사를 표현해줘.
 > ```
 
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab2-2.png" width="600">
+
 #### 3) 검증 포인트
 - [ ] 텀블러 본체의 외형 실루엣과 브랜드 디자인이 왜곡 없이 유지되는가?
-- [ ] 대리석 테이블의 텍스처와 다육식물이 원래 있던 사물처럼 위화감 없이 합성되었는가?
+- [ ] 테이블의 색상, 텍스처와 다육식물이 원래 있던 사물처럼 위화감 없이 합성되었는가?
 - [ ] 새롭게 추가된 요소에 광원의 각도와 그림자가 일관성 있게 매칭되는가?
 
 ---
@@ -156,12 +157,11 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 #### 1) 실행 환경 설정
 - 프롬프트 입력창 좌측의 **`+` (파일 추가)** 아이콘을 클릭합니다.
 - `ge_lab/media_gen/resources/files/` 폴더에 위치한 샘플 파일을 선택하여 업로드합니다:
-  - 예시 1: `Infografía_AI.jpg` (영문 인포그래픽)
-  - 예시 2: `handwrite_arch.png` (손으로 그린 아키텍처 스케치)
+  - 예시 1: `ge_lab/media_gen/resources/files/Infografía_AI.jpg` (영문 인포그래픽)
+  - 예시 2: `ge_lab/media_gen/resources/files/handwrite_arch.png` (손으로 그린 아키텍처 스케치)
 
-<p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/gen_image3.png" width="700" alt="이미지 첨부 화면">
-</p>
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab3-1.png" width="600">
+
 
 #### 2) 실습 프롬프트
 > 💬 **프롬프트 1 (`Infografía_AI.jpg` 기반 한국어 번역 및 리디자인):**
@@ -171,9 +171,8 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 > 2. 색상 톤을 최신 엔터프라이즈 머티리얼 디자인 스타일로 한 단계 업그레이드해줘.
 > ```
 
-<p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/gen_image4.png" width="700" alt="번역된 인포그래픽 결과">
-</p>
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab3-2.png" width="600">
+
 
 > 💬 **프롬프트 2 (`handwrite_arch.png` 기반 클라우드 아키텍처 다이어그램 변환):**
 > ```text
@@ -181,9 +180,7 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 > 전체 비주얼을 '공식 Google Cloud Architecture Diagram 3D 아이소메트릭(Isometric)' 스타일로 전문 엔지니어링 문서에 삽입할 수 있도록 깔끔하게 다시 그려줘.
 > ```
 
-<p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/gen_image5.png" width="700" alt="아키텍처 변환 결과">
-</p>
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab3-3.png" width="600">
 
 #### 3) 검증 포인트
 - [ ] 업로드된 원본 소스의 핵심 토폴로지 및 요소 간 상관관계가 유지되었는가?
@@ -194,27 +191,43 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 
 ### Lab 4. 비즈니스 인포그래픽 및 다이어그램 시각화
 
-복잡한 사내 기술 아키텍처 전환 과정이나 분기별 로드맵 단계를 **슬라이드에 즉시 활용 가능한 직관적 다이어그램 이미지**로 합성합니다.
+고객 여정(Customer Journey), 디지털 마케팅 풀퍼널(Full-Funnel) 또는 신제품 론칭 옴니채널 캠페인 전략을 **프레젠테이션, 마케팅 전략 기획서 및 브랜드 보고서에 즉시 활용할 수 있는 직관적이고 완성도 높은 인포그래픽 다이어그램 이미지**로 합성합니다.
 
 #### 1) 실행 환경 설정
-- 새 대화 세션을 열고 순수 텍스트 프롬프트를 통해 정밀한 정보 구조를 전달합니다.
+- 새 대화 세션을 열고 순수 텍스트 프롬프트를 통해 명확한 마케팅 단계 구조와 시각 가이드를 전달합니다.
 
 #### 2) 실습 프롬프트
-> 💬 **프롬프트 1 (엔터프라이즈 클라우드 전환 4단계 프로세스):**
+> 💬 **프롬프트 1 (옴니채널 디지털 마케팅 풀퍼널 & 고객 여정 맵):**
 > ```text
-> 엔터프라이즈 클라우드 전환 4단계 프로세스를 직관적으로 보여주는 전문 비즈니스 인포그래픽 다이어그램을 생성해줘:
-> - 단계 구성:
->   1. Assessment (현행 진단 및 TCO 평가)
->   2. Architecture Planning (클라우드 아키텍처 및 보안 거버넌스 설계)
->   3. Workload Migration (단계적 데이터 및 앱 이전)
->   4. AI Optimization (운영 최적화 및 지속적 생성형 AI 도입)
-> - 시각 스타일: 미니멀 플랫 디자인, 기업용 네이비 & 라이트 블루 컬러 팔레트, 각 단계별 상징 벡터 아이콘 포함, 가로형(16:9) 비율.
+> B2B/B2C 옴니채널 디지털 마케팅 풀퍼널(Full-Funnel) 및 고객 여정 4단계를 직관적으로 보여주는 전문 비즈니스 마케팅 인포그래픽 다이어그램을 생성해줘:
+> - 단계별 구성:
+>   1. Awareness (브랜드 인지) - SNS 바이럴 영상 및 대규모 브랜드 캠페인을 통한 신규 유입
+>   2. Consideration (관심 및 고려) - 맞춤형 프로모션, 뉴스레터 및 인터랙티브 콘텐츠를 통한 리드 육성
+>   3. Conversion (구매 전환) - 한정 프로모션 및 랜딩페이지 최적화를 통한 즉각적인 구매 유도
+>   4. Loyalty & Advocacy (충성도 및 옹호) - VIP 멤버십 리워드 및 고객 추천 커뮤니티 바이럴 확산
+> - 시각 스타일: 모던 플랫 벡터 인포그래픽, 세련된 네이비 블루 & 코랄 오렌지 포인트 컬러, 각 단계별 직관적인 상징 심볼(확성기, 돋보기, 장바구니, 별/하트) 포함, 좌에서 우로 이어지는 깔끔한 플로우 화살표, 16:9 와이드 비율.
 > ```
 
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab4-1.png" width="600">
+
+
+> 💬 **프롬프트 2 (글로벌 신제품 런칭 4단계 마케팅 캠페인 로드맵):**
+> ```text
+> 글로벌 신제품 런칭을 위한 4단계 마케팅 전략 로드맵을 한눈에 파악할 수 있는 타임라인 인포그래픽 다이어그램을 생성해줘:
+> - Phase 1: Teaser & Buzz (티저 영상 공개 및 사전 예약 얼리버드 리드 확보)
+> - Phase 2: Official Launch (글로벌 프레스 컨퍼런스 & 톱 인플루언서 앰버서더 협업 프로모션)
+> - Phase 3: Viral Expansion (소셜 챌린지 및 사용자 생성 콘텐츠(UGC) 대규모 확산)
+> - Phase 4: Retention & Scale (데이터 기반 개인화 CRM 마케팅 및 재구매 락인)
+> - 시각 스타일: 하이엔드 테크 기업 마케팅 전략 보고서용 슬라이드 스타일, 단계별 카드 블록 레이아웃, 깔끔한 그리드 여백과 가독성 높은 현대적인 폰트 영역 확보, 16:9 비율.
+> ```
+
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab4-2.png" width="600">
+
+
 #### 3) 검증 포인트
-- [ ] 좌에서 우(또는 상에서 하)로 시선이 자연스럽게 이동하는 직관적 시각 위계가 형성되었는가?
-- [ ] 텍스트 요소와 아이콘 간의 여백이 조화롭고 깔끔한가?
-- [ ] 프레젠테이션(Google Slides / PowerPoint)에 즉시 배치 가능한 수준인가?
+- [ ] 마케팅 퍼널(Funnel) 또는 캠페인 로드맵의 단계별 시선 흐름(좌->우)이 자연스럽게 구현되었는가?
+- [ ] 마케팅 핵심 단계(Awareness, Consideration, Conversion, Loyalty)와 상징 아이콘이 조화롭고 깔끔하게 배치되었는가?
+- [ ] 마케팅 기획서, 신제품 전략 프레젠테이션(Google Slides / PPT)에 즉시 삽입 가능한 레이아웃과 완성도를 갖추었는가?
 
 ---
 
@@ -234,14 +247,16 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 > - 조명: 과하지 않고 은은한 자연광, 하이엔드 테크 기업 웹사이트 무드.
 > ```
 
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab5-1.png" width="600">
+
+
 #### 3) 검증 포인트
-- [ ] 좌측 60% 영역에 텍스트를 배치하기 충분한 클린 여백이 확보되었는가?
 - [ ] 우측 피사체와 좌측 여백 사이의 경계가 인위적으로 잘리지 않고 부드럽게 이어지는가?
 - [ ] B2B 비즈니스에 부합하는 고급스러운 톤앤매너가 유지되었는가?
 
 ---
 
-## 4. Video 생성 및 편집 실습 (5 Modules)
+## 4. Video 생성 및 편집 실습 (4 Modules)
 
 ---
 
@@ -252,9 +267,8 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 #### 1) 실행 환경 설정
 - 하단 도구 패널에서 **[동영상 만들기]**를 활성화합니다.
 
-<p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/gen_video1.png" width="700" alt="비디오 생성 도구 선택">
-</p>
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab6-1.png" width="600">
+
 
 #### 2) 실습 프롬프트
 > 💬 **프롬프트 1 (하이퍼스케일 데이터 센터 트래킹 샷):**
@@ -264,9 +278,8 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 > 서버 인디케이터 LED 불빛이 주기적으로 깜빡이며, 메탈릭 바닥 반사광이 돋보이는 16:9 비율 비디오로 렌더링해줘.
 > ```
 
-<p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/gen_video2.png" width="700" alt="생성된 시네마틱 비디오">
-</p>
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab6-2.png" width="600">
+
 
 #### 3) 검증 포인트
 - [ ] 카메라의 전진 모션이 끊기지 않고 부드럽게 이어지는가?
@@ -281,29 +294,28 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 
 #### 1) 실행 환경 설정
 - 프롬프트 입력창의 **`+` (파일 추가)** 아이콘을 클릭합니다.
-- `ge_lab/media_gen/resources/files/hands_in_reed.png` 파일을 업로드하거나, Lab 1에서 생성한 텀블러 이미지를 첨부합니다.
+- `ge_lab/media_gen/resources/files/hands_in_reed.png` 파일을 업로드해주세요.
 
-<p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/gen_video3.png" width="700" alt="Image-to-Video 첨부 화면">
-</p>
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab7-1.png" width="600">
 
 #### 2) 실습 프롬프트
 > 💬 **프롬프트 1 (`hands_in_reed.png` 기반 시네마틱 모션 비디오):**
 > ```text
-> 첨부한 이미지를 시작 프레임으로 삼아 5초 비디오 클립을 생성해줘:
+> 첨부한 이미지를 시작 프레임으로 삼아 비디오 클립을 생성해줘:
 > 광활한 밀밭에서 황금빛 밀줄기를 부드럽게 스치는 전사의 거친 손을 익스트림 클로즈업 핸드헬드 샷으로 표현해줘.
 > 배경을 비추는 따뜻한 일몰 햇살과 밀밭 사이로 부는 은은한 바람의 일렁임을 연출해줘. 감성적이고 서사적인 무드, 영화용 35mm 필름 그레인 질감 적용.
 > ```
 
-<p align="left">
-  <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/gen_video4.png" width="700" alt="Image-to-Video 결과 화면">
-</p>
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab7-2.png" width="600">
 
 > 💬 **프롬프트 2 (제품 스틸 이미지 줌인 모션 연출):**
 > ```text
-> 첨부한 텀블러 이미지를 첫 프레임으로 사용하여 5초 비디오 클립을 만들어줘.
+> 첨부한 텀블러 이미지를 첫 프레임으로 사용하여 비디오 클립을 만들어줘.
 > 창문 밖에서 따스한 아침 햇살이 비쳐 들어오며 빛의 각도가 미세하게 변화하고, 커튼이 살랑살랑 흔들리는 배경 움직임을 표현해줘. 카메라는 책상 위 텀블러를 향해 아주 천천히 줌인(Slow Zoom-in)하는 모션을 줘.
 > ```
+
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab7-3.png" width="600">
+
 
 #### 3) 검증 포인트
 - [ ] 첨부한 원본 이미지의 핵심 피사체 형태가 뭉개지거나 왜곡되지 않고 유지되는가?
@@ -326,6 +338,9 @@ Google의 최첨단 생성 미디어 파운데이션 모델(Imagen 3 및 Veo)을
 > 1. 시간대를 대낮에서 '노을이 지는 황금 시간대(Golden Hour Sunset)'로 전환해줘.
 > 2. 화면 전체에 짙은 오렌지빛 역광과 몽환적인 먼지 입자 틴들 효과(God rays)를 추가하고, 시네마틱 웜톤 필터를 적용해줘.
 > ```
+
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab8-1.png" width="600">
+
 
 #### 3) 검증 포인트
 - [ ] 피사체의 모션 벡터와 카메라 동선이 일관되게 보존되는가?
@@ -350,37 +365,13 @@ Instagram Reels, YouTube Shorts, TikTok 등 모바일 세로 플랫폼에 최적
 > - 무드: 하이엔드 테크 럭셔리, 선명한 메탈 엣지 반사.
 > ```
 
+<img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab9-1.png" width="600">
+
+
 #### 3) 검증 포인트
 - [ ] 결과물이 9:16 세로 프레임으로 빈틈없이 꽉 채워져 출력되는가?
 - [ ] 스마트워치가 360도 회전할 때 앞면, 측면, 뒷면의 형태적 일관성이 유지되는가?
 - [ ] 첫 1~2초 내에 사용자의 시선을 사로잡을 수 있는 조명 연출이 가미되었는가?
-
----
-
-### Lab 10. 스토리보드 기획 및 씬(Scene) 동시 렌더링
-
-아이디어 기획 텍스트를 구성하는 것에 그치지 않고, **3단 영상 스토리보드를 도출함과 동시에 첫 번째 핵심 씬을 16:9 비디오 클립으로 즉각 시각화**하여 기획과 제작을 원스톱으로 연결합니다.
-
-#### 1) 실행 환경 설정
-- 새 대화창에서 기획 요건과 영상 생성 명령이 결합된 복합 프롬프트를 전송합니다.
-
-#### 2) 실습 프롬프트
-> 💬 **프롬프트 1 (생산성 혁신 홍보 영상 기획 및 1단계 씬 렌더링):**
-> ```text
-> 'AI 솔루션 도입으로 인한 엔터프라이즈 업무 생산성 혁신'을 주제로 한 15초 홍보 영상의 3단 스토리보드를 기획해줘:
-> - 1단계 (도입 0~5초): 과중한 업무와 야근에 시달리는 직원의 고뇌
-> - 2단계 (전개 5~10초): Gemini Enterprise 도입으로 복잡한 데이터 분석과 보고서 작성이 순식간에 자동화되는 순간
-> - 3단계 (결론 10~15초): 정시 퇴근 후 여유를 찾은 팀원들과 비즈니스 성장의 환호
-> 
-> 각 단계별 나레이션 스크립트와 카메라 연출 지침을 표 형태로 정리해줘.
-> 
-> 그리고 기획된 내용 중 '1단계 도입부(어두운 사무실에서 모니터 불빛을 받으며 서류 더미 속에서 고뇌하는 직원의 빠른 타임랩스 샷)'에 해당하는 장면을 16:9 비율의 시네마틱 비디오 클립으로 직접 렌더링해줘.
-> ```
-
-#### 3) 검증 포인트
-- [ ] 3단계 기획안(시간대, 나레이션, 비주얼 지침)이 구조화된 표로 명확히 제시되는가?
-- [ ] 텍스트 기획안에 기술된 1단계 도입부의 연출 내용이 비디오 영상에 정확히 반영되었는가?
-- [ ] Google Vids 등 영상 편집 도구로 가져가 2~3단계 씬과 결합하기에 적합한 품질인가?
 
 ---
 
@@ -418,4 +409,4 @@ Instagram Reels, YouTube Shorts, TikTok 등 모바일 세로 플랫폼에 최적
 > **A:** 완벽히 보호됩니다. Gemini Enterprise 환경에 업로드된 사내 문서, 스케치, 이미지 자산은 Google의 공용 파운데이션 모델 학습에 일체 사용되지 않으며, 고객사의 테넌트 경계 내에서 암호화되어 안전하게 처리됩니다.
 
 #### Q3. 비디오 클립의 길이를 30초 이상으로 한 번에 생성할 수 있나요?
-> **A:** 현재 Veo 기반 영상 생성은 5초 내외의 고밀도 씬 단위 렌더링에 최적화되어 있습니다. 긴 영상이 필요한 경우 Lab 10의 스토리보드 방식처럼 씬별(Scene-by-scene)로 클립을 생성한 뒤, Google Vids나 동영상 편집 소프트웨어를 통해 하나의 완성형 영상으로 이어 붙이는 워크플로우를 강력히 권장합니다.
+> **A:** 현재 Veo 기반 영상 생성은 8초 내외의 고밀도 씬 단위 렌더링에 최적화되어 있습니다. 긴 영상이 필요한 경우 씬별(Scene-by-scene)로 클립을 분할 생성한 뒤, Google Vids나 동영상 편집 소프트웨어를 통해 하나의 완성형 영상으로 이어 붙이는 워크플로우를 강력히 권장합니다.
