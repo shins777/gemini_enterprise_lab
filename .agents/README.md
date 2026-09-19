@@ -15,7 +15,7 @@
 4. [상세 스킬 명세서](#4-상세-스킬-명세서)
    - [4.1 `ge-general` - Gemini Enterprise 10대 핵심 기능](#41-ge-general---gemini-enterprise-10대-핵심-기능)
    - [4.2 `media-gen` - 멀티모달 이미지 및 비디오 생성/편집](#42-media-gen---멀티모달-이미지-및-비디오-생성편집)
-   - [4.3 `nocode-agent` - 노코드 및 워크플로우 에이전트 스튜디오](#43-nocode-agent---노코드-및-워크플로우-에이전트-스튜디오)
+   - [4.3 `nocode-basic` - 노코드 및 워크플로우 에이전트 스튜디오](#43-nocode-basic---노코드-및-워크플로우-에이전트-스튜디오)
    - [4.4 `build-mcp-server` - Cloud Run 기반 HTTP MCP 서버 구축 및 배포](#44-build-mcp-server---cloud-run-기반-http-mcp-서버-구축-및-배포)
 5. [신규 커스텀 스킬 작성 가이드](#5-신규-커스텀-스킬-작성-가이드)
 6. [보안 가드레일 및 운영 원칙](#6-보안-가드레일-및-운영-원칙)
@@ -34,7 +34,11 @@
     │   └── SKILL.md
     ├── media-gen/                      # Imagen 3 & Veo 기반 멀티모달 미디어 생성/편집 스킬
     │   └── SKILL.md
-    ├── nocode-agent/                   # 노코드 단일 에이전트 및 워크플로우 에이전트 제작 스킬
+    ├── nocode-basic/                   # 노코드 단일 에이전트 및 워크플로우 에이전트 제작 스킬
+    │   └── SKILL.md
+    ├── nocode-advance/                 # 심화 워크플로우 에이전트 개발 및 오케스트레이션 스킬
+    │   └── SKILL.md
+    ├── agent-realestate/               # Google ADK & A2A 커스텀 에이전트(agent_realestate) 제작 및 Vertex AI 배포 스킬
     │   └── SKILL.md
     ├── build-mcp-server/               # Cloud Run 상의 Streamable HTTP MCP 서버 배포 스킬
     │   └── SKILL.md
@@ -50,7 +54,9 @@
 | :--- | :--- | :--- |
 | [`ge-general`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/ge-general/SKILL.md) | [`ge_lab/ge_general/ge_general.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/ge_general/ge_general.md) | [`ge_lab/ge_general/resources/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/ge_general/resources) |
 | [`media-gen`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/media-gen/SKILL.md) | [`ge_lab/media_gen/ge_media.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/media_gen/ge_media.md) | [`ge_lab/media_gen/resources/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/media_gen/resources) |
-| [`nocode-agent`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-agent/SKILL.md) | [`ge_lab/nocode_agent/nocode_agent.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/nocode_agent.md) | [`ge_lab/nocode_agent/resources/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/resources) |
+| [`nocode-basic`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-basic/SKILL.md) | [`ge_lab/nocode_basic/nocode_basic.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_basic/nocode_basic.md) | [`ge_lab/nocode_basic/resources/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_basic/resources) |
+| [`nocode-advance`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-advance/SKILL.md) | [`ge_lab/nocode_advance/nocode_advance.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_advance/nocode_advance.md) | [`ge_lab/nocode_advance/resources/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_advance/resources) |
+| [`agent-realestate`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/agent-realestate/SKILL.md) | [`src/agent/agent_realestate/README.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/agent/agent_realestate/README.md) | [`src/agent/agent_realestate/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/agent/agent_realestate) |
 | [`build-mcp-server`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/build-mcp-server/SKILL.md) | [`src/mcp/mcp_realestate/`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/mcp/mcp_realestate) | [`src/mcp/mcp_realestate/deploy.sh`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/src/mcp/mcp_realestate/deploy.sh) |
 
 ---
@@ -78,7 +84,7 @@ version: 1.0.0
 | :--- | :---: | :--- | :--- | :---: |
 | [**`ge-general`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/ge-general/SKILL.md) | `1.1.0` | Gemini Enterprise 10대 핵심 기능 종합 검증 | Gemini Core LLM, Google Search, 커넥터, MCP, 프로젝트 | 총 10개 랩 |
 | [**`media-gen`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/media-gen/SKILL.md) | `1.1.0` | 노코드 기반 고품질 이미지 및 비디오 생성/편집 | Imagen 3 (T2I, 인페인팅), Veo (T2V, I2V, 스타일 변환) | 총 9개 랩 (이미지 5, 비디오 4) |
-| [**`nocode-agent`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-agent/SKILL.md) | `1.0.0` | 노코드 단일 에이전트 및 멀티스텝 워크플로우 에이전트 제작 | Gemini 3.5 Flash/Pro, Agent Designer, 비주얼 빌더, HITL 승인 | 총 4개 랩 (단일 3, 워크플로우 1) |
+| [**`nocode-basic`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-basic/SKILL.md) | `1.0.0` | 노코드 단일 에이전트 및 멀티스텝 워크플로우 에이전트 제작 | Gemini 3.5 Flash/Pro, Agent Designer, 비주얼 빌더, HITL 승인 | 총 4개 랩 (단일 3, 워크플로우 1) |
 | [**`build-mcp-server`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/build-mcp-server/SKILL.md) | `1.0.0` | Cloud Run 상의 Streamable HTTP MCP 서버 구축/배포 | Google Cloud Run, Streamable HTTP MCP, FastMCP / Python | Cloud Run 배포 랩 |
 
 ---
@@ -154,9 +160,9 @@ flowchart TD
 
 ---
 
-### 4.3 `nocode-agent` - 노코드 및 워크플로우 에이전트 스튜디오
+### 4.3 `nocode-basic` - 노코드 및 워크플로우 에이전트 스튜디오
 
-- **스킬 경로**: [`file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-agent/SKILL.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-agent/SKILL.md)
+- **스킬 경로**: [`file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-basic/SKILL.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-basic/SKILL.md)
 - **개요**: 코딩 없이 프롬프트 대화와 비주얼 빌더만으로 현업 맞춤형 단일 No-Code 에이전트와 다단계 비즈니스 자동화 워크플로우 에이전트(Workflow Agent)를 직접 설계하고, 스케줄링하며, 사내에 배포하는 실무 스킬입니다.
 
 ```mermaid

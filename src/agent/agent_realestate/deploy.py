@@ -14,9 +14,9 @@ from agent import root_agent
 
 def main():
     # 구글 클라우드 플랫폼 환경 설정을 주입받아 초기화합니다.
-    PROJECT_ID = os.getenv("PROJECT_ID", "explore-ai-c53f5e43")
-    REGION = os.getenv("REGION", "us-central1")
-    STAGING_BUCKET = os.getenv("GCS_STAGING_BUCKET", f"gs://run-sources-{PROJECT_ID}-{REGION}")
+    PROJECT_ID = os.getenv("PROJECT_ID") or "your-gcp-project-id"
+    REGION = os.getenv("REGION") or "us-central1"
+    STAGING_BUCKET = os.getenv("GCS_STAGING_BUCKET") or f"gs://run-sources-{PROJECT_ID}-{REGION}"
 
     print(f"Vertex AI 환경 초기화 시작: project='{PROJECT_ID}', region='{REGION}', staging_bucket='{STAGING_BUCKET}'...")
     vertexai.init(
@@ -32,10 +32,11 @@ def main():
     remote_engine = reasoning_engines.ReasoningEngine.create(
         app,
         requirements=[
-            "google-adk[a2a]",
+            "google-adk[a2a]==2.6.3",
+            "pydantic==2.13.4",
             "a2a-sdk",
             "sse-starlette",
-            "google-cloud-aiplatform[adk,agent_engines]",
+            "google-cloud-aiplatform[adk,agent_engines]==1.163.0",
         ],
         display_name="Search Agent Engine (A2A)",
         description="구글 ADK 프레임워크와 제미나이 2.5 플래시, 구글 검색 도구가 긴밀히 통합된 A2A 호환 검색 어시스턴트 에이전트 엔진입니다."

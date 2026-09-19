@@ -71,14 +71,14 @@ gemini_enterprise_lab/
 │   └── skills/
 │       ├── ge-general/                  # Gemini Enterprise 10대 핵심 기능 검증 스킬
 │       ├── media-gen/                   # Imagen 3 및 Veo 기반 멀티모달 미디어 생성/편집
-│       ├── nocode-agent/                # 노코드 단일 에이전트 및 멀티스텝 워크플로우 에이전트
+│       ├── nocode-basic/                # 노코드 단일 에이전트 및 멀티스텝 워크플로우 에이전트
 │       └── build-mcp-server/            # Cloud Run 상의 Streamable HTTP MCP 서버 배포
 │
 ├── ge_lab/                              # 실무 중심 단계별 핸즈온 랩 커리큘럼
 │   ├── README.md                        # 핸즈온 랩 마스터 포털 및 커리큘럼 매트릭스
 │   ├── ge_general/                      # 트랙 1: 엔터프라이즈 일반 핵심 기능 (10개 랩)
 │   ├── media_gen/                       # 트랙 2: 멀티모달 미디어 생성 및 편집 (9개 랩)
-│   ├── nocode_agent/                    # 트랙 3: 노코드 및 워크플로우 에이전트 스튜디오 (4개 랩)
+│   ├── nocode_basic/                    # 트랙 3: 노코드 및 워크플로우 에이전트 스튜디오 (4개 랩)
 │   └── agent_platform/                  # 트랙 4: 에이전트 플랫폼 및 인프라 연동 확장
 │
 ├── ge_api/                              # 엔터프라이즈 API 제품군 및 프로그래밍 도구
@@ -110,7 +110,7 @@ gemini_enterprise_lab/
 | :--- | :--- | :---: | :--- |
 | **엔터프라이즈 일반 기능** | [`ge_lab/ge_general/ge_general.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/ge_general/ge_general.md) | 10개 랩 | Direct Q&A, Web Grounding, 사내 커넥터 (Drive/Gmail/Jira), 인터랙티브 캔버스, 스마트 수신함, MCP |
 | **멀티모달 미디어 제작** | [`ge_lab/media_gen/ge_media.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/media_gen/ge_media.md) | 9개 랩 | Imagen 3 (제품 샷, 대화형 인페인팅, 인포그래픽, 배너), Veo (B-roll, 모션 비디오, 9:16 세로형 영상) |
-| **노코드 에이전트 스튜디오** | [`ge_lab/nocode_agent/nocode_agent.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/nocode_agent.md) | 4개 랩 | Agent Designer, 비주얼 빌더, Cron 스케줄링, 위협 수준 조건 분기, 사람 필수 승인(HITL), Google Drive 저장 |
+| **노코드 에이전트 스튜디오** | [`ge_lab/nocode_basic/nocode_basic.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_basic/nocode_basic.md) | 4개 랩 | Agent Designer, 비주얼 빌더, Cron 스케줄링, 위협 수준 조건 분기, 사람 필수 승인(HITL), Google Drive 저장 |
 
 ---
 
@@ -123,7 +123,7 @@ gemini_enterprise_lab/
 에이전트는 `.agents/skills/*/*/SKILL.md`를 재귀 탐색하여 필요한 스킬을 자동으로 호출합니다:
 - [**`ge-general`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/ge-general/SKILL.md): 10대 핵심 기능 검증 시나리오 및 체크리스트.
 - [**`media-gen`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/media-gen/SKILL.md): 시각적 연출을 위한 조명, 카메라 렌즈, 프롬프트 엔지니어링 지침.
-- [**`nocode-agent`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-agent/SKILL.md): 단일 에이전트 및 다단계 워크플로우 에이전트 설계 스펙.
+- [**`nocode-basic`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/nocode-basic/SKILL.md): 단일 에이전트 및 다단계 워크플로우 에이전트 설계 스펙.
 - [**`build-mcp-server`**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/build-mcp-server/SKILL.md): Cloud Run 컨테이너 빌드 및 배포 절차.
 
 ---
@@ -224,7 +224,7 @@ python3 query_agent.py
 [`ge_lab/README.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/README.md) 포털에서 원하는 트랙을 선택하여 실습을 진행합니다:
 - **엔터프라이즈 일반 기능 실습**: [`ge_lab/ge_general/ge_general.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/ge_general/ge_general.md)
 - **멀티모달 이미지 및 비디오 제작**: [`ge_lab/media_gen/ge_media.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/media_gen/ge_media.md)
-- **노코드 및 워크플로우 에이전트**: [`ge_lab/nocode_agent/nocode_agent.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/nocode_agent.md)
+- **노코드 및 워크플로우 에이전트**: [`ge_lab/nocode_basic/nocode_basic.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_basic/nocode_basic.md)
 
 ---
 

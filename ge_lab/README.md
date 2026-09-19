@@ -13,7 +13,7 @@
 4. [트랙별 상세 실습 가이드](#4-트랙별-상세-실습-가이드)
    - [트랙 1: 엔터프라이즈 일반 핵심 기능 (`ge_general`)](#트랙-1-엔터프라이즈-일반-핵심-기능-ge_general)
    - [트랙 2: 멀티모달 미디어 생성 및 편집 (`media_gen`)](#트랙-2-멀티모달-미디어-생성-및-편집-media_gen)
-   - [트랙 3: 노코드 및 워크플로우 에이전트 스튜디오 (`nocode_agent`)](#트랙-3-노코드-및-워크플로우-에이전트-스튜디오-nocode_agent)
+   - [트랙 3: 노코드 및 워크플로우 에이전트 스튜디오 (`nocode_basic`)](#트랙-3-노코드-및-워크플로우-에이전트-스튜디오-nocode_basic)
    - [트랙 4: 에이전트 플랫폼 및 인프라 연동 확장 (`agent_platform`)](#트랙-4-에이전트-플랫폼-및-인프라-연동-확장-agent_platform)
 5. [사전 준비 사항 및 환경 점검](#5-사전-준비-사항-및-환경-점검)
 6. [AI 에이전트 스킬(`.agents/skills/`)과의 상호 매핑](#6-ai-에이전트-스킬agentsskills과의-상호-매핑)
@@ -30,7 +30,7 @@
 graph TD
     Root([Gemini Enterprise Web App]) --> T1[트랙 1: 일반 핵심 기능<br>ge_general]
     Root --> T2[트랙 2: 멀티모달 미디어 제작<br>media_gen]
-    Root --> T3[트랙 3: 노코드 및 워크플로우 에이전트<br>nocode_agent]
+    Root --> T3[트랙 3: 노코드 및 워크플로우 에이전트<br>nocode_basic]
     Root --> T4[트랙 4: 에이전트 플랫폼 및 도구 연동<br>agent_platform]
 
     T1 --> R1[10개 모듈 실습<br>추론, 웹검색, 사내커넥터, 캔버스]
@@ -56,10 +56,14 @@ ge_lab/
 │   └── resources/
 │       ├── files/                       # 참조용 원본 스케치 및 브랜드 자산
 │       └── img/                         # 단계별 생성 산출물 및 UI 화면 (lab1-1 ~ lab9-1)
-├── nocode_agent/                        # 트랙 3: 노코드 및 워크플로우 에이전트 스튜디오
-│   ├── nocode_agent.md                  # 4대 단일 에이전트 및 워크플로우 에이전트 매뉴얼
+├── nocode_basic/                        # 트랙 3: 노코드 및 입문 워크플로우 에이전트 스튜디오
+│   ├── nocode_basic.md                  # 4대 단일 에이전트 및 입문 워크플로우 에이전트 매뉴얼
 │   └── resources/
 │       └── img/                         # 비주얼 빌더 단계별 스크린샷 (lab1-1 ~ lab4-11)
+├── nocode_advance/                      # 트랙 4: 심화 워크플로우 에이전트 오케스트레이션
+│   ├── nocode_advance.md                # 8대 심화 워크플로우 에이전트 개발 및 오케스트레이션 매뉴얼
+│   └── resources/
+│       └── img/
 └── agent_platform/                      # 트랙 4: 에이전트 플랫폼 및 고급 인프라 연동 확장
 ```
 
@@ -88,10 +92,10 @@ ge_lab/
 | | [**Lab 7**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/media_gen/ge_media.md#lab-7-정적-이미지-기반-모션-비디오-생성-image-to-video) | 정적 이미지 기반 모션 비디오 | Veo (Image-to-Video) | 정적 제품 렌더링에 자연스러운 물리 역학과 카메라 줌인 모션 부여 |
 | | [**Lab 8**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/media_gen/ge_media.md#lab-8-멀티턴-대화형-비디오-분위기-및-환경-전환-video-editing) | 대화형 비디오 분위기 및 날씨 전환 | Video-to-Video 편집 | 기생성 비디오의 시간대(골든 아워), 기상 조건(비), 컬러 톤 대화형 변경 |
 | | [**Lab 9**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/media_gen/ge_media.md#lab-9-소셜-미디어-플랫폼-맞춤형-숏폼916-영상-제작) | 9:16 모바일 세로형 숏폼 영상 | 9:16 세로형 영상 합성 | 모바일 소셜 채널용 360도 턴테이블 회전 제품 티저 영상 합성 |
-| **트랙 3**<br>`nocode_agent` | [**Lab 1**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/nocode_agent.md#lab-1-대화형-프롬프트-기반-에이전트-자동-생성) | 프롬프트 기반 에이전트 생성 | Agent Designer 대화 모드 | 자연어 대화만으로 전문 역할(시니어 테크 채용 평가관) 에이전트 즉각 구축 |
-| | [**Lab 2**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/nocode_agent.md#lab-2-빌더builder-기반-맞춤형-에이전트-수동-구성--검색-도구-연동) | 빌더 맞춤 구성 & 검색 도구 연동 | Builder 모드 & Google Search | 지식 베이스(평가 기준 문서 PDF) 바인딩 및 Google Search 도구 연결 |
-| | [**Lab 3**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/nocode_agent.md#lab-3-에이전트-조직-공유-및-자동-실행-스케줄링) | 조직 공유 및 자동 실행 스케줄링 | 조직 RBAC 공유 & Cron 트리거 | 팀/부서 단위 권한 부여 및 주기적(매일 아침) 자동 실행 스케줄 설정 |
-| | [**Lab 4**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/nocode_agent.md#lab-4-프롬프트-기반-워크플로우-에이전트workflow-agent-자동-생성-및-최종-브리핑-구글드라이브에-저장) | 프롬프트 기반 워크플로우 에이전트 | 다단계 워크플로우 스튜디오 | 매일 09시 실행, Google Search 뉴스 수집, 위협 수준 분기, 사람 승인, Drive 저장 |
+| **트랙 3**<br>`nocode_basic` | [**Lab 1**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_basic/nocode_basic.md#lab-1-대화형-프롬프트-기반-에이전트-자동-생성) | 프롬프트 기반 에이전트 생성 | Agent Designer 대화 모드 | 자연어 대화만으로 전문 역할(시니어 테크 채용 평가관) 에이전트 즉각 구축 |
+| | [**Lab 2**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_basic/nocode_basic.md#lab-2-빌더builder-기반-맞춤형-에이전트-수동-구성--검색-도구-연동) | 빌더 맞춤 구성 & 검색 도구 연동 | Builder 모드 & Google Search | 지식 베이스(평가 기준 문서 PDF) 바인딩 및 Google Search 도구 연결 |
+| | [**Lab 3**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_basic/nocode_basic.md#lab-3-에이전트-조직-공유-및-자동-실행-스케줄링) | 조직 공유 및 자동 실행 스케줄링 | 조직 RBAC 공유 & Cron 트리거 | 팀/부서 단위 권한 부여 및 주기적(매일 아침) 자동 실행 스케줄 설정 |
+| | [**Lab 4**](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_basic/nocode_basic.md#lab-4-프롬프트-기반-워크플로우-에이전트workflow-agent-자동-생성-및-최종-브리핑-구글드라이브에-저장) | 프롬프트 기반 워크플로우 에이전트 | 다단계 워크플로우 스튜디오 | 매일 09시 실행, Google Search 뉴스 수집, 위협 수준 분기, 사람 승인, Drive 저장 |
 
 ---
 
@@ -140,9 +144,9 @@ flowchart LR
 
 ---
 
-### 트랙 3: 노코드 및 워크플로우 에이전트 스튜디오 (`nocode_agent`)
+### 트랙 3: 노코드 및 워크플로우 에이전트 스튜디오 (`nocode_basic`)
 
-- **실습 매뉴얼**: [`ge_lab/nocode_agent/nocode_agent.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_agent/nocode_agent.md)
+- **실습 매뉴얼**: [`ge_lab/nocode_basic/nocode_basic.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/ge_lab/nocode_basic/nocode_basic.md)
 - **대상 독자**: 비즈니스 운영 매니저, 인사/채용 담당자, 리스크 분석가 및 업무 자동화 리드.
 - **핵심 가치**:
   프로그래밍 지식이 없는 현업 실무자가 Gemini Enterprise의 **Agent Designer**를 통해 사내 전용 AI 팀원을 제작하고 배포하는 방법을 습득합니다. 대화를 통한 단일 에이전트 생성, 평가 기준 문서 바인딩 및 Google Search 연동, 조직 공유 및 스케줄링뿐만 아니라, 자연어 프롬프트 단 하나로 조건 분기, 사람 필수 승인(HITL), Google Drive 저장이 통합된 워크플로우 에이전트를 완성합니다.
@@ -203,7 +207,7 @@ flowchart TD
 ge_lab/ (사용자를 위한 튜토리얼 매뉴얼)     <--->   .agents/skills/ (AI 에이전트용 실행 명세서)
 ├── ge_general/ge_general.md            <--->   ├── ge-general/SKILL.md
 ├── media_gen/ge_media.md               <--->   ├── media-gen/SKILL.md
-├── nocode_agent/nocode_agent.md        <--->   ├── nocode-agent/SKILL.md
+├── nocode_basic/nocode_basic.md        <--->   ├── nocode-basic/SKILL.md
 └── agent_platform/                     <--->   └── build-mcp-server/SKILL.md
 ```
 

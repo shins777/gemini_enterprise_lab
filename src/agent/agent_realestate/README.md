@@ -1,65 +1,89 @@
-# 🤖 Search Agent Engine - Vertex AI Reasoning Engine (A2A 호환 검색 에이전트)
+# 🤖 Real Estate & Search Custom Agent (`agent_realestate`)
+### — Google ADK & A2A 호환 Vertex AI Reasoning Engine 패키지 —
 
-본 모듈은 차세대 에이전트 연동 표준 인터페이스인 **A2A (Agent-to-Agent)** 기술 규격을 충족하며, 구글이 개발한 **Google ADK (Agent Development Kit)**를 기반으로 빌드된 프리미엄 웹 검색 전용 어시스턴트 에이전트 패키지입니다. 
+본 모듈은 차세대 에이전트 연동 표준 인터페이스인 **A2A (Agent-to-Agent)** 기술 규격을 충족하며, **Google ADK (Agent Development Kit)**를 기반으로 빌드된 실시간 웹 검색 및 부동산·시장 동향 분석 커스텀 에이전트 패키지입니다.
 
-**Gemini 2.5 Flash**의 강력한 텍스트 분석 성능과 실시간 Google Search 핵심 도구를 융합하여 질문이 도달했을 때 능동적으로 정보를 검색, 조립 및 정리하여 유저에게 반환합니다.
+**Gemini 2.5 Flash**의 텍스트 추론 성능과 실시간 **Google Search** 도구를 융합하여 사용자의 질문(예: 최신 부동산 매매·전세 시장 동향, 금리·대출 규제 영향 등)에 대해 실시간 정보를 검색·분석하여 스트리밍으로 반환하며, **Vertex AI Reasoning Engine (Agent Engine)**에 배포하여 **Gemini Enterprise Workflow Builder (`Existing agents`)** 등에서 즉시 호출할 수 있습니다.
+
+> 🔗 **관련 스킬 명세서**: [`.agents/skills/agent-realestate/SKILL.md`](file:///Users/hangsik/Documents/my_project/gemini_enterprise_lab/.agents/skills/agent-realestate/SKILL.md)
 
 ---
 
 ## 📂 파일 구성 및 레이아웃 (Project Structure)
 
-```tree
+```text
 agent_realestate/
-├── agent.py              # Google ADK 기반 에이전트 코어 선언 및 A2A 매핑 변환
-├── deploy.py             # Vertex AI Reasoning Engine 원격 배포 및 롤아웃 수행 스크립트
-├── query_agent.py        # 배포된 원격 리즈닝 엔진에 실시간 질의를 날리는 테스트 세션 클라이언트
+├── agent.py              # Google ADK 기반 에이전트 코어 선언 및 A2A(to_a2a) 매핑 변환
+├── deploy.py             # Vertex AI Reasoning Engine 원격 패키징 및 배포 스크립트
+├── query_agent.py        # 배포된 원격 Reasoning Engine에 실시간 스트리밍 질의를 보내는 클라이언트
 ├── a2a_server.py         # 로컬 프록시 구동용 FastAPI/Uvicorn A2A 호환 웹 서버 규격
-├── requirements.txt      # Google ADK 및 AI 플랫폼 연동 패키지 디펜던시 정의서
-└── README.md             # 본 가이드 문서 (한글 전용)
+├── requirements.txt      # Google ADK, A2A SDK 및 Vertex AI 플랫폼 패키지 의존성 정의서
+└── README.md             # 본 가이드 문서
 ```
 
 ---
 
-## 🚀 배포 리소스 정보 (Deployed Production Info)
+## 🚀 배포 리소스 구성 정보 (Deployment Configuration)
 
-구글 클라우드 플랫폼 **`explore-ai-aa934711`** 리전의 공식 엔터프라이즈 Vertex AI 리즈닝 엔진 정보입니다.
+보안을 위해 실제 GCP 프로젝트 ID 및 리소스 고유 번호는 `.env` 파일 또는 실행 시점 환경 변수로 주입합니다.
 
-- **대상 프로젝트 ID (GCP Project ID):** `explore-ai-aa934711`
-- **구동 위치 (Region Location):** `us-central1`
-- **Reasoning Engine 공식 고유 식별자 (Resource Name):**
+- **대상 프로젝트 ID (`PROJECT_ID`):** `your-gcp-project-id` (환경 변수 주입)
+- **구동 리전 (`REGION`):** `us-central1`
+- **스테이징 버킷 (`GCS_STAGING_BUCKET`):** `gs://run-sources-${PROJECT_ID}-${REGION}`
+- **Reasoning Engine 리소스 식별자 형식 (`REASONING_ENGINE_RESOURCE_NAME`):**
   ```text
-  projects/66747595426/locations/us-central1/reasoningEngines/2482267896227561472
+  projects/{YOUR_PROJECT_NUMBER}/locations/us-central1/reasoningEngines/{YOUR_REASONING_ENGINE_ID}
   ```
 
 ---
 
-## ⚙️ 실행 및 가동 절차 (How to Run)
+## ⚙️ 실행 및 배포 절차 (How to Build & Deploy)
 
-### 1. 패키지 설치
-우선 파이썬 가상환경 또는 개발 환경 세션상에 ADK 및 에이전트 엔진 패키지 의존성을 수립합니다.
+### 1. 사전 GCP 인증 및 스테이징 버킷 준비
+배포를 실행하기 전 대상 GCP 프로젝트에 로그인하고 Application Default Credentials (ADC) 및 스테이징 버킷을 준비합니다.
+```bash
+# 1. gcloud CLI 및 ADC 인증
+gcloud auth login
+gcloud auth application-default login
+
+# 2. 대상 프로젝트 설정
+export PROJECT_ID="your-gcp-project-id"
+export REGION="us-central1"
+gcloud config set project "${PROJECT_ID}"
+gcloud auth application-default set-quota-project "${PROJECT_ID}"
+
+# 3. 필수 API 활성화 및 GCS 스테이징 버킷 생성
+gcloud services enable aiplatform.googleapis.com storage.googleapis.com --project="${PROJECT_ID}"
+gcloud storage buckets create "gs://run-sources-${PROJECT_ID}-${REGION}" --project="${PROJECT_ID}" --location="${REGION}"
+```
+
+### 2. 패키지 의존성 설치
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Vertex AI 리즈닝 엔진에 배포/재배포 (Deploy)
-새로운 코드 업데이트 사항이 존재하거나, 다른 테넌트의 클라우드 버킷 환경에 엔진을 다시 프로비저닝하고자 할 때 유효합니다.
+### 3. Vertex AI Reasoning Engine에 배포 (`deploy.py`)
+로컬의 ADK 에이전트를 패키징하여 Vertex AI Reasoning Engine으로 배포합니다.
 ```bash
-# 구글 ADC 인증 액세스 토큰을 추출하여 원격 환경 배포 커맨드 가동
 CLOUDSDK_AUTH_ACCESS_TOKEN="$(gcloud auth application-default print-access-token)" \
-PROJECT_ID="explore-ai-c53f5e43" \
+PROJECT_ID="your-gcp-project-id" \
 REGION="us-central1" \
-GCS_STAGING_BUCKET="gs://run-sources-explore-ai-c53f5e43-us-central1" \
+GCS_STAGING_BUCKET="gs://run-sources-your-gcp-project-id-us-central1" \
 python3 deploy.py
 ```
+- 배포가 완료되면 콘솔에 출력되는 `projects/{YOUR_PROJECT_NUMBER}/locations/us-central1/reasoningEngines/{YOUR_REASONING_ENGINE_ID}` 값을 복사하여 `.env` 파일의 `REASONING_ENGINE_RESOURCE_NAME`에 설정합니다.
 
-### 3. 클라이언트 원격 질의 확인 (Interactive Query Test)
-정식 롤아웃된 Vertex AI 백엔드 에이전트 인스턴스로 비동기 스트리밍 요청 세션을 생성하고 실시간 서칭 응답을 화면에 송출해 보는 도구입니다.
+### 4. 원격 에이전트 스트리밍 질의 테스트 (`query_agent.py`)
+정식 배포된 Vertex AI 백엔드 에이전트 인스턴스로 세션을 생성하고 최근 부동산 시장 동향에 대한 실시간 검색·분석 스트리밍 응답을 확인합니다.
 ```bash
+PROJECT_ID="your-gcp-project-id" \
+REGION="us-central1" \
+REASONING_ENGINE_RESOURCE_NAME="projects/YOUR_PROJECT_NUMBER/locations/us-central1/reasoningEngines/YOUR_REASONING_ENGINE_ID" \
 python3 query_agent.py
 ```
 
-### 4. 로컬 A2A 서버 구동 (Local Hosting)
-로컬에서 다른 오케스트레이터 에이전트와 로컬 루프백 테스트 및 Well-known JSON 카드 검증을 수행하기 위해 FastAPI 프레임워크 기반 프록시를 오픈합니다.
+### 5. 로컬 A2A 서버 구동 (`a2a_server.py`)
+로컬 환경에서 A2A 프로토콜 호환 웹 서버 및 Well-known Agent Card JSON 명세를 검증할 때 사용합니다.
 ```bash
 python3 a2a_server.py
 ```
@@ -68,8 +92,11 @@ python3 a2a_server.py
 
 ---
 
-## 💡 개발 어드바이스 및 주의사항 (Architecture & Troubleshooting)
+## 💡 개발 유의사항 및 트러블슈팅 (Architecture & Troubleshooting)
 
-* **Google Search 툴 통합:** `agent.py` 내부에 지정된 `tools=[google_search]` 구문은 에이전트가 별도의 복잡한 서칭 플러그인 연동 없이 구글의 원천 검색 색인(Index)에 접근할 수 있게 만듭니다.
-* **tar.gz 압축 패키징 빌드:** `deploy.py` 구동 시, 내부 패키징 엔진이 이 디렉토리 전체 모듈을 바이너리 객체화하고 `GCS_STAGING_BUCKET`에 아티팩트로 임시 업로드한 뒤 컴파일러에 전달하는 방식으로 배포 처리를 마무리합니다.
-* **A2A Wrapper 경고 메시지:** 실행 로그 출력 중 나타나는 `[EXPERIMENTAL] to_a2a` 메시지는 파이썬 ADK SDK 내부에서 프록시 및 디스패처에 적용된 호환성 표시 목적의 경고로 작동에는 아무런 부작용을 끼치지 않으므로 무시해도 안전합니다.
+* **로컬-클라우드 패키지 버전 고정 (`deploy.py`):**
+  `ReasoningEngine.create()`는 로컬의 `AdkApp` 객체를 `cloudpickle`로 직렬화하여 컨테이너로 전송합니다. 로컬 환경과 클라우드 컨테이너 간의 `google-adk` 및 `pydantic` 버전이 다르면 역직렬화 시점(`canonical_model` / `_resolved_model` 참조)에 `TypeError: 'NoneType' object is not subscriptable` 오류가 발생할 수 있으므로, `deploy.py`의 `requirements` 리스트에는 로컬 환경과 동일한 버전(예: `google-adk[a2a]==2.6.3`, `pydantic==2.13.4`, `google-cloud-aiplatform[adk,agent_engines]==1.163.0`)을 명시적으로 고정해야 합니다.
+* **환경 변수 빈 문자열 폴백 처리:**
+  상위 `.env` 파일에 `REASONING_ENGINE_RESOURCE_NAME=""`과 같이 빈 문자열이 정의된 경우 `os.getenv("...", DEFAULT)`는 빈 문자열(`""`)을 그대로 반환하여 `ValueError: Resource is not a valid resource id.`를 유발할 수 있습니다. 코드 내에서는 `os.getenv("...") or DEFAULT_VALUE` 패턴을 사용하여 안전하게 기본값으로 폴백하도록 구현되어 있습니다.
+* **Google Search 툴 통합:**
+  `agent.py` 내부에 지정된 `tools=[google_search]` 구문은 에이전트가 별도의 외부 API 키 없이도 Google의 실시간 검색 색인(Grounding Index)을 활용할 수 있게 합니다.
