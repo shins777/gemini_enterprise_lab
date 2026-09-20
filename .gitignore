@@ -223,3 +223,6 @@ __marimo__/
 
 # application configuration files
 .env
+
+# Agent configuration and workspace skills
+.agents/
