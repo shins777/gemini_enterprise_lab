@@ -172,7 +172,7 @@ flowchart TD
 | `start_year` | `number` | MCP 시계열 조회 시작 연도 (2006~2025 정수) | Yes |
 | `end_year` | `number` | MCP 시계열 조회 종료 연도 (2006~2025 정수) | Yes |
 | `historical_topic` | `string` | `Realest_research`에 전달할 최신 시장·정책 분석 주제 | Yes |
-| `priority` | `string` (Enum: `"High"`, `"Medium"`, `"Low"`) | 자문 중요도 | Yes |
+| `priority` | `string` | 자문 중요도 | Yes |
 
 <img style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" src="resources/img/lab2-8.png" width="600">
 
