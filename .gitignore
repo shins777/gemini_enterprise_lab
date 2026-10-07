@@ -226,3 +226,8 @@ __marimo__/
 
 # Agent configuration and workspace skills
 .agents/
+
+# Backend and API modules (excluded from repository)
+src/
+ge_api/
+
